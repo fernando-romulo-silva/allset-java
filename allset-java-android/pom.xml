@@ -1,0 +1,150 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>org.allset.java</groupId>
+		<artifactId>allset-java</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>allset-java-android</artifactId>
+
+
+	<!-- https://github.com/simpligility/maven-android-sdk-deployer/blob/master/pom.xml -->
+
+	<description>
+	     Projeto com configuracoes padroes para desenvolver aplicacoes android.
+	</description>
+
+	<!-- <url>file://${ANDROID_HOME}/extras/android/m2repository</url> -->
+
+	<!-- Adicionar o repositor de bibliotecas do Android -->
+	<!-- <repositories> <repository> <id>android-repo</id> <url>file://home/fernando/Programas/android/sdk/extras/android/m2repository</url> </repository> </repositories> -->
+
+	<properties>
+		<changes.xmlPath>${project.basedir}/changes</changes.xmlPath>
+		<maven.site.directory>${project.basedir}/site</maven.site.directory>
+
+		<!-- Android -->
+		<android.maven.plugin.extensions>true</android.maven.plugin.extensions>
+		<platform.version> 4.1.1.4</platform.version>
+		<android.maven.plugin.version>3.8.2</android.maven.plugin.version>
+
+		<android.sdk.plataform>19</android.sdk.plataform>
+
+		<!-- Android Maven Plugin -->
+		<android.support.v4>r7</android.support.v4>
+	</properties>
+
+	<dependencies>
+		<!-- Para log use sempre SLF4J! -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-android</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<!-- API Android -->
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>${platform.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>annotations</artifactId>
+			<version>${platform.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android-test</artifactId>
+			<version>${platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>${android.support.v4}</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+
+		<sourceDirectory>src</sourceDirectory>
+		<outputDirectory>bin/classes</outputDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+		<testOutputDirectory>bin/test-classes</testOutputDirectory>
+
+
+		<pluginManagement>
+			<plugins>
+				<!-- Evita erros no Eclipse! -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+										<artifactId>android-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>consume-aar</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- Plugin do maven para o o android -->
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<version>${android.maven.plugin.version}</version>
+				<extensions>${android.maven.plugin.extensions}</extensions>
+				<configuration>
+					<sdk>
+						<platform>${android.sdk.plataform}</platform>
+					</sdk>
+					<!-- sobreescre a aplicacao quando for fazer o deploy -->
+					<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					<!-- <extractDuplicates>true</extractDuplicates> -->
+
+					<!-- diretorio de recursos android (aqui esta no padrao eclipse) -->
+					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
+					<resourceDirectory>${project.basedir}/res</resourceDirectory>
+					<genDirectory>${project.basedir}/gen</genDirectory>
+
+					<!-- <manifest> -->
+					<!-- <debuggable>true</debuggable> -->
+					<!-- </manifest> -->
+
+					<!-- <deleteConflictingFiles>true</deleteConflictingFiles> -->
+
+					<!-- <manifest> <providerAuthorities> <property> <name>com.company.android.product.provider.Provider1</name> <value>com.company.android.${environment}</value> </property> </providerAuthorities> </manifest> -->
+				</configuration>
+				<!-- <executions> <execution> <id>update-manifest</id> <goals> <goal>manifest-update</goal> </goals> </execution> </executions> -->
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

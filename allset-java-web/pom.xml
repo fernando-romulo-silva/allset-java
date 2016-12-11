@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>allset-java-web</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.allset.java</groupId>
+		<artifactId>allset-java</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<!-- Java Web -->
+		<javax.servlet.jsp.api.version>2.3.1</javax.servlet.jsp.api.version>
+		<javax.servlet.api.version>3.1.0</javax.servlet.api.version>
+		<jstl.version>1.2</jstl.version>
+		<javax.el.api.version>3.0.0</javax.el.api.version>
+		<!-- Maven Plugins -->
+		<maven.war.plugin.version>2.1.1</maven.war.plugin.version>
+		<maven.war.fail.Missing.webXml>false</maven.war.fail.Missing.webXml>
+	</properties>
+
+	<description>
+	     Projeto de configuracao para aplicacoes java web.
+         Os arquivos keystore.jks e truststore.jks na pasta 'src/main/conf/security' para testes com https e a senha deles sao "123mudar".
+	</description>
+
+	<dependencies>
+		<!-- JSP -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${javax.servlet.jsp.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- SERVLET -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- TAGS -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Expression Language -->
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${javax.el.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven.war.plugin.version}</version>
+					<configuration>
+						<webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+						<failOnMissingWebXml>${maven.war.fail.Missing.webXml}</failOnMissingWebXml>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+		</plugins>
+		
+	</build>
+</project>
