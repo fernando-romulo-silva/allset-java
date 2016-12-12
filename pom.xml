@@ -230,12 +230,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>${maven.release.plugin.version}</version>
-					<configuration>
-						<configuration>
-							<preparationGoals>clean install</preparationGoals>
-							<arguments>-DskipTests</arguments>
-						</configuration>
-					</configuration>
 				</plugin>
 
 				<!-- Compiler : Definir para qual jdk o codigo deve ser compilado -->
