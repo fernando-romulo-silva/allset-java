@@ -371,7 +371,7 @@
 				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> <goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> 
 					<limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> </rules> </configuration> </execution> </executions> </plugin> -->
 
-				<!-- Geracao de Pacotes Jar, test-jar, War, etc -->
+				<!-- Geracao de Pacotes Jar, test-jar -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
