@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.allset.java</groupId>
 	<artifactId>allset-java</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -35,11 +35,36 @@
 	</scm>
 
 	<properties>
+		<!--|###########################################################################################################################| -->
+		<!--|#################################### CONF. PROJETO ########################################################################| -->
+		<!--|###########################################################################################################################| -->
+
 		<!-- Encoding padrao -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<!-- Versoes de Plugins -->
+		<!-- Configuracoes de Memoria RAM para executar plugins -->
+		<maven.iniHeapSize>512m</maven.iniHeapSize> <!-- Tamanho INICIAL de memoria que o java vai alocar para memoria DINAMICA (Xms) -->
+		<maven.maxHeapSize>1024m</maven.maxHeapSize> <!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria DINAMICA (Xmx) -->
+		<maven.iniPermSize>512m</maven.iniPermSize> <!-- Tamanho INICIAL de memoria que o java vai alocar para a memora PERMAMENTE (XX:MaxPermSize) -->
+		<maven.maxPermSize>1024m</maven.maxPermSize> <!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria PERMAMENTE (XX:PermSize) -->
+
+		<!-- Versao da JVM -->
+		<java.source.version>1.7</java.source.version>
+		<java.target.version>1.7</java.target.version>
+
+		<!-- Argumentos para JVM -->
+		<!-- Na versão do JDK 7 lançado em julho de 2011 a Oracle adicionou uma checagem de bytecode. -->
+		<!-- A checagem de bytecode é verificada em uma tabela StackMapTable que contém um conjunto de bytecodes válidos. -->
+		<!-- A verificação na tabela StackMapTable é feita automaticamente, portanto códigos como do AJDT (AspectJ) não irão se comportar -->
+		<!-- como esperado e será lançada uma exceção em tempo de execução java.lang.VerifyError. -->
+		<!-- Para eliminar essa verificação em tempo de execução basta adicionar um argumento para a VM. O argumento -XX:-UseSplitVerifier. -->
+		<!-- <argLine>-XX:-UseSplitVerifier</argLine> -->
+
+		<!--|###########################################################################################################################|-->
+		<!--|#################################### VERSAO PLUGINS #######################################################################|-->
+		<!--|###########################################################################################################################|-->
+
 		<maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
 		<maven.pmd.plugin.version>3.6</maven.pmd.plugin.version>
 		<findbugs.maven.plugin.version>3.0.3</findbugs.maven.plugin.version>
@@ -58,21 +83,16 @@
 		<jacoco.maven.plugin.version>0.7.1.201405082137</jacoco.maven.plugin.version> <!--0.6.0.201210061924 0.7.6.201602180812 0.7.1.201405082137 -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 
-		<!-- Versao da JVM -->
-		<java.source.version>1.7</java.source.version>
-		<java.target.version>1.7</java.target.version>
-
-		<!-- Argumentos para JVM -->
-		<!-- Na versão do JDK 7 lançado em julho de 2011 a Oracle adicionou uma checagem de bytecode. -->
-		<!-- A checagem de bytecode é verificada em uma tabela StackMapTable que contém um conjunto de bytecodes válidos. -->
-		<!-- A verificação na tabela StackMapTable é feita automaticamente, portanto códigos como do AJDT (AspectJ) não irão se comportar -->
-		<!-- como esperado e será lançada uma exceção em tempo de execução java.lang.VerifyError. -->
-		<!-- Para eliminar essa verificação em tempo de execução basta adicionar um argumento para a VM. O argumento -XX:-UseSplitVerifier. -->
-		<!-- <argLine>-XX:-UseSplitVerifier</argLine> -->
+		<!--|###########################################################################################################################|-->
+		<!--|#################################### CONF. PLUGINS ########################################################################|-->
+		<!--|###########################################################################################################################|-->
 
 		<!-- Propriedades de plugins que podem ser reescritas em POMs descendentes -->
+		
+		<!--|################# Compiler ##################################|-->
+		<maven.compiler.fork>true</maven.compiler.fork>
 
-		<!-- Findbugs -->
+		<!--|################# Findbugs ##################################|-->
 		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
 		<findbugs.effort>Max</findbugs.effort>
 		<!-- Reports all bugs (other values are medium and max) -->
@@ -81,14 +101,14 @@
 		<findbugs.xml.output>true</findbugs.xml.output>
 		<!-- Se inclui classes de teste na validacao -->
 		<findbugs.include.tests>false</findbugs.include.tests>
-		<!-- Arquivo com as exlusoes de regras : coloque apenas nos poms filhos-->
-		<!--  <findbugs.exclude.filter.file>src/main/resources/findbugs-exclude.xml</findbugs.exclude.filter.file>  -->
+		<!-- Arquivo com as exlusoes de regras : coloque apenas nos poms filhos -->
+		<!-- <findbugs.exclude.filter.file>src/main/resources/findbugs-exclude.xml</findbugs.exclude.filter.file> -->
 
-		<!-- CheckStyle -->
+		<!--|################# CheckStyle #################################|-->
 		<!-- Arquivo para ignorar/editar regras do checkstyle -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
 
-		<!-- Cobertura -->
+		<!--|################# Cobertura ##################################|-->
 		<!-- Porcentagem minima de cobertura das classes -->
 		<cobertura.line.rate>0</cobertura.line.rate>
 		<cobertura.branch.rate>0</cobertura.branch.rate>
@@ -108,49 +128,46 @@
 		<!-- Ignora metodos com uma instrucao apenas -->
 		<cobertura.ignore.trivial>true</cobertura.ignore.trivial>
 
-
-		<!-- Jacoco - Cobertura de Testes -->
-
-		<!-- Maven Site -->
+		<!--|################# Site ######################################|-->
 		<!-- Linguagens do site. Ex: en, pt_BR, fr -->
 		<maven.site.locales>en</maven.site.locales>
 		<!-- <maven.site.directory>src/site</maven.site.directory> -->
 
-		<!-- Maven Surefire (plugin de execucao de testes) -->
+		<!--|################# Surefire ##################################|-->
 		<!-- Eu recomendo vc agrupar seus testes (unitario, integracao, funcional, etc) pelo framework de testes, que neste caso, o TestNG -->
 		<!-- Se vc nao espeficificar o grupo, o TestNG vai ignorar o testes -->
 		<maven.surefire.plugin.groups>unit, integration, functional</maven.surefire.plugin.groups>
 		<!-- Os testes vao ser paralelos (rodar em thread) em relacao a metodos (methods), classes, (class) ou suite de testes (tests) -->
 		<maven.surefire.plugin.parallel>methods</maven.surefire.plugin.parallel>
-		<!-- Em quantas threads serao executadas o testes -->
+		<!-- Em quantas testes (threads) serao executadas sincronizadamente em um processo JVM -->
 		<maven.surefire.plugin.threadCount>4</maven.surefire.plugin.threadCount>
-		<!-- O maximo de thread por core da CPU, interessante apenas qdo se executa em varias CPU (nao eh core) -->
-		<maven.surefire.plugin.perCoreThreadCount>false</maven.surefire.plugin.perCoreThreadCount>
-		<!-- Permite criar -->
-		<maven.surefire.plugin.forkCount>1</maven.surefire.plugin.forkCount>
+		<!-- O maximo de thread por core da CPU -->
+		<maven.surefire.plugin.perCoreThreadCount>true</maven.surefire.plugin.perCoreThreadCount>
+		<!-- Define o maximo de processos JVM (se vc colocar a letra 'C' sera o maximo de processos por CORE) sincronizadamente -->
+		<maven.surefire.plugin.forkCount>4C</maven.surefire.plugin.forkCount>
+		<!-- Reutilizando processos da JVM -->
 		<maven.surefire.plugin.reuseForks>true</maven.surefire.plugin.reuseForks>
 
-		<!-- Java Doc -->
+		<!--|################# Java Doc ##################################|-->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 
-		<!-- Uml Graph -->
+		<!--|################# Uml Graph #################################|-->
 		<!-- Parametros relacionados ao diagrama de classes, neste caso, todos atributos relacionados a classe serao adicionadas ao diagrama -->
 		<umlgraph.additional.param>-all -inferdep</umlgraph.additional.param>
 
-		<!-- PMD & CPD -->
+		<!--|################# PMD & CPD #################################|-->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
 		<cpd.minimum.tokens>100</cpd.minimum.tokens>
 		<!-- -->
 		<cpd.minimum.priority>5</cpd.minimum.priority>
 		<!-- Valida classes de testes -->
 		<pmd.include.tests>false</pmd.include.tests>
-		
-		<!-- Tag List -->
-		<taglist.skip>false</taglist.skip>
-		
-		<!-- Observacao importante -->
 
+		<!--|################# Tag List ##################################|-->
+		<taglist.skip>false</taglist.skip>
+
+		<!-- Observacao importante -->
 		<!-- Por alguma razao o maven tava pulando alguns plugins na criacao do site, entao devemos forcar a barra! -->
 		<!-- Caso algum pom descentende queira omitir a execucao do plugin -->
 		<!-- <skip>false</skip> -->
@@ -158,8 +175,13 @@
 		<!-- <forceMojoExecution>true</forceMojoExecution> -->
 		<!-- Erros de dependencia de de projetos herdado podem ser resolvido com: 'mvn dependency:list' e depois 'mvn dependency:list -X' -->
 
+		<!--|################# Extensions ################################|-->
 		<!-- allset.config.extensions.version - Arquivo de configuracoes de plugins maven -->
 		<allset.config.extensions.version>1.0.0</allset.config.extensions.version>
+
+		<!--|###########################################################################################################################| -->
+		<!--|#################################### VERSAO LIBS ##########################################################################| -->
+		<!--|###########################################################################################################################| -->
 
 		<!-- Versoes de Frameworks -->
 		<slf4j.version>1.7.22</slf4j.version>
@@ -167,18 +189,12 @@
 		<mockito.version>1.9.5</mockito.version>
 		<testng.version>6.9.10</testng.version>
 		<jtest.utils.version>1.0.0</jtest.utils.version>
-
-		<!-- Configuracoes de Memoria RAM para executar alguns plugins -->
-		<iniMem>512m</iniMem> <!-- tamanho inicial de memoria que o java vai alocar quando iniciar -->
-		<maxMem>1024m</maxMem> <!-- tamanho maximo de memoria o java vai alocar quando iniciar -->
-		<iniPermSize>512</iniPermSize> <!-- tamanho inicial de memoria para JVM utilizado para carregar as definições de classes e objetos da sua aplicação -->
-		<maxPermSize>1024</maxPermSize> <!-- tamanho maximo de memoria para JVM utilizado para carregar as definições de classes e objetos da sua aplicação -->
 	</properties>
 
 	<dependencies>
-	
+
 		<!-- ######################## TESTS ##################################################################################### -->
-		
+
 		<!-- Mockito : Mock de Objetos -->
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -203,8 +219,8 @@
 			<scope>test</scope>
 		</dependency>
 
-		
-		<!-- ######################## LIBS ##################################################################################### -->		
+
+		<!-- ######################## LIBS ##################################################################################### -->
 
 		<!-- SLF4J : Framework de log (abstrai varios frameworks de logs) -->
 		<dependency>
@@ -244,11 +260,10 @@
 						<source>${java.source.version}</source>
 						<target>${java.target.version}</target>
 						<encoding>${project.build.sourceEncoding}</encoding>
-						<fork>true</fork>
 						<testSource>${java.source.version}</testSource>
 						<testTarget>${java.target.version}</testTarget>
-						<meminitial>${iniMem}</meminitial>
-						<maxmem>${maxMem}</maxmem>
+						<meminitial>${maven.iniHeapSize}</meminitial>
+						<maxmem>${maven.maxHeapSize}</maxmem>
 					</configuration>
 				</plugin>
 
@@ -271,12 +286,6 @@
 					<configuration>
 						<minimumTokens>${cpd.minimum.tokens}</minimumTokens>
 						<minimumPriority>${cpd.minimum.priority}</minimumPriority>
-						<excludes>
-							<exclude>**/Mock.*</exclude>
-							<exclude>**/Dummy.*</exclude>
-							<exclude>**/*Mock.java</exclude>
-							<exclude>**/*Dummy.java</exclude>
-						</excludes>
 						<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 						<targetJdk>${java.source.version}</targetJdk>
 					</configuration>
@@ -304,15 +313,11 @@
 				</plugin>
 
 				<!-- Configuração de testes automatizados -->
-				<!-- http://maven.apache.org/surefire/maven-surefire-plugin/test-mojo.html -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven.surefire.plugin.version}</version>
 					<configuration>
-						<!-- <argLine>-Xms${iniMem} -Xmx${maxMem} -XX:PermSize=${iniPermSize} -XX:MaxPermSize=${maxPermSize}</argLine> -->
-						<!-- <argLine>${jacocoArgLine} -Xmx256m</argLine> -->
-
 						<parallel>${maven.surefire.plugin.parallel}</parallel>
 						<threadCount>${maven.surefire.plugin.threadCount}</threadCount>
 						<perCoreThreadCount>${maven.surefire.plugin.perCoreThreadCount}</perCoreThreadCount>
@@ -322,7 +327,8 @@
 
 						<junitArtifactName>none:none</junitArtifactName>
 						<testNGArtifactName>org.testng:testng</testNGArtifactName>
-
+						
+						<argLine>-Xms${maven.iniHeapSize} -Xmx${maven.maxHeapSize} -XX:PermSize=${maven.iniPermSize} -XX:MaxPermSize=${maven.maxPermSize}</argLine>
 					</configuration>
 					<dependencies>
 						<dependency>
@@ -350,6 +356,7 @@
 								<exclude>**/*Messages.*</exclude>
 							</excludes>
 						</instrumentation>
+						<maxmem>${maven.}</maxmem>
 						<check>
 							<haltOnFailure>${cobertura.halt.on.failure}</haltOnFailure>
 							<branchRate>${cobertura.branch.rate}</branchRate>
@@ -370,8 +377,11 @@
 				</plugin>
 
 				<!-- Jacoco : Verifica cobertura de testes automatizados ${jacoco.maven.plugin.version} -->
-				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> <goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> 
-					<limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> </rules> </configuration> </execution> </executions> </plugin> -->
+				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> 
+					</goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> 
+					<goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> <limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> 
+					<value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> </rules> </configuration> </execution> </executions> 
+					</plugin> -->
 
 				<!-- Geracao de Pacotes Jar, test-jar -->
 				<plugin>
@@ -386,22 +396,22 @@
 						</execution>
 					</executions>
 				</plugin>
-				
+
 				<!-- Adiciona os codigos fontes na geracao dos pacotes -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-				  	<artifactId>maven-source-plugin</artifactId>
-				  	<version>${maven.source.plugin.version}</version>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven.source.plugin.version}</version>
 					<executions>
-				    	<execution>
-				      		<id>attach-sources</id>
-				      		<goals>
-				        		<goal>jar</goal>
-				      		</goals>
-				    	</execution>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
 					</executions>
 				</plugin>
-				
+
 				<!-- JavaDoc : Geracao de documentacao do codigo fonte -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -411,19 +421,24 @@
 						<charset>${project.build.sourceEncoding}</charset>
 						<docencoding>${project.build.sourceEncoding}</docencoding>
 						<encoding>${project.build.sourceEncoding}</encoding>
-						<additionalJOption>-J-Xmx1024m</additionalJOption>
+						<additionalJOptions>
+							<additionalJOption>-J-Xms${maven.iniHeapSize}</additionalJOption>
+							<additionalJOption>-J-Xmx${maven.maxHeapSize}</additionalJOption>
+							<additionalJOption>-J-XX:PermSize=${maven.iniPermSize}</additionalJOption>
+							<additionalJOption>-J-XX:MaxPermSize=${maven.maxPermSize}</additionalJOption>
+						</additionalJOptions>
 						<detectJavaApiLink>false</detectJavaApiLink>
-						<detectLinks>false</detectLinks>						
+						<detectLinks>false</detectLinks>
 					</configuration>
 					<executions>
-    					<execution>
-      						<id>attach-javadocs</id>
-      						<goals>
-        						<goal>jar</goal>
-      						</goals>
-    					</execution>
-  					</executions>					
-				</plugin>								
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 
 			</plugins>
 		</pluginManagement>
@@ -468,16 +483,16 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-			  	<artifactId>maven-source-plugin</artifactId>
+				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>							
+			</plugin>
 
 			<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> </plugin> -->
 
@@ -493,7 +508,6 @@
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
-					<!-- <argLine>-Xms${iniMem} -Xmx${maxMem} -XX:PermSize=${iniPermSize} -XX:MaxPermSize=${maxPermSize}</argLine> -->
 					<parallel>${maven.surefire.plugin.parallel}</parallel>
 					<threadCount>${maven.surefire.plugin.threadCount}</threadCount>
 					<groups>${maven.surefire.plugin.groups}</groups>
@@ -510,12 +524,6 @@
 				<configuration>
 					<minimumTokens>${cpd.minimum.tokens}</minimumTokens>
 					<minimumPriority>${cpd.minimum.priority}</minimumPriority>
-					<excludes>
-						<exclude>**/Mock.*</exclude>
-						<exclude>**/Dummy.*</exclude>
-						<exclude>**/*Mock.java</exclude>
-						<exclude>**/*Dummy.java</exclude>
-					</excludes>
 					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 					<targetJdk>${java.source.version}</targetJdk>
 				</configuration>
@@ -595,7 +603,12 @@
 					<charset>${project.build.sourceEncoding}</charset>
 					<docencoding>${project.build.sourceEncoding}</docencoding>
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<additionalJOption>-J-Xmx1024m</additionalJOption>
+					<additionalJOptions>
+						<additionalJOption>-J-Xms${maven.iniHeapSize}</additionalJOption>
+						<additionalJOption>-J-Xmx${maven.maxHeapSize}</additionalJOption>
+						<additionalJOption>-J-XX:PermSize=${maven.iniPermSize}</additionalJOption>
+						<additionalJOption>-J-XX:MaxPermSize=${maven.maxPermSize}</additionalJOption>
+					</additionalJOptions>
 					<detectJavaApiLink>false</detectJavaApiLink>
 					<detectLinks>false</detectLinks>
 					<!-- Geracao de diagrama de classes no java doc! -->
@@ -619,7 +632,7 @@
 				<artifactId>taglist-maven-plugin</artifactId>
 				<version>${taglist.maven.plugin.version}</version>
 				<configuration>
-				    <skipTestSources>${taglist.skip}</skipTestSources>
+					<skipTestSources>${taglist.skip}</skipTestSources>
 					<tags>
 						<tag>TODO</tag>
 						<tag>FIXME</tag>
