@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="allset-java">
 	<import>
-		<javaresource classpath="allset-config-ant.jar" name="parent-build.xml" />
+		<javaresource classpath="allset-config-ant.jar" name="maven-git-build.xml" />
+		<javaresource classpath="allset-config-ant.jar" name="maven-simple-build.xml" />
 	</import>
 </project>
