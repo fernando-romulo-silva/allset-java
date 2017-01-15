@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="allset-java">
 	<import>
-		<javaresource classpath="allset-config-ant.jar" name="maven-scm-git.xml" />
-		<javaresource classpath="allset-config-ant.jar" name="maven-package-multi.xml" />
+		<javaresource classpath="allset-config-ant.jar" name="target/maven/maven-scm-git.xml" />
+		<javaresource classpath="allset-config-ant.jar" name="target/maven/maven-package-multi.xml" />
 	</import>
 </project>
