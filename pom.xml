@@ -61,9 +61,9 @@
 		<!-- Para eliminar essa verificação em tempo de execução basta adicionar um argumento para a VM. O argumento -XX:-UseSplitVerifier. -->
 		<!-- <argLine>-XX:-UseSplitVerifier</argLine> -->
 
-		<!--|###########################################################################################################################|-->
-		<!--|#################################### VERSAO PLUGINS #######################################################################|-->
-		<!--|###########################################################################################################################|-->
+		<!--|###########################################################################################################################| -->
+		<!--|#################################### VERSAO PLUGINS #######################################################################| -->
+		<!--|###########################################################################################################################| -->
 
 		<maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
 		<maven.pmd.plugin.version>3.6</maven.pmd.plugin.version>
@@ -83,16 +83,16 @@
 		<jacoco.maven.plugin.version>0.7.1.201405082137</jacoco.maven.plugin.version> <!--0.6.0.201210061924 0.7.6.201602180812 0.7.1.201405082137 -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 
-		<!--|###########################################################################################################################|-->
-		<!--|#################################### CONF. PLUGINS ########################################################################|-->
-		<!--|###########################################################################################################################|-->
+		<!--|###########################################################################################################################| -->
+		<!--|#################################### CONF. PLUGINS ########################################################################| -->
+		<!--|###########################################################################################################################| -->
 
 		<!-- Propriedades de plugins que podem ser reescritas em POMs descendentes -->
-		
-		<!--|################# Compiler ##################################|-->
+
+		<!--|################# Compiler ##################################| -->
 		<maven.compiler.fork>true</maven.compiler.fork>
 
-		<!--|################# Findbugs ##################################|-->
+		<!--|################# Findbugs ##################################| -->
 		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
 		<findbugs.effort>Max</findbugs.effort>
 		<!-- Reports all bugs (other values are medium and max) -->
@@ -104,11 +104,12 @@
 		<!-- Arquivo com as exlusoes de regras : coloque apenas nos poms filhos -->
 		<!-- <findbugs.exclude.filter.file>src/main/resources/findbugs-exclude.xml</findbugs.exclude.filter.file> -->
 
-		<!--|################# CheckStyle #################################|-->
+		<!--|################# CheckStyle #################################| -->
 		<!-- Arquivo para ignorar/editar regras do checkstyle -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+		<checkstyle.version>6.19</checkstyle.version>
 
-		<!--|################# Cobertura ##################################|-->
+		<!--|################# Cobertura ##################################| -->
 		<!-- Porcentagem minima de cobertura das classes -->
 		<cobertura.line.rate>0</cobertura.line.rate>
 		<cobertura.branch.rate>0</cobertura.branch.rate>
@@ -128,12 +129,12 @@
 		<!-- Ignora metodos com uma instrucao apenas -->
 		<cobertura.ignore.trivial>true</cobertura.ignore.trivial>
 
-		<!--|################# Site ######################################|-->
+		<!--|################# Site ######################################| -->
 		<!-- Linguagens do site. Ex: en, pt_BR, fr -->
 		<maven.site.locales>en</maven.site.locales>
 		<!-- <maven.site.directory>src/site</maven.site.directory> -->
 
-		<!--|################# Surefire ##################################|-->
+		<!--|################# Surefire ##################################| -->
 		<!-- Eu recomendo vc agrupar seus testes (unitario, integracao, funcional, etc) pelo framework de testes, que neste caso, o TestNG -->
 		<!-- Se vc nao espeficificar o grupo, o TestNG vai ignorar o testes -->
 		<maven.surefire.plugin.groups>unit, integration, functional</maven.surefire.plugin.groups>
@@ -148,15 +149,15 @@
 		<!-- Reutilizando processos da JVM -->
 		<maven.surefire.plugin.reuseForks>true</maven.surefire.plugin.reuseForks>
 
-		<!--|################# Java Doc ##################################|-->
+		<!--|################# Java Doc ##################################| -->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 
-		<!--|################# Uml Graph #################################|-->
+		<!--|################# Uml Graph #################################| -->
 		<!-- Parametros relacionados ao diagrama de classes, neste caso, todos atributos relacionados a classe serao adicionadas ao diagrama -->
 		<umlgraph.additional.param>-all -inferdep</umlgraph.additional.param>
 
-		<!--|################# PMD & CPD #################################|-->
+		<!--|################# PMD & CPD #################################| -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
 		<cpd.minimum.tokens>100</cpd.minimum.tokens>
 		<!-- -->
@@ -164,7 +165,7 @@
 		<!-- Valida classes de testes -->
 		<pmd.include.tests>false</pmd.include.tests>
 
-		<!--|################# Tag List ##################################|-->
+		<!--|################# Tag List ##################################| -->
 		<taglist.skip>false</taglist.skip>
 
 		<!-- Observacao importante -->
@@ -175,7 +176,7 @@
 		<!-- <forceMojoExecution>true</forceMojoExecution> -->
 		<!-- Erros de dependencia de de projetos herdado podem ser resolvido com: 'mvn dependency:list' e depois 'mvn dependency:list -X' -->
 
-		<!--|################# Extensions ################################|-->
+		<!--|################# Extensions ################################| -->
 		<!-- allset.config.extensions.version - Arquivo de configuracoes de plugins maven -->
 		<allset.config.extensions.version>1.0.0</allset.config.extensions.version>
 
@@ -310,6 +311,13 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>${maven.checkstyle.plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>${checkstyle.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 
 				<!-- Configuração de testes automatizados -->
@@ -327,7 +335,7 @@
 
 						<junitArtifactName>none:none</junitArtifactName>
 						<testNGArtifactName>org.testng:testng</testNGArtifactName>
-						
+
 						<argLine>-Xms${maven.iniHeapSize} -Xmx${maven.maxHeapSize} -XX:PermSize=${maven.iniPermSize} -XX:MaxPermSize=${maven.maxPermSize}</argLine>
 					</configuration>
 					<dependencies>
@@ -356,7 +364,6 @@
 								<exclude>**/*Messages.*</exclude>
 							</excludes>
 						</instrumentation>
-						<maxmem>${maven.}</maxmem>
 						<check>
 							<haltOnFailure>${cobertura.halt.on.failure}</haltOnFailure>
 							<branchRate>${cobertura.branch.rate}</branchRate>
