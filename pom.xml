@@ -178,7 +178,7 @@
 
 		<!--|################# Extensions ################################| -->
 		<!-- allset.config.extensions.version - Arquivo de configuracoes de plugins maven -->
-		<allset.config.extensions.version>1.0.0</allset.config.extensions.version>
+		<allset.config.extensions.version>1.0.0-SNAPSHOT</allset.config.extensions.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### VERSAO LIBS ##########################################################################| -->
