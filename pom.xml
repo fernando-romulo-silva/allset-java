@@ -44,10 +44,12 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Configuracoes de Memoria RAM para executar plugins -->
-		<maven.iniHeapSize>512m</maven.iniHeapSize> <!-- Tamanho INICIAL de memoria que o java vai alocar para memoria DINAMICA (Xms) -->
-		<maven.maxHeapSize>1024m</maven.maxHeapSize> <!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria DINAMICA (Xmx) -->
-		<maven.iniPermSize>512m</maven.iniPermSize> <!-- Tamanho INICIAL de memoria que o java vai alocar para a memora PERMAMENTE (XX:MaxPermSize) -->
-		<maven.maxPermSize>1024m</maven.maxPermSize> <!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria PERMAMENTE (XX:PermSize) -->
+		<!-- Use a variavel de ambiente MAVEN_OPTS para definir qtde de memorias usada pelo plugin -->
+		<!-- MAVEN_OPTS = -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xms512m -Xmx1g -->
+		<!-- Tamanho INICIAL de memoria que o java vai alocar para memoria DINAMICA (Xms) -->
+		<!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria DINAMICA (Xmx) -->
+		<!-- Tamanho INICIAL de memoria que o java vai alocar para a memora PERMAMENTE (XX:MaxPermSize) -->
+		<!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria PERMAMENTE (XX:PermSize) -->
 
 		<!-- Versao da JVM -->
 		<java.source.version>1.7</java.source.version>
@@ -178,7 +180,7 @@
 
 		<!--|################# Extensions ################################| -->
 		<!-- allset.config.extensions.version - Arquivo de configuracoes de plugins maven -->
-		<allset.config.extensions.version>1.0.0-SNAPSHOT</allset.config.extensions.version>
+		<allset.config.extensions.version>1.0.0</allset.config.extensions.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### VERSAO LIBS ##########################################################################| -->
@@ -263,8 +265,6 @@
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<testSource>${java.source.version}</testSource>
 						<testTarget>${java.target.version}</testTarget>
-						<meminitial>${maven.iniHeapSize}</meminitial>
-						<maxmem>${maven.maxHeapSize}</maxmem>
 					</configuration>
 				</plugin>
 
@@ -332,11 +332,8 @@
 						<forkCount>${maven.surefire.plugin.forkCount}</forkCount>
 						<reuseForks>${maven.surefire.plugin.reuseForks}</reuseForks>
 						<groups>${maven.surefire.plugin.groups}</groups>
-
 						<junitArtifactName>none:none</junitArtifactName>
 						<testNGArtifactName>org.testng:testng</testNGArtifactName>
-
-						<argLine>-Xms${maven.iniHeapSize} -Xmx${maven.maxHeapSize} -XX:PermSize=${maven.iniPermSize} -XX:MaxPermSize=${maven.maxPermSize}</argLine>
 					</configuration>
 					<dependencies>
 						<dependency>
@@ -384,11 +381,8 @@
 				</plugin>
 
 				<!-- Jacoco : Verifica cobertura de testes automatizados ${jacoco.maven.plugin.version} -->
-				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> 
-					</goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> 
-					<goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> <limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> 
-					<value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> </rules> </configuration> </execution> </executions> 
-					</plugin> -->
+				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> <goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> 
+					<limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> </rules> </configuration> </execution> </executions> </plugin> -->
 
 				<!-- Geracao de Pacotes Jar, test-jar -->
 				<plugin>
@@ -428,12 +422,6 @@
 						<charset>${project.build.sourceEncoding}</charset>
 						<docencoding>${project.build.sourceEncoding}</docencoding>
 						<encoding>${project.build.sourceEncoding}</encoding>
-						<additionalJOptions>
-							<additionalJOption>-J-Xms${maven.iniHeapSize}</additionalJOption>
-							<additionalJOption>-J-Xmx${maven.maxHeapSize}</additionalJOption>
-							<additionalJOption>-J-XX:PermSize=${maven.iniPermSize}</additionalJOption>
-							<additionalJOption>-J-XX:MaxPermSize=${maven.maxPermSize}</additionalJOption>
-						</additionalJOptions>
 						<detectJavaApiLink>false</detectJavaApiLink>
 						<detectLinks>false</detectLinks>
 					</configuration>
@@ -610,12 +598,6 @@
 					<charset>${project.build.sourceEncoding}</charset>
 					<docencoding>${project.build.sourceEncoding}</docencoding>
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<additionalJOptions>
-						<additionalJOption>-J-Xms${maven.iniHeapSize}</additionalJOption>
-						<additionalJOption>-J-Xmx${maven.maxHeapSize}</additionalJOption>
-						<additionalJOption>-J-XX:PermSize=${maven.iniPermSize}</additionalJOption>
-						<additionalJOption>-J-XX:MaxPermSize=${maven.maxPermSize}</additionalJOption>
-					</additionalJOptions>
 					<detectJavaApiLink>false</detectJavaApiLink>
 					<detectLinks>false</detectLinks>
 					<!-- Geracao de diagrama de classes no java doc! -->
