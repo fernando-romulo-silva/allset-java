@@ -68,7 +68,7 @@
 		<!--|###########################################################################################################################| -->
 
 		<maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
-		<maven.pmd.plugin.version>3.6</maven.pmd.plugin.version>
+		<maven.pmd.plugin.version>3.7</maven.pmd.plugin.version>
 		<findbugs.maven.plugin.version>3.0.3</findbugs.maven.plugin.version>
 		<maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
 		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>
@@ -82,7 +82,7 @@
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 		<maven.jar.plugin.version>2.6</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-		<jacoco.maven.plugin.version>0.7.1.201405082137</jacoco.maven.plugin.version> <!--0.6.0.201210061924 0.7.6.201602180812 0.7.1.201405082137 -->
+		<jacoco.maven.plugin.version>0.7.8</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 
 		<!--|###########################################################################################################################| -->
