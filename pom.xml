@@ -143,11 +143,11 @@
 		<!-- Os testes vao ser paralelos (rodar em thread) em relacao a metodos (methods), classes, (class) ou suite de testes (tests) -->
 		<maven.surefire.plugin.parallel>methods</maven.surefire.plugin.parallel>
 		<!-- Em quantas testes (threads) serao executadas sincronizadamente em um processo JVM -->
-		<maven.surefire.plugin.threadCount>4</maven.surefire.plugin.threadCount>
+		<maven.surefire.plugin.threadCount>4C</maven.surefire.plugin.threadCount>
 		<!-- O maximo de thread por core da CPU -->
 		<maven.surefire.plugin.perCoreThreadCount>true</maven.surefire.plugin.perCoreThreadCount>
 		<!-- Define o maximo de processos JVM (se vc colocar a letra 'C' sera o maximo de processos por CORE) sincronizadamente -->
-		<maven.surefire.plugin.forkCount>4C</maven.surefire.plugin.forkCount>
+		<maven.surefire.plugin.forkCount>1C</maven.surefire.plugin.forkCount>
 		<!-- Reutilizando processos da JVM -->
 		<maven.surefire.plugin.reuseForks>true</maven.surefire.plugin.reuseForks>
 
