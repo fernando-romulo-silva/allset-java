@@ -93,6 +93,7 @@
 
 		<!--|################# Compiler ##################################| -->
 		<maven.compiler.fork>true</maven.compiler.fork>
+		<maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
 
 		<!--|################# Findbugs ##################################| -->
 		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
