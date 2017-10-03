@@ -42,6 +42,7 @@
 		<!-- Encoding padrao -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	    <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>		
 
 		<!-- Configuracoes de Memoria RAM para executar plugins -->
 		<!-- Use a variavel de ambiente MAVEN_OPTS para definir qtde de memorias usada pelo plugin -->
@@ -80,7 +81,7 @@
 		<maven.site.plugin.version> 3.5.1</maven.site.plugin.version> <!-- 3.5.1 -->
 		<maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version> <!-- 2.19.1 -->
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
-		<maven.jar.plugin.version>2.6</maven.jar.plugin.version>
+		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 		<jacoco.maven.plugin.version>0.7.8</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
@@ -88,12 +89,24 @@
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
 		<!--|###########################################################################################################################| -->
+		
+		<!--|####### OBS: Some properties plugin have the equal names, so you must be careful ##########################################|-->
 
 		<!-- Propriedades de plugins que podem ser reescritas em POMs descendentes -->
-
 		<!--|################# Compiler ##################################| -->
+		<maven.compiler.source>${java.source.version}</maven.compiler.source>
+   		<maven.compiler.target>${java.target.version}</maven.compiler.target>
+   		<maven.compiler.testSource>${java.source.version}</maven.compiler.testSource>
+   		<maven.compiler.testTarget>${java.target.version}</maven.compiler.testTarget>
+   		
+   		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
+		<!-- compile only changed classes, false; true compile all classes -->
 		<maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
+		
+		<!--|################# Site ######################################| -->
+		<!-- Linguagens do site. Ex: en, pt_BR, fr -->
+		<locales>en</locales>
 
 		<!--|################# Findbugs ##################################| -->
 		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
@@ -101,11 +114,11 @@
 		<!-- Reports all bugs (other values are medium and max) -->
 		<findbugs.threshold>Low</findbugs.threshold>
 		<!-- Produces XML report -->
-		<findbugs.xml.output>true</findbugs.xml.output>
+		<findbugs.xmlOutput>true</findbugs.xmlOutput>
 		<!-- Se inclui classes de teste na validacao -->
-		<findbugs.include.tests>false</findbugs.include.tests>
+		<findbugs.includeTests>false</findbugs.includeTests>
 		<!-- Arquivo com as exlusoes de regras : coloque apenas nos poms filhos -->
-		<!-- <findbugs.exclude.filter.file>src/main/resources/findbugs-exclude.xml</findbugs.exclude.filter.file> -->
+		<!-- <findbugs.excludeFilterFile>src/main/resources/findbugs-exclude.xml</findbugs.excludeFilterFile> -->
 
 		<!--|################# CheckStyle #################################| -->
 		<!-- Arquivo para ignorar/editar regras do checkstyle -->
@@ -114,43 +127,38 @@
 
 		<!--|################# Cobertura ##################################| -->
 		<!-- Porcentagem minima de cobertura das classes -->
-		<cobertura.line.rate>0</cobertura.line.rate>
-		<cobertura.branch.rate>0</cobertura.branch.rate>
+		<cobertura.lineRate>0</cobertura.lineRate>
+		<cobertura.branchRate>0</cobertura.branchRate>
 		<!-- Porcentagem minima de cobertura dos pacotes -->
-		<cobertura.package.line.rate>0</cobertura.package.line.rate>
-		<cobertura.package.branch.rate>0</cobertura.package.branch.rate>
+		<cobertura.packageLineRate>0</cobertura.packageLineRate>
+		<cobertura.packageBranchRate>0</cobertura.packageBranchRate>
 		<!-- Porcentagem minima de cobertura do projeto inteiro -->
-		<cobertura.total.line.rate>0</cobertura.total.line.rate>
-		<cobertura.total.branch.rate>0</cobertura.total.branch.rate>
+		<cobertura.totalLineRate>0</cobertura.totalLineRate>
+		<cobertura.totalBranchRate>0</cobertura.totalBranchRate>
 		<!-- Porcentagem minima de cobertura das classes de regras de negocio -->
-		<cobertura.domain.line.rate>80</cobertura.domain.line.rate>
-		<cobertura.domain.branch.rate>80</cobertura.domain.branch.rate>
+		<cobertura.lineRate>80</cobertura.lineRate>
+		<cobertura.branchRate>80</cobertura.branchRate>
 		<!-- Lugar onde estao as classes de regras de necocio (com subpacotes) -->
-		<cobertura.domain.pattern>org.*</cobertura.domain.pattern>
+		<cobertura.pattern>org.*</cobertura.pattern>
 		<!-- Falha a execucao qdo os testes nao cobre os valores minimos -->
-		<cobertura.halt.on.failure>true</cobertura.halt.on.failure>
+		<cobertura.haltOnFailure>true</cobertura.haltOnFailure>
 		<!-- Ignora metodos com uma instrucao apenas -->
-		<cobertura.ignore.trivial>true</cobertura.ignore.trivial>
-
-		<!--|################# Site ######################################| -->
-		<!-- Linguagens do site. Ex: en, pt_BR, fr -->
-		<maven.site.locales>en</maven.site.locales>
-		<!-- <maven.site.directory>src/site</maven.site.directory> -->
+		<cobertura.ignoreTrivial>true</cobertura.ignoreTrivial>
 
 		<!--|################# Surefire ##################################| -->
 		<!-- Eu recomendo vc agrupar seus testes (unitario, integracao, funcional, etc) pelo framework de testes, que neste caso, o TestNG -->
 		<!-- Se vc nao espeficificar o grupo, o TestNG vai ignorar o testes -->
-		<maven.surefire.plugin.groups>unit, integration, functional</maven.surefire.plugin.groups>
+		<surefire.groups>unit, integration, functional</surefire.groups>
 		<!-- Os testes vao ser paralelos (rodar em thread) em relacao a metodos (methods), classes, (class) ou suite de testes (tests) -->
-		<maven.surefire.plugin.parallel>methods</maven.surefire.plugin.parallel>
+		<parallel>methods</parallel>
 		<!-- Em quantas testes (threads) serao executadas sincronizadamente em um processo JVM -->
-		<maven.surefire.plugin.threadCount>4</maven.surefire.plugin.threadCount>
+		<threadCount>4</threadCount>
 		<!-- O maximo de thread por core da CPU -->
-		<maven.surefire.plugin.perCoreThreadCount>true</maven.surefire.plugin.perCoreThreadCount>
+		<perCoreThreadCount>true</perCoreThreadCount>
 		<!-- Define o maximo de processos JVM (se vc colocar a letra 'C' sera o maximo de processos por CORE) sincronizadamente -->
-		<maven.surefire.plugin.forkCount>1C</maven.surefire.plugin.forkCount>
+		<forkCount>1C</forkCount>
 		<!-- Reutilizando processos da JVM -->
-		<maven.surefire.plugin.reuseForks>true</maven.surefire.plugin.reuseForks>
+		<reuseForks>true</reuseForks>
 
 		<!--|################# Java Doc ##################################| -->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
@@ -162,11 +170,15 @@
 
 		<!--|################# PMD & CPD #################################| -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
-		<cpd.minimum.tokens>100</cpd.minimum.tokens>
-		<!-- -->
-		<cpd.minimum.priority>5</cpd.minimum.priority>
+		<minimumTokens>100</minimumTokens>
+		<!-- The rule priority threshold; rules with lower priority than this will not be evaluated. -->
+		<minimumPriority>5</minimumPriority>
 		<!-- Valida classes de testes -->
-		<pmd.include.tests>false</pmd.include.tests>
+		<pmd.includeTests>false</pmd.includeTests>
+		
+		<!--|################# Info Reports ###############################| -->
+		<dependency.locations.enabled>false</dependency.locations.enabled>
+
 
 		<!--|################# Tag List ##################################| -->
 		<taglist.skip>false</taglist.skip>
@@ -260,13 +272,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven.compiler.plugin.version}</version>
-					<configuration>
-						<source>${java.source.version}</source>
-						<target>${java.target.version}</target>
-						<encoding>${project.build.sourceEncoding}</encoding>
-						<testSource>${java.source.version}</testSource>
-						<testTarget>${java.target.version}</testTarget>
-					</configuration>
 				</plugin>
 
 				<!-- Site : Para gerar um site com todas as informacoes do projeto -->
@@ -274,10 +279,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven.site.plugin.version}</version>
-					<configuration>
-						<siteDirectory>${maven.site.directory}</siteDirectory>
-						<locales>${maven.site.locales}</locales>
-					</configuration>
 				</plugin>
 
 				<!-- PMD : Busca erros e duplicacao de codigos -->
@@ -286,10 +287,7 @@
 					<artifactId>maven-pmd-plugin</artifactId>
 					<version>${maven.pmd.plugin.version}</version>
 					<configuration>
-						<minimumTokens>${cpd.minimum.tokens}</minimumTokens>
-						<minimumPriority>${cpd.minimum.priority}</minimumPriority>
-						<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
-						<targetJdk>${java.source.version}</targetJdk>
+						<includeTests>${pmd.includeTests}</includeTests>
 					</configuration>
 				</plugin>
 
@@ -298,13 +296,6 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>findbugs-maven-plugin</artifactId>
 					<version>${findbugs.maven.plugin.version}</version>
-					<configuration>
-						<includeTests>${findbugs.include.tests}</includeTests>
-						<effort>${findbugs.effort}</effort>
-						<threshold>${findbugs.threshold}</threshold>
-						<xmlOutput>${findbugs.xml.output}</xmlOutput>
-						<excludeFilterFile>${findbugs.exclude.filter.file}</excludeFilterFile>
-					</configuration>
 				</plugin>
 
 				<!-- Chekstyle : Verifica a formatacao de codigos -->
@@ -327,12 +318,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven.surefire.plugin.version}</version>
 					<configuration>
-						<parallel>${maven.surefire.plugin.parallel}</parallel>
-						<threadCount>${maven.surefire.plugin.threadCount}</threadCount>
-						<perCoreThreadCount>${maven.surefire.plugin.perCoreThreadCount}</perCoreThreadCount>
-						<forkCount>${maven.surefire.plugin.forkCount}</forkCount>
-						<reuseForks>${maven.surefire.plugin.reuseForks}</reuseForks>
-						<groups>${maven.surefire.plugin.groups}</groups>
+						<groups>${surefire.groups}</groups>
 						<junitArtifactName>none:none</junitArtifactName>
 						<testNGArtifactName>org.testng:testng</testNGArtifactName>
 					</configuration>
@@ -356,25 +342,25 @@
 							<format>xml</format>
 						</formats>
 						<instrumentation>
-							<ignoreTrivial>${cobertura.ignore.trivial}</ignoreTrivial>
+							<ignoreTrivial>${cobertura.ignoreTrivial}</ignoreTrivial>
 							<excludes>
 								<exclude>**/*Exception.*</exclude>
 								<exclude>**/*Messages.*</exclude>
 							</excludes>
 						</instrumentation>
 						<check>
-							<haltOnFailure>${cobertura.halt.on.failure}</haltOnFailure>
-							<branchRate>${cobertura.branch.rate}</branchRate>
-							<lineRate>${cobertura.line.rate}</lineRate>
-							<packageLineRate>${cobertura.package.line.rate}</packageLineRate>
-							<packageBranchRate>${cobertura.package.branch.rate}</packageBranchRate>
-							<totalLineRate>${cobertura.total.line.rate}</totalLineRate>
-							<totalBranchRate>${cobertura.total.branch.rate}</totalBranchRate>
+							<haltOnFailure>${cobertura.haltOnFailure}</haltOnFailure>
+							<branchRate>${cobertura.branchRate}</branchRate>
+							<lineRate>${cobertura.lineRate}</lineRate>
+							<packageLineRate>${cobertura.packageLineRate}</packageLineRate>
+							<packageBranchRate>${cobertura.packageBranchRate}</packageBranchRate>
+							<totalLineRate>${cobertura.totalLineRate}</totalLineRate>
+							<totalBranchRate>${cobertura.totalBranchRate}</totalBranchRate>
 							<regexes>
 								<regex>
-									<pattern>${cobertura.domain.pattern}</pattern>
-									<branchRate>${cobertura.domain.branch.rate}</branchRate>
-									<lineRate>${cobertura.domain.line.rate}</lineRate>
+									<pattern>${cobertura.pattern}</pattern>
+									<branchRate>${cobertura.branchRate}</branchRate>
+									<lineRate>${cobertura.lineRate}</lineRate>
 								</regex>
 							</regexes>
 						</check>
@@ -420,9 +406,6 @@
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${maven.javadoc.plugin.version}</version>
 					<configuration>
-						<charset>${project.build.sourceEncoding}</charset>
-						<docencoding>${project.build.sourceEncoding}</docencoding>
-						<encoding>${project.build.sourceEncoding}</encoding>
 						<detectJavaApiLink>false</detectJavaApiLink>
 						<detectLinks>false</detectLinks>
 					</configuration>
@@ -504,11 +487,7 @@
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
-					<parallel>${maven.surefire.plugin.parallel}</parallel>
-					<threadCount>${maven.surefire.plugin.threadCount}</threadCount>
-					<groups>${maven.surefire.plugin.groups}</groups>
-					<perCoreThreadCount>${maven.surefire.plugin.perCoreThreadCount}</perCoreThreadCount>
-					<forkCount>${maven.surefire.plugin.forkCount}</forkCount>
+					<groups>${surefire.groups}</groups>
 				</configuration>
 			</plugin>
 
@@ -518,10 +497,7 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${maven.pmd.plugin.version}</version>
 				<configuration>
-					<minimumTokens>${cpd.minimum.tokens}</minimumTokens>
-					<minimumPriority>${cpd.minimum.priority}</minimumPriority>
-					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
-					<targetJdk>${java.source.version}</targetJdk>
+					<includeTests>${pmd.includeTests}</includeTests>
 				</configuration>
 			</plugin>
 
@@ -530,13 +506,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>${findbugs.maven.plugin.version}</version>
-				<configuration>
-					<includeTests>${findbugs.include.tests}</includeTests>
-					<effort>${findbugs.effort}</effort>
-					<threshold>${findbugs.threshold}</threshold>
-					<xmlOutput>${findbugs.xml.output}</xmlOutput>
-					<excludeFilterFile>${findbugs.exclude.filter.file}</excludeFilterFile>
-				</configuration>
 			</plugin>
 
 			<!-- Chekstyle : Verifica a formatacao de codigos -->
@@ -557,7 +526,7 @@
 						<format>xml</format>
 					</formats>
 					<instrumentation>
-						<ignoreTrivial>${cobertura.ignore.trivial}</ignoreTrivial>
+						<ignoreTrivial>${cobertura.ignoreTrivial}</ignoreTrivial>
 						<excludes>
 							<exclude>**/*Exception.*</exclude>
 							<exclude>**/*Messages.*</exclude>
@@ -574,10 +543,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
 				<version>${maven.jxr.plugin.site.version}</version>
-				<configuration>
-					<inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-					<outputEncoding>${project.build.sourceEncoding}</outputEncoding>
-				</configuration>
 			</plugin>
 
 			<!-- Info Reports : Para gerar relatorios sobre o projeto -->
@@ -585,9 +550,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>${maven.project.info.reports.plugin.version}</version>
-				<configuration>
-					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-				</configuration>
 			</plugin>
 
 			<!-- JavaDoc : Geracao de documentacao do codigo fonte -->
@@ -596,9 +558,6 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${maven.javadoc.plugin.version}</version>
 				<configuration>
-					<charset>${project.build.sourceEncoding}</charset>
-					<docencoding>${project.build.sourceEncoding}</docencoding>
-					<encoding>${project.build.sourceEncoding}</encoding>
 					<detectJavaApiLink>false</detectJavaApiLink>
 					<detectLinks>false</detectLinks>
 					<!-- Geracao de diagrama de classes no java doc! -->
