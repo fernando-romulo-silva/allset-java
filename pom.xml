@@ -150,15 +150,15 @@
 		<!-- Se vc nao espeficificar o grupo, o TestNG vai ignorar o testes -->
 		<surefire.groups>unit, integration, functional</surefire.groups>
 		<!-- Os testes vao ser paralelos (rodar em thread) em relacao a metodos (methods), classes, (class) ou suite de testes (tests) -->
-		<parallel>methods</parallel>
+		<surefire.parallel>methods</surefire.parallel>
 		<!-- Em quantas testes (threads) serao executadas sincronizadamente em um processo JVM -->
-		<threadCount>4</threadCount>
+		<surefire.threadCount>4</surefire.threadCount>
 		<!-- O maximo de thread por core da CPU -->
-		<perCoreThreadCount>true</perCoreThreadCount>
+		<surefire.perCoreThreadCount>true</surefire.perCoreThreadCount>
 		<!-- Define o maximo de processos JVM (se vc colocar a letra 'C' sera o maximo de processos por CORE) sincronizadamente -->
-		<forkCount>1C</forkCount>
+		<surefire.forkCount>1C</surefire.forkCount>
 		<!-- Reutilizando processos da JVM -->
-		<reuseForks>true</reuseForks>
+		<surefire.reuseForks>true</surefire.reuseForks>
 
 		<!--|################# Java Doc ##################################| -->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
@@ -319,6 +319,13 @@
 					<version>${maven.surefire.plugin.version}</version>
 					<configuration>
 						<groups>${surefire.groups}</groups>
+						<parallel>${surefire.parallel}</parallel>
+						<threadCount>${surefire.threadCount}</threadCount>
+						<forkCount>${surefire.forkCount}</forkCount>
+						<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
+						<reuseForks>${surefire.reuseForks}</reuseForks>
+						
+						
 						<junitArtifactName>none:none</junitArtifactName>
 						<testNGArtifactName>org.testng:testng</testNGArtifactName>
 					</configuration>
