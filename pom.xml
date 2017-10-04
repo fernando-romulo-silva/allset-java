@@ -42,7 +42,7 @@
 		<!-- Encoding padrao -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	    <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>		
+		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 
 		<!-- Configuracoes de Memoria RAM para executar plugins -->
 		<!-- Use a variavel de ambiente MAVEN_OPTS para definir qtde de memorias usada pelo plugin -->
@@ -85,25 +85,26 @@
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 		<jacoco.maven.plugin.version>0.7.8</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+		<maven.resources.plugin.version>3.0.2</maven.resources.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
 		<!--|###########################################################################################################################| -->
-		
-		<!--|####### OBS: Some properties plugin have the equal names, so you must be careful ##########################################|-->
+
+		<!--|####### OBS: Some properties plugin have the equal names, so you must be careful ##########################################| -->
 
 		<!-- Propriedades de plugins que podem ser reescritas em POMs descendentes -->
 		<!--|################# Compiler ##################################| -->
 		<maven.compiler.source>${java.source.version}</maven.compiler.source>
-   		<maven.compiler.target>${java.target.version}</maven.compiler.target>
-   		<maven.compiler.testSource>${java.source.version}</maven.compiler.testSource>
-   		<maven.compiler.testTarget>${java.target.version}</maven.compiler.testTarget>
-   		
-   		<!-- compile in the new java process -->
+		<maven.compiler.target>${java.target.version}</maven.compiler.target>
+		<maven.compiler.testSource>${java.source.version}</maven.compiler.testSource>
+		<maven.compiler.testTarget>${java.target.version}</maven.compiler.testTarget>
+
+		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
 		<!-- compile only changed classes, false; true compile all classes -->
 		<maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
-		
+
 		<!--|################# Site ######################################| -->
 		<!-- Linguagens do site. Ex: en, pt_BR, fr -->
 		<locales>en</locales>
@@ -121,8 +122,9 @@
 		<!-- <findbugs.excludeFilterFile>src/main/resources/findbugs-exclude.xml</findbugs.excludeFilterFile> -->
 
 		<!--|################# CheckStyle #################################| -->
-		<!-- Arquivo para ignorar/editar regras do checkstyle -->
+		<!-- Checkstyle config location -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+		<!-- Checkstyle's version -->
 		<checkstyle.version>6.19</checkstyle.version>
 
 		<!--|################# Cobertura ##################################| -->
@@ -175,7 +177,7 @@
 		<minimumPriority>5</minimumPriority>
 		<!-- Valida classes de testes -->
 		<pmd.includeTests>false</pmd.includeTests>
-		
+
 		<!--|################# Info Reports ###############################| -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
@@ -260,6 +262,19 @@
 
 		<pluginManagement>
 			<plugins>
+				<!-- resources : -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven.resources.plugin.version}</version>
+					<configuration>
+						<nonFilteredFileExtensions>
+							<nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+							<nonFilteredFileExtension>swf</nonFilteredFileExtension>
+						</nonFilteredFileExtensions>
+					</configuration>
+				</plugin>
+
 				<!-- Release : Gerar versoes do projeto -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -373,8 +388,8 @@
 				</plugin>
 
 				<!-- Jacoco : Verifica cobertura de testes automatizados ${jacoco.maven.plugin.version} -->
-				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> <goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> 
-					<limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> </rules> </configuration> </execution> </executions> </plugin> -->
+				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> <goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> <limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> 
+					</rules> </configuration> </execution> </executions> </plugin> -->
 
 				<!-- Geracao de Pacotes Jar, test-jar -->
 				<plugin>
@@ -430,6 +445,11 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 
@@ -478,9 +498,15 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+
 			<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> </plugin> -->
 
 		</plugins>
+
 	</build>
 
 	<!-- Plugins de Relatorios -->
@@ -496,7 +522,7 @@
 					<threadCount>${surefire.threadCount}</threadCount>
 					<forkCount>${surefire.forkCount}</forkCount>
 					<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
-					<reuseForks>${surefire.reuseForks}</reuseForks>		
+					<reuseForks>${surefire.reuseForks}</reuseForks>
 					<groups>${surefire.groups}</groups>
 				</configuration>
 			</plugin>
