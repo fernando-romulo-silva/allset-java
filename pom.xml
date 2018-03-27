@@ -202,11 +202,11 @@
 		<!--|###########################################################################################################################| -->
 
 		<!-- Versoes de Frameworks -->
-		<slf4j.version>1.7.22</slf4j.version>
+		<slf4j.version>1.7.25</slf4j.version>
 		<!-- Test Frameworks -->
 		<mockito.version>1.9.5</mockito.version>
 		<testng.version>6.9.10</testng.version>
-		<jtest.utils.version>1.0.0</jtest.utils.version>
+		<allset.config.test.version>1.0.0</allset.config.test.version>
 	</properties>
 
 	<dependencies>
@@ -231,9 +231,9 @@
 
 		<!-- Projeto com utils para tests em geral (cobertura e muito mais) -->
 		<dependency>
-			<groupId>org.jtestutils</groupId>
-			<artifactId>jtest-utils</artifactId>
-			<version>${jtest.utils.version}</version>
+			<groupId>org.allset.config</groupId>
+			<artifactId>allset-config-test</artifactId>
+			<version>${allset.config.test.version}</version>
 			<scope>test</scope>
 		</dependency>
 
