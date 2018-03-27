@@ -150,7 +150,7 @@
 		<!--|################# Surefire ##################################| -->
 		<!-- Eu recomendo vc agrupar seus testes (unitario, integracao, funcional, etc) pelo framework de testes, que neste caso, o TestNG -->
 		<!-- Se vc nao espeficificar o grupo, o TestNG vai ignorar o testes -->
-		<surefire.groups>unit, integration, functional, acceptance, perform</surefire.groups>
+		<surefire.groups>unit, integration, functional, acceptance, perform, regression</surefire.groups>
 		<!-- Os testes vao ser paralelos (rodar em thread) em relacao a metodos (methods), classes, (class) ou suite de testes (tests) -->
 		<surefire.parallel>methods</surefire.parallel>
 		<!-- Em quantas testes (threads) serao executadas sincronizadamente em um processo JVM -->
