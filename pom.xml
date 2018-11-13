@@ -14,7 +14,7 @@
 	</modules>
 
 	<description>
-	     Projeto de agrupamento das configuracoes de Projetos (se, web, JEE e android) para java versao 7
+	     Project for commons configuration for java projects (SE, Web, JEE and android) for java 7.
 	</description>
 
 	<licenses>
@@ -36,21 +36,13 @@
 
 	<properties>
 		<!--|###########################################################################################################################| -->
-		<!--|#################################### CONF. PROJETO ########################################################################| -->
+		<!--|#################################### PROJECT CONFIGURATION ################################################################| -->
 		<!--|###########################################################################################################################| -->
 
-		<!-- Encoding padrao -->
+		<!-- Project Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
-
-		<!-- Configuracoes de Memoria RAM para executar plugins -->
-		<!-- Use a variavel de ambiente MAVEN_OPTS para definir qtde de memorias usada pelo plugin -->
-		<!-- MAVEN_OPTS = -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xms512m -Xmx1g -->
-		<!-- Tamanho INICIAL de memoria que o java vai alocar para memoria DINAMICA (Xms) -->
-		<!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria DINAMICA (Xmx) -->
-		<!-- Tamanho INICIAL de memoria que o java vai alocar para a memora PERMAMENTE (XX:MaxPermSize) -->
-		<!-- Tamanho MAXIMO de memoria que o java vai alocar para memoria PERMAMENTE (XX:PermSize) -->
 
 		<!-- Versao da JVM -->
 		<java.source.version>1.7</java.source.version>
@@ -65,7 +57,7 @@
 		<!-- <argLine>-XX:-UseSplitVerifier</argLine> -->
 
 		<!--|###########################################################################################################################| -->
-		<!--|#################################### VERSAO PLUGINS #######################################################################| -->
+		<!--|#################################### PLUGINS VERSION ######################################################################| -->
 		<!--|###########################################################################################################################| -->
 
 		<maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
@@ -93,7 +85,7 @@
 
 		<!--|####### OBS: Some properties plugin have the equal names, so you must be careful ##########################################| -->
 
-		<!-- Propriedades de plugins que podem ser reescritas em POMs descendentes -->
+		<!-- Properties' plugins that can rewrite on child POMs.  -->
 		<!--|################# Compiler ##################################| -->
 		<maven.compiler.source>${java.source.version}</maven.compiler.source>
 		<maven.compiler.target>${java.target.version}</maven.compiler.target>
@@ -176,7 +168,7 @@
 		<!-- The rule priority threshold; rules with lower priority than this will not be evaluated. -->
 		<minimumPriority>5</minimumPriority>
 		<!-- Valida classes de testes -->
-		<pmd.includeTests>false</pmd.includeTests>
+		<pmd.includeTests>true</pmd.includeTests>
 
 		<!--|################# Info Reports ###############################| -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
@@ -198,7 +190,7 @@
 		<allset.config.extensions.version>1.0.0</allset.config.extensions.version>
 
 		<!--|###########################################################################################################################| -->
-		<!--|#################################### VERSAO LIBS ##########################################################################| -->
+		<!--|#################################### SOME LIBS ############################################################################| -->
 		<!--|###########################################################################################################################| -->
 
 		<!-- Versoes de Frameworks -->

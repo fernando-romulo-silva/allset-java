@@ -37,7 +37,7 @@
 							<manifest>
 								<addClasspath>true</addClasspath>
 								<mainClass>${maven.jar.plugin.main.class}</mainClass>
-								<classpathPrefix>dependency-jars/</classpathPrefix>
+								<classpathPrefix>libs/</classpathPrefix>
 							</manifest>
 						</archive>
 					</configuration>
@@ -58,7 +58,7 @@
 							<configuration>
 								<!-- exclude junit, we need runtime dependency only -->
 								<includeScope>runtime</includeScope>
-								<outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
+								<outputDirectory>${project.build.directory}/libs/</outputDirectory>
 							</configuration>
 						</execution>
 					</executions>
