@@ -1,0 +1,26 @@
+rootProject.name = 'allset-java'
+version = '1.2.1-SNAPSHOT'
+
+apply plugin: 'java'
+
+plugins {
+    id 'java'        
+    id 'application' 
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    jcenter() 
+    mavenCentral()
+}
+
+dependencies {
+    compile "joda-time:joda-time:2.2"
+    testCompile "junit:junit:4.12"
+    
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.7.1'
+}
+
+sourceCompatibility = '1.8'

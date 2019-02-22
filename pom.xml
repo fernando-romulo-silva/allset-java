@@ -45,8 +45,7 @@
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 
 		<!-- Versao da JVM -->
-		<java.source.version>1.7</java.source.version>
-		<java.target.version>1.7</java.target.version>
+		<java.version>11</java.version>
 
 		<!-- Argumentos para JVM -->
 		<!-- Na versão do JDK 7 lançado em julho de 2011 a Oracle adicionou uma checagem de bytecode. -->
@@ -59,59 +58,56 @@
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### PLUGINS VERSION ######################################################################| -->
 		<!--|###########################################################################################################################| -->
-
-		<maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
-		<maven.pmd.plugin.version>3.7</maven.pmd.plugin.version>
-		<findbugs.maven.plugin.version>3.0.3</findbugs.maven.plugin.version>
-		<maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
+		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<maven.pmd.plugin.version>3.11.0</maven.pmd.plugin.version>
+		<spotbugs.maven.plugin.version>3.1.11</spotbugs.maven.plugin.version>
+		<maven.checkstyle.plugin.version>3.0.0</maven.checkstyle.plugin.version>
+		<maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
 		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>
+		<maven.jxr.plugin.site.version>3.0.0</maven.jxr.plugin.site.version>
+		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version> <!-- 3.0.0-M3 -->
+		
 		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version> <!-- java 7 em diante -->
-		<maven.project.info.reports.plugin.version>2.9</maven.project.info.reports.plugin.version> <!-- 2.9 -->
-		<maven.jxr.plugin.site.version>2.5</maven.jxr.plugin.site.version> <!-- 2.5 -->
+		
 		<umlgraph.version>5.6</umlgraph.version>
-		<maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version> <!-- 3.5.1 -->
-		<maven.site.plugin.version> 3.5.1</maven.site.plugin.version> <!-- 3.5.1 -->
-		<maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version> <!-- 2.19.1 -->
+
+		<maven.site.plugin.version> 3.5.1</maven.site.plugin.version>
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 		<maven.jar.plugin.version>2.6</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 		<jacoco.maven.plugin.version>0.7.8</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
-		<maven.resources.plugin.version>3.0.2</maven.resources.plugin.version>
+		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
 		<!--|###########################################################################################################################| -->
-
 		<!--|####### OBS: Some properties plugin have the equal names, so you must be careful ##########################################| -->
 
-		<!-- Properties' plugins that can rewrite on child POMs.  -->
+		<!--|################# Locales ###################################| -->
+		<!-- Languages for site, reports, etc. Ex: en, pt_BR, fr -->
+		<locales>en</locales>
+
+		<!-- Properties' plugins that can rewrite on child POMs. -->
 		<!--|################# Compiler ##################################| -->
-		<maven.compiler.source>${java.source.version}</maven.compiler.source>
-		<maven.compiler.target>${java.target.version}</maven.compiler.target>
-		<maven.compiler.testSource>${java.source.version}</maven.compiler.testSource>
-		<maven.compiler.testTarget>${java.target.version}</maven.compiler.testTarget>
+		<maven.compiler.release>${java.version}</maven.compiler.release>
 
 		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
 		<!-- compile only changed classes, false; true compile all classes -->
 		<maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
 
-		<!--|################# Site ######################################| -->
-		<!-- Linguagens do site. Ex: en, pt_BR, fr -->
-		<locales>en</locales>
-
-		<!--|################# Findbugs ##################################| -->
+		<!--|################# Spotbugs ##################################| -->
 		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
-		<findbugs.effort>Max</findbugs.effort>
+		<spotbugs.effort>Max</spotbugs.effort>
 		<!-- Reports all bugs (other values are medium and max) -->
-		<findbugs.threshold>Low</findbugs.threshold>
+		<spotbugs.threshold>Low</spotbugs.threshold>
 		<!-- Produces XML report -->
-		<findbugs.xmlOutput>true</findbugs.xmlOutput>
+		<spotbugs.xmlOutput>true</spotbugs.xmlOutput>
 		<!-- Se inclui classes de teste na validacao -->
-		<findbugs.includeTests>false</findbugs.includeTests>
+		<spotbugs.includeTests>false</spotbugs.includeTests>
 		<!-- Arquivo com as exlusoes de regras : coloque apenas nos poms filhos -->
-		<!-- <findbugs.excludeFilterFile>src/main/resources/findbugs-exclude.xml</findbugs.excludeFilterFile> -->
+		<!-- <spotbugs.excludeFilterFile>src/main/resources/spotbugs-exclude.xml</spotbugs.excludeFilterFile> -->
 
 		<!--|################# CheckStyle #################################| -->
 		<!-- Checkstyle config location -->
@@ -173,7 +169,6 @@
 		<!--|################# Info Reports ###############################| -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
-
 		<!--|################# Tag List ##################################| -->
 		<taglist.skip>false</taglist.skip>
 
@@ -192,32 +187,18 @@
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### SOME LIBS ############################################################################| -->
 		<!--|###########################################################################################################################| -->
-
-		<!-- Versoes de Frameworks -->
 		<slf4j.version>1.7.25</slf4j.version>
-		<!-- Test Frameworks -->
 		<mockito.version>1.9.5</mockito.version>
-		<testng.version>6.9.10</testng.version>
 		<allset.config.test.version>1.0.0</allset.config.test.version>
 	</properties>
 
 	<dependencies>
-
 		<!-- ######################## TESTS ##################################################################################### -->
-
-		<!-- Mockito : Mock de Objetos -->
+		<!-- Mockito : Mock's Object -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>${mockito.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- TestNG : Testes Unitarios -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -229,15 +210,21 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<!-- ######################## LIBS ##################################################################################### -->
-
-		<!-- SLF4J : Framework de log (abstrai varios frameworks de logs) -->
+		<!-- SLF4J : Framework for log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+		
+		<dependency>
+		   <groupId>com.sun</groupId>
+		   <artifactId>tools</artifactId>
+		   <version>1.6.0</version>
+		   <scope>system</scope>
+		   <systemPath>${env.DEVELOPMENT_HOME}\languages\Java\jdk6\lib\tools.jar</systemPath>
+		</dependency>		
 
 	</dependencies>
 
@@ -254,6 +241,30 @@
 
 		<pluginManagement>
 			<plugins>
+				<!-- Compiler : -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+				</plugin>
+
+				<!-- PMD : Busca erros e duplicacao de codigos -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>${maven.pmd.plugin.version}</version>
+					<configuration>
+						<includeTests>${pmd.includeTests}</includeTests>
+					</configuration>
+				</plugin>
+
+				<!-- Spotbugs : busca bugs em codigos java -->
+				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>${spotbugs.maven.plugin.version}</version>
+				</plugin>
+
 				<!-- resources : -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -274,35 +285,11 @@
 					<version>${maven.release.plugin.version}</version>
 				</plugin>
 
-				<!-- Compiler : Definir para qual jdk o codigo deve ser compilado -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven.compiler.plugin.version}</version>
-				</plugin>
-
 				<!-- Site : Para gerar um site com todas as informacoes do projeto -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven.site.plugin.version}</version>
-				</plugin>
-
-				<!-- PMD : Busca erros e duplicacao de codigos -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>${maven.pmd.plugin.version}</version>
-					<configuration>
-						<includeTests>${pmd.includeTests}</includeTests>
-					</configuration>
-				</plugin>
-
-				<!-- Findbugs : busca bugs em codigos java -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>findbugs-maven-plugin</artifactId>
-					<version>${findbugs.maven.plugin.version}</version>
 				</plugin>
 
 				<!-- Chekstyle : Verifica a formatacao de codigos -->
@@ -331,16 +318,30 @@
 						<forkCount>${surefire.forkCount}</forkCount>
 						<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
 						<reuseForks>${surefire.reuseForks}</reuseForks>
-						<junitArtifactName>none:none</junitArtifactName>
+						
+						<junitArtifactName>junit:junit</junitArtifactName>
 						<testNGArtifactName>org.testng:testng</testNGArtifactName>
+						
 					</configuration>
+					
 					<dependencies>
 						<dependency>
 							<groupId>org.apache.maven.surefire</groupId>
 							<artifactId>surefire-testng</artifactId>
 							<version>${maven.surefire.plugin.version}</version>
 						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-junit4</artifactId>
+							<version>${maven.surefire.plugin.version}</version>
+						</dependency>
+	                    <dependency>
+	                        <groupId>org.apache.maven.surefire</groupId>
+	                        <artifactId>surefire-junit-platform</artifactId>
+	                        <version>${maven.surefire.plugin.version}</version>
+	                    </dependency>						
 					</dependencies>
+					
 				</plugin>
 
 				<!-- Cobertura : Verifica cobertura de testes automatizados -->
@@ -437,17 +438,7 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
 			</plugin>
 
 			<plugin>
@@ -456,8 +447,18 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
 			</plugin>
 
 			<plugin>
@@ -529,11 +530,11 @@
 				</configuration>
 			</plugin>
 
-			<!-- Findbugs : busca bugs em codigos java -->
+			<!-- Spotbugs : busca bugs em codigos java -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>${findbugs.maven.plugin.version}</version>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs</artifactId>
+				<version>${spotbugs.maven.plugin.version}</version>
 			</plugin>
 
 			<!-- Chekstyle : Verifica a formatacao de codigos -->
@@ -571,13 +572,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
 				<version>${maven.jxr.plugin.site.version}</version>
-			</plugin>
-
-			<!-- Info Reports : Para gerar relatorios sobre o projeto -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>${maven.project.info.reports.plugin.version}</version>
 			</plugin>
 
 			<!-- JavaDoc : Geracao de documentacao do codigo fonte -->
