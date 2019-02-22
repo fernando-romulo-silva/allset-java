@@ -66,18 +66,16 @@
 		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>
 		<maven.jxr.plugin.site.version>3.0.0</maven.jxr.plugin.site.version>
 		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version> <!-- 3.0.0-M3 -->
-		
+		<maven.site.plugin.version> 3.7.1</maven.site.plugin.version>
 		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version> <!-- java 7 em diante -->
-		
-		<umlgraph.version>5.6</umlgraph.version>
-
-		<maven.site.plugin.version> 3.5.1</maven.site.plugin.version>
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 		<maven.jar.plugin.version>2.6</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-		<jacoco.maven.plugin.version>0.7.8</jacoco.maven.plugin.version> <!-- -->
+		<jacoco.maven.plugin.version>0.8.3</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
+		
+		<umlgraph.version>5.6</umlgraph.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -484,11 +482,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 
 			<plugin>
