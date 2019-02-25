@@ -67,14 +67,15 @@
 		<maven.jxr.plugin.site.version>3.0.0</maven.jxr.plugin.site.version>
 		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version> <!-- 3.0.0-M3 -->
 		<maven.site.plugin.version> 3.7.1</maven.site.plugin.version>
-		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version> <!-- java 7 em diante -->
+		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version>
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 		<maven.jar.plugin.version>2.6</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 		<jacoco.maven.plugin.version>0.8.3</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
-		
+
+
 		<umlgraph.version>5.6</umlgraph.version>
 
 		<!--|###########################################################################################################################| -->
@@ -111,7 +112,7 @@
 		<!-- Checkstyle config location -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
 		<!-- Checkstyle's version -->
-		<checkstyle.version>6.19</checkstyle.version>
+		<checkstyle.version>8.17</checkstyle.version>
 
 		<!--|################# Cobertura ##################################| -->
 		<!-- Porcentagem minima de cobertura das classes -->
@@ -147,6 +148,8 @@
 		<surefire.forkCount>1C</surefire.forkCount>
 		<!-- Reutilizando processos da JVM -->
 		<surefire.reuseForks>true</surefire.reuseForks>
+		<!-- args for surefire -->
+		<surefire.args> --illegal-access=permit --enable-preview </surefire.args>
 
 		<!--|################# Java Doc ##################################| -->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
@@ -192,14 +195,6 @@
 
 	<dependencies>
 		<!-- ######################## TESTS ##################################################################################### -->
-		<!-- Mockito : Mock's Object -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>${mockito.version}</version>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- Projeto com utils para tests em geral (cobertura e muito mais) -->
 		<dependency>
 			<groupId>org.allset.config</groupId>
@@ -215,19 +210,20 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		
+
 		<dependency>
-		   <groupId>com.sun</groupId>
-		   <artifactId>tools</artifactId>
-		   <version>1.6.0</version>
-		   <scope>system</scope>
-		   <systemPath>${env.DEVELOPMENT_HOME}\languages\Java\jdk6\lib\tools.jar</systemPath>
-		</dependency>		
+			<groupId>com.sun</groupId>
+			<artifactId>tools</artifactId>
+			<version>1.6.0</version>
+			<scope>system</scope>
+			<systemPath>${env.DEVELOPMENT_HOME}\languages\Java\jdk6\lib\tools.jar</systemPath>
+		</dependency>
 
 	</dependencies>
 
 	<!-- Plugins de Compilacao, Testes, etc -->
 	<build>
+		
 		<!-- Configuracoes universais (xmls) dos plugins -->
 		<extensions>
 			<extension>
@@ -237,259 +233,179 @@
 			</extension>
 		</extensions>
 
-		<pluginManagement>
-			<plugins>
-				<!-- Compiler : -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven.compiler.plugin.version}</version>
-				</plugin>
-
-				<!-- PMD : Busca erros e duplicacao de codigos -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>${maven.pmd.plugin.version}</version>
-					<configuration>
-						<includeTests>${pmd.includeTests}</includeTests>
-					</configuration>
-				</plugin>
-
-				<!-- Spotbugs : busca bugs em codigos java -->
-				<plugin>
-					<groupId>com.github.spotbugs</groupId>
-					<artifactId>spotbugs-maven-plugin</artifactId>
-					<version>${spotbugs.maven.plugin.version}</version>
-				</plugin>
-
-				<!-- resources : -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${maven.resources.plugin.version}</version>
-					<configuration>
-						<nonFilteredFileExtensions>
-							<nonFilteredFileExtension>pdf</nonFilteredFileExtension>
-							<nonFilteredFileExtension>swf</nonFilteredFileExtension>
-						</nonFilteredFileExtensions>
-					</configuration>
-				</plugin>
-
-				<!-- Release : Gerar versoes do projeto -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>${maven.release.plugin.version}</version>
-				</plugin>
-
-				<!-- Site : Para gerar um site com todas as informacoes do projeto -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>${maven.site.plugin.version}</version>
-				</plugin>
-
-				<!-- Chekstyle : Verifica a formatacao de codigos -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>${maven.checkstyle.plugin.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>com.puppycrawl.tools</groupId>
-							<artifactId>checkstyle</artifactId>
-							<version>${checkstyle.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-
-				<!-- Configuração de testes automatizados -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${maven.surefire.plugin.version}</version>
-					<configuration>
-						<groups>${surefire.groups}</groups>
-						<parallel>${surefire.parallel}</parallel>
-						<threadCount>${surefire.threadCount}</threadCount>
-						<forkCount>${surefire.forkCount}</forkCount>
-						<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
-						<reuseForks>${surefire.reuseForks}</reuseForks>
-						
-						<junitArtifactName>junit:junit</junitArtifactName>
-						<testNGArtifactName>org.testng:testng</testNGArtifactName>
-						
-					</configuration>
-					
-					<dependencies>
-						<dependency>
-							<groupId>org.apache.maven.surefire</groupId>
-							<artifactId>surefire-testng</artifactId>
-							<version>${maven.surefire.plugin.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.apache.maven.surefire</groupId>
-							<artifactId>surefire-junit4</artifactId>
-							<version>${maven.surefire.plugin.version}</version>
-						</dependency>
-	                    <dependency>
-	                        <groupId>org.apache.maven.surefire</groupId>
-	                        <artifactId>surefire-junit-platform</artifactId>
-	                        <version>${maven.surefire.plugin.version}</version>
-	                    </dependency>						
-					</dependencies>
-					
-				</plugin>
-
-				<!-- Cobertura : Verifica cobertura de testes automatizados -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>cobertura-maven-plugin</artifactId>
-					<version>${cobertura.maven.plugin.version}</version>
-					<configuration>
-						<formats>
-							<format>html</format>
-							<format>xml</format>
-						</formats>
-						<instrumentation>
-							<ignoreTrivial>${cobertura.ignoreTrivial}</ignoreTrivial>
-							<excludes>
-								<exclude>**/*Exception.*</exclude>
-								<exclude>**/*Messages.*</exclude>
-							</excludes>
-						</instrumentation>
-						<check>
-							<haltOnFailure>${cobertura.haltOnFailure}</haltOnFailure>
-							<branchRate>${cobertura.branchRate}</branchRate>
-							<lineRate>${cobertura.lineRate}</lineRate>
-							<packageLineRate>${cobertura.packageLineRate}</packageLineRate>
-							<packageBranchRate>${cobertura.packageBranchRate}</packageBranchRate>
-							<totalLineRate>${cobertura.totalLineRate}</totalLineRate>
-							<totalBranchRate>${cobertura.totalBranchRate}</totalBranchRate>
-							<regexes>
-								<regex>
-									<pattern>${cobertura.pattern}</pattern>
-									<branchRate>${cobertura.branchRate}</branchRate>
-									<lineRate>${cobertura.lineRate}</lineRate>
-								</regex>
-							</regexes>
-						</check>
-					</configuration>
-				</plugin>
-
-				<!-- Jacoco : Verifica cobertura de testes automatizados ${jacoco.maven.plugin.version} -->
-				<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> <goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> <limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> 
-					</rules> </configuration> </execution> </executions> </plugin> -->
-
-				<!-- Geracao de Pacotes Jar, test-jar -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven.jar.plugin.version}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>test-jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-				<!-- Adiciona os codigos fontes na geracao dos pacotes -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>${maven.source.plugin.version}</version>
-					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-				<!-- JavaDoc : Geracao de documentacao do codigo fonte -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${maven.javadoc.plugin.version}</version>
-					<configuration>
-						<detectJavaApiLink>false</detectJavaApiLink>
-						<detectLinks>false</detectLinks>
-					</configuration>
-					<executions>
-						<execution>
-							<id>attach-javadocs</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-			</plugins>
-		</pluginManagement>
-
 		<plugins>
+			<!-- Compiler : -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
 			</plugin>
 
+			<!-- PMD : Busca erros e duplicacao de codigos -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${maven.pmd.plugin.version}</version>
+				<configuration>
+					<includeTests>${pmd.includeTests}</includeTests>
+				</configuration>
 			</plugin>
 
+			<!-- Spotbugs : busca bugs em codigos java -->
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
-				<artifactId>spotbugs</artifactId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${spotbugs.maven.plugin.version}</version>
 			</plugin>
 
+			<!-- resources : -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+						<nonFilteredFileExtension>swf</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-			</plugin>
-
+			<!-- Release : Gerar versoes do projeto -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven.release.plugin.version}</version>
 			</plugin>
 
+			<!-- Site : Para gerar um site com todas as informacoes do projeto -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${maven.site.plugin.version}</version>
+			</plugin>
+
+			<!-- Chekstyle : Verifica a formatacao de codigos -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven.checkstyle.plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>${checkstyle.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<!-- Configuração de testes automatizados -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+				<configuration>
+					<argLine>
+						${surefire.args}
+					</argLine>
+					<groups>${surefire.groups}</groups>
+					<parallel>${surefire.parallel}</parallel>
+					<threadCount>${surefire.threadCount}</threadCount>
+					<forkCount>${surefire.forkCount}</forkCount>
+					<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
+					<reuseForks>${surefire.reuseForks}</reuseForks>
+					<!-- <junitArtifactName>junit:junit</junitArtifactName> <testNGArtifactName>org.testng:testng</testNGArtifactName> -->
+				</configuration>
+				<!-- <dependencies> <dependency> <groupId>org.apache.maven.surefire</groupId> <artifactId>surefire-testng</artifactId> <version>${maven.surefire.plugin.version}</version> </dependency> <dependency> <groupId>org.apache.maven.surefire</groupId> <artifactId>surefire-junit4</artifactId> <version>${maven.surefire.plugin.version}</version> </dependency> <dependency> <groupId>org.apache.maven.surefire</groupId> <artifactId>surefire-junit-platform</artifactId> <version>${maven.surefire.plugin.version}</version> </dependency> </dependencies> -->
+			</plugin>
+
+			<!-- Cobertura : Verifica cobertura de testes automatizados -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${cobertura.maven.plugin.version}</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+					<instrumentation>
+						<ignoreTrivial>${cobertura.ignoreTrivial}</ignoreTrivial>
+						<excludes>
+							<exclude>**/*Exception.*</exclude>
+							<exclude>**/*Messages.*</exclude>
+						</excludes>
+					</instrumentation>
+					<check>
+						<haltOnFailure>${cobertura.haltOnFailure}</haltOnFailure>
+						<branchRate>${cobertura.branchRate}</branchRate>
+						<lineRate>${cobertura.lineRate}</lineRate>
+						<packageLineRate>${cobertura.packageLineRate}</packageLineRate>
+						<packageBranchRate>${cobertura.packageBranchRate}</packageBranchRate>
+						<totalLineRate>${cobertura.totalLineRate}</totalLineRate>
+						<totalBranchRate>${cobertura.totalBranchRate}</totalBranchRate>
+						<regexes>
+							<regex>
+								<pattern>${cobertura.pattern}</pattern>
+								<branchRate>${cobertura.branchRate}</branchRate>
+								<lineRate>${cobertura.lineRate}</lineRate>
+							</regex>
+						</regexes>
+					</check>
+				</configuration>
+			</plugin>
+
+			<!-- Jacoco : Verifica cobertura de testes automatizados ${jacoco.maven.plugin.version} -->
+			<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> <executions> <execution> <id>prepare-agent</id> <goals> <goal>prepare-agent</goal> </goals> <configuration> <propertyName>jacocoArgLine</propertyName> <includes> <include>com.choudhury.codecoverage.*</include> </includes> </configuration> </execution> <execution> <id>check</id> <goals> <goal>check</goal> </goals> <configuration> <rules> <rule> <element>CLASS</element> <limits> <limit> <counter>LINE</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> <limit> <counter>BRANCH</counter> <value>COVEREDRATIO</value> <minimum>0.80</minimum> </limit> </limits> <excludes> <exclude>com.choudhury.codecoverage.Bye</exclude> </excludes> </rule> 
+				</rules> </configuration> </execution> </executions> </plugin> -->
+
+			<!-- Geracao de Pacotes Jar, test-jar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven.jar.plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Adiciona os codigos fontes na geracao dos pacotes -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
+			<!-- JavaDoc : Geracao de documentacao do codigo fonte -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven.javadoc.plugin.version}</version>
+				<configuration>
+					<detectJavaApiLink>false</detectJavaApiLink>
+					<detectLinks>false</detectLinks>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-
-			<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> </plugin> -->
 
 		</plugins>
 
@@ -525,8 +441,8 @@
 
 			<!-- Spotbugs : busca bugs em codigos java -->
 			<plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs</artifactId>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
 				<version>${spotbugs.maven.plugin.version}</version>
 			</plugin>
 
