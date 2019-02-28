@@ -306,13 +306,11 @@
 					<forkCount>${surefire.forkCount}</forkCount>
 					<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
 					<reuseForks>${surefire.reuseForks}</reuseForks>
-					<!-- <junitArtifactName>junit:junit</junitArtifactName> <testNGArtifactName>org.testng:testng</testNGArtifactName> -->
 				</configuration>
-				<!-- <dependencies> <dependency> <groupId>org.apache.maven.surefire</groupId> <artifactId>surefire-testng</artifactId> <version>${maven.surefire.plugin.version}</version> </dependency> <dependency> <groupId>org.apache.maven.surefire</groupId> <artifactId>surefire-junit4</artifactId> 
-					<version>${maven.surefire.plugin.version}</version> </dependency> <dependency> <groupId>org.apache.maven.surefire</groupId> <artifactId>surefire-junit-platform</artifactId> <version>${maven.surefire.plugin.version}</version> </dependency> </dependencies> -->
 			</plugin>
 
 			<!-- Cobertura : Verifica cobertura de testes automatizados -->
+			<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
@@ -354,56 +352,43 @@
 						<scope>system</scope>
 						<systemPath>${env.DEVELOPMENT_HOME}/languages/java/jdk6/lib/tools.jar</systemPath>
 					</dependency>
+					<dependency> 
+                    	<groupId>org.ow2.asm</groupId>
+      					<artifactId>asm</artifactId>
+      					<version>6.0</version>
+    				</dependency>					
 				</dependencies>
 			</plugin>
+			 -->
 
 			<!-- Jacoco : Verifica cobertura de testes automatizados ${jacoco.maven.plugin.version} -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.maven.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<propertyName>jacocoArgLine</propertyName>
-							<includes>
-								<include>com.choudhury.codecoverage.*</include>
-							</includes>
-						</configuration>
-					</execution>
-					<execution>
-						<id>check</id>
-						<goals>
-							<goal>check</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<rule>
-									<element>CLASS</element>
-									<limits>
-										<limit>
-											<counter>LINE</counter>
-											<value>COVEREDRATIO</value>
-											<minimum>0.80</minimum>
-										</limit>
-										<limit>
-											<counter>BRANCH</counter>
-											<value>COVEREDRATIO</value>
-											<minimum>0.80</minimum>
-										</limit>
-									</limits>
-									<excludes>
-										<exclude>com.choudhury.codecoverage.Bye</exclude>
-									</excludes>
-								</rule>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**/*Exception.*</exclude>
+						<exclude>**/*Messages.*</exclude>
+					</excludes>					
+					<rules>
+						<rule>
+							<element>CLASS</element>
+							<limits>
+								<limit>
+									<counter>LINE</counter>
+									<value>COVEREDRATIO</value>
+									<minimum>0.80</minimum>
+								</limit>
+								<limit>
+									<counter>BRANCH</counter>
+									<value>COVEREDRATIO</value>
+									<minimum>0.80</minimum>
+								</limit>
+							</limits>
+						</rule>
+					</rules>
+				</configuration>
 			</plugin>
 
 			<!-- Geracao de Pacotes Jar, test-jar -->
@@ -461,6 +446,7 @@
 	<!-- Plugins de Relatorios -->
 	<reporting>
 		<plugins>
+		
 			<!-- Surifire : Gera relatorios de testes automatizados -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -494,13 +480,16 @@
 			</plugin>
 
 			<!-- Chekstyle : Verifica a formatacao de codigos -->
+			<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${maven.checkstyle.plugin.version}</version>
 			</plugin>
+			-->
 
 			<!-- Cobertura : Verifica cobertura de testes automatizados -->
+			<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
@@ -519,9 +508,19 @@
 					</instrumentation>
 				</configuration>
 			</plugin>
+			 -->
 
 			<!-- Jacoco : Verifica cobertura de testes automatizados -->
-			<!-- <plugin> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> <version>${jacoco.maven.plugin.version}</version> </plugin> -->
+			<plugin>
+			    <groupId>org.jacoco</groupId> 
+			    <artifactId>jacoco-maven-plugin</artifactId> 
+			    <version>${jacoco.maven.plugin.version}</version> 
+				<configuration>
+					<excludes>
+						<exclude>**/*Exception.*</exclude>
+						<exclude>**/*Messages.*</exclude>
+					</excludes>	
+				</configuration>		   </plugin>
 
 			<!-- Jxr : gerar relatorios/paginas com codigos fontes java -->
 			<plugin>
