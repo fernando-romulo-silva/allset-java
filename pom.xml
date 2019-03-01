@@ -75,9 +75,6 @@
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 
-
-		<umlgraph.version>5.6</umlgraph.version>
-
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
 		<!--|###########################################################################################################################| -->
@@ -104,7 +101,7 @@
 		<!-- Produces XML report -->
 		<spotbugs.xmlOutput>true</spotbugs.xmlOutput>
 		<!-- Se inclui classes de teste na validacao -->
-		<spotbugs.includeTests>false</spotbugs.includeTests>
+		<spotbugs.includeTests>true</spotbugs.includeTests>
 		<!-- Arquivo com as exlusoes de regras : coloque apenas nos poms filhos -->
 		<!-- <spotbugs.excludeFilterFile>src/main/resources/spotbugs-exclude.xml</spotbugs.excludeFilterFile> -->
 
@@ -149,15 +146,11 @@
 		<!-- Reutilizando processos da JVM -->
 		<surefire.reuseForks>true</surefire.reuseForks>
 		<!-- args for surefire -->
-		<surefire.args> --illegal-access=permit --enable-preview </surefire.args>
+		<surefire.args> --illegal-access=permit </surefire.args>
 
 		<!--|################# Java Doc ##################################| -->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-
-		<!--|################# Uml Graph #################################| -->
-		<!-- Parametros relacionados ao diagrama de classes, neste caso, todos atributos relacionados a classe serao adicionadas ao diagrama -->
-		<umlgraph.additional.param>-all -inferdep</umlgraph.additional.param>
 
 		<!--|################# PMD & CPD #################################| -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
@@ -170,7 +163,7 @@
 		<!--|################# Info Reports ###############################| -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
-		<!--|################# Tag List ##################################| -->
+		<!--|################# Tag List ###################################| -->
 		<taglist.skip>false</taglist.skip>
 
 		<!-- Observacao importante -->
@@ -181,15 +174,13 @@
 		<!-- <forceMojoExecution>true</forceMojoExecution> -->
 		<!-- Erros de dependencia de de projetos herdado podem ser resolvido com: 'mvn dependency:list' e depois 'mvn dependency:list -X' -->
 
-		<!--|################# Extensions ################################| -->
+		<!--|################# Extensions #################################| -->
 		<!-- allset.config.extensions.version - Arquivo de configuracoes de plugins maven -->
 		<allset.config.extensions.version>1.0.0</allset.config.extensions.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### SOME LIBS ############################################################################| -->
 		<!--|###########################################################################################################################| -->
-		<slf4j.version>1.7.25</slf4j.version>
-		<mockito.version>1.9.5</mockito.version>
 		<allset.config.test.version>1.0.0</allset.config.test.version>
 	</properties>
 
@@ -201,14 +192,6 @@
 			<artifactId>allset-config-test</artifactId>
 			<version>${allset.config.test.version}</version>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- ######################## LIBS ##################################################################################### -->
-		<!-- SLF4J : Framework for log -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -361,7 +344,7 @@
 			</plugin>
 			 -->
 
-			<!-- Jacoco : Verifica cobertura de testes automatizados ${jacoco.maven.plugin.version} -->
+			<!-- Jacoco : Verifica cobertura de testes automatizados -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -453,6 +436,9 @@
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
+					<argLine>
+						${surefire.args}
+					</argLine>
 					<parallel>${surefire.parallel}</parallel>
 					<threadCount>${surefire.threadCount}</threadCount>
 					<forkCount>${surefire.forkCount}</forkCount>
@@ -537,18 +523,6 @@
 				<configuration>
 					<detectJavaApiLink>false</detectJavaApiLink>
 					<detectLinks>false</detectLinks>
-					<!-- Geracao de diagrama de classes no java doc! -->
-					<!-- Nao esqueca de instalar o programa graphviz! -->
-					<!-- Linux -> sudo apt-get install graphviz -->
-					<!-- Site http://www.umlgraph.org -->
-					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
-					<docletArtifact>
-						<groupId>org.umlgraph</groupId>
-						<artifactId>umlgraph</artifactId>
-						<version>${umlgraph.version}</version>
-					</docletArtifact>
-					<additionalparam>${umlgraph.additional.param}</additionalparam>
-					<useStandardDocletOptions>true</useStandardDocletOptions>
 				</configuration>
 			</plugin>
 
