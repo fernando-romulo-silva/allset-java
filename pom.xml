@@ -281,7 +281,7 @@
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
 					<argLine>
-						${surefire.args}
+						@{argLine} ${surefire.args}
 					</argLine>
 					<groups>${surefire.groups}</groups>
 					<parallel>${surefire.parallel}</parallel>
@@ -327,20 +327,6 @@
 						</regexes>
 					</check>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>com.sun</groupId>
-						<artifactId>tools</artifactId>
-						<version>1.6.0</version>
-						<scope>system</scope>
-						<systemPath>${env.DEVELOPMENT_HOME}/languages/java/jdk6/lib/tools.jar</systemPath>
-					</dependency>
-					<dependency> 
-                    	<groupId>org.ow2.asm</groupId>
-      					<artifactId>asm</artifactId>
-      					<version>6.0</version>
-    				</dependency>					
-				</dependencies>
 			</plugin>
 			 -->
 
@@ -349,6 +335,14 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.maven.plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<excludes>
 						<exclude>**/*Exception.*</exclude>
@@ -437,7 +431,7 @@
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
 					<argLine>
-						${surefire.args}
+						@{argLine} ${surefire.args}
 					</argLine>
 					<parallel>${surefire.parallel}</parallel>
 					<threadCount>${surefire.threadCount}</threadCount>
