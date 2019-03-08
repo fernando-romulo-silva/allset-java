@@ -182,6 +182,8 @@
 		<!--|#################################### SOME LIBS ############################################################################| -->
 		<!--|###########################################################################################################################| -->
 		<allset.config.test.version>1.0.0</allset.config.test.version>
+		
+		<assertj.version>3.12.1</assertj.version>
 	</properties>
 
 	<dependencies>
@@ -192,6 +194,13 @@
 			<artifactId>allset-config-test</artifactId>
 			<version>${allset.config.test.version}</version>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.assertj</groupId>
+		    <artifactId>assertj-core</artifactId>
+		    <version>${assertj.version}</version>
+		    <scope>test</scope>
 		</dependency>
 
 	</dependencies>
