@@ -104,7 +104,7 @@
 		<!-- Checkstyle config location -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
 		<!-- Checkstyle's version -->
-		<checkstyle.version>8.17</checkstyle.version>
+		<checkstyle.version>8.29</checkstyle.version>
 
 		<!--|################# Cobertura ##################################| -->
 		<!-- Porcentagem minima de cobertura das classes -->
