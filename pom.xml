@@ -45,7 +45,7 @@
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 
 		<!-- Versao da JVM -->
-		<java.version>11</java.version>
+		<java.version>15</java.version>
 
 		<!-- Argumentos para JVM -->
 		<!-- <argLine>-XX:-UseSplitVerifier</argLine> -->
@@ -53,22 +53,23 @@
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### PLUGINS VERSION ######################################################################| -->
 		<!--|###########################################################################################################################| -->
-		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
-		<maven.pmd.plugin.version>3.11.0</maven.pmd.plugin.version>
-		<spotbugs.maven.plugin.version>3.1.11</spotbugs.maven.plugin.version>
-		<maven.checkstyle.plugin.version>3.0.0</maven.checkstyle.plugin.version>
-		<maven.javadoc.plugin.version>3.0.1</maven.javadoc.plugin.version>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
+		<spotbugs.maven.plugin.version>4.0.0</spotbugs.maven.plugin.version>
+		<maven.checkstyle.plugin.version>3.1.1</maven.checkstyle.plugin.version>
+		<maven.javadoc.plugin.version>3.2.0</maven.javadoc.plugin.version>
+		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->
+		<maven.site.plugin.version> 3.9.0</maven.site.plugin.version>
+		<maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
+		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+		<jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version> <!-- -->
+		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
+
+		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>
 		<maven.jxr.plugin.site.version>3.0.0</maven.jxr.plugin.site.version>
-		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version> <!-- 3.0.0-M3 -->
-		<maven.site.plugin.version> 3.7.1</maven.site.plugin.version>
 		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version>
-		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
-		<maven.jar.plugin.version>2.6</maven.jar.plugin.version>
-		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-		<jacoco.maven.plugin.version>0.8.3</jacoco.maven.plugin.version> <!-- -->
-		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
-		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -81,7 +82,8 @@
 
 		<!-- Properties' plugins that can rewrite on child POMs. -->
 		<!--|################# Compiler ##################################| -->
-		<maven.compiler.release>${java.version}</maven.compiler.release>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 
 		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
@@ -104,7 +106,7 @@
 		<!-- Checkstyle config location -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
 		<!-- Checkstyle's version -->
-		<checkstyle.version>8.17</checkstyle.version>
+		<checkstyle.version>8.32</checkstyle.version>
 
 		<!--|################# Cobertura ##################################| -->
 		<!-- Porcentagem minima de cobertura das classes -->
@@ -141,7 +143,7 @@
 		<!-- Reutilizando processos da JVM -->
 		<surefire.reuseForks>true</surefire.reuseForks>
 		<!-- args for surefire -->
-		<surefire.args> --illegal-access=permit </surefire.args>
+		<surefire.args> --illegal-access=permit --enable-preview </surefire.args>
 
 		<!--|################# Java Doc ##################################| -->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
@@ -176,9 +178,10 @@
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### SOME LIBS ############################################################################| -->
 		<!--|###########################################################################################################################| -->
-		<allset.config.test.version>1.0.0</allset.config.test.version>
+		<allset.config.test.version>1.0.1-SNAPSHOT</allset.config.test.version>
 
-		<assertj.version>3.12.1</assertj.version>
+		<slf4j.version>1.7.30</slf4j.version>
+		<assertj.version>3.17.2</assertj.version>
 	</properties>
 
 	<dependencies>
@@ -196,6 +199,12 @@
 			<artifactId>assertj-core</artifactId>
 			<version>${assertj.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -218,6 +227,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<compilerArgs>
+						--enable-preview
+					</compilerArgs>
+				</configuration>
 			</plugin>
 
 			<!-- PMD : Busca erros e duplicacao de codigos -->
@@ -430,7 +444,11 @@
 			</plugin>
 
 			<!-- Chekstyle : Verifica a formatacao de codigos -->
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-checkstyle-plugin</artifactId> <version>${maven.checkstyle.plugin.version}</version> </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven.checkstyle.plugin.version}</version>
+			</plugin>
 
 			<!-- Cobertura : Verifica cobertura de testes automatizados -->
 			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>cobertura-maven-plugin</artifactId> <version>${cobertura.maven.plugin.version}</version> <configuration> <formats> <format>html</format> <format>xml</format> </formats> <instrumentation> <ignoreTrivial>${cobertura.ignoreTrivial}</ignoreTrivial> <excludes> <exclude>**/*Exception.*</exclude> <exclude>**/*Messages.*</exclude> </excludes> </instrumentation> </configuration> </plugin> -->
