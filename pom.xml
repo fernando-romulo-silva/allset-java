@@ -45,7 +45,7 @@
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 
 		<!-- Versao da JVM -->
-		<java.version>15</java.version>
+		<java.version>14</java.version>
 
 		<!-- Argumentos para JVM -->
 		<!-- <argLine>-XX:-UseSplitVerifier</argLine> -->
