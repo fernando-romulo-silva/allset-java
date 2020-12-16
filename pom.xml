@@ -44,9 +44,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 
-		<!-- Versao da JVM -->
-		<java.version>14</java.version>
-
 		<!-- Argumentos para JVM -->
 		<!-- <argLine>-XX:-UseSplitVerifier</argLine> -->
 
@@ -82,8 +79,9 @@
 
 		<!-- Properties' plugins that can rewrite on child POMs. -->
 		<!--|################# Compiler ##################################| -->
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<!-- Versao da JVM -->
+		<maven.compiler.source>14</maven.compiler.source>
+		<maven.compiler.target>14</maven.compiler.target>
 
 		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
