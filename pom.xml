@@ -14,7 +14,8 @@
 	</modules>
 
 	<description>
-	     Project for commons configuration for java projects (SE, Web, JEE and android) for java 8.
+	     Set of maven configurations for types of projects that I already worked on. 
+	     On the main pom.xml, there are a lot of plugin configurations used on my projects.
 	</description>
 
 	<licenses>
@@ -80,8 +81,8 @@
 		<!-- Properties' plugins that can rewrite on child POMs. -->
 		<!--|################# Compiler ##################################| -->
 		<!-- Versao da JVM -->
-		<maven.compiler.source>14</maven.compiler.source>
-		<maven.compiler.target>14</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 
 		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
@@ -141,7 +142,7 @@
 		<!-- Reutilizando processos da JVM -->
 		<surefire.reuseForks>true</surefire.reuseForks>
 		<!-- args for surefire -->
-		<surefire.args> --illegal-access=permit --enable-preview </surefire.args>
+		<surefire.args> --illegal-access=permit </surefire.args>
 
 		<!--|################# Java Doc ##################################| -->
 		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
@@ -225,11 +226,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven.compiler.plugin.version}</version>
-				<configuration>
-					<compilerArgs>
-						--enable-preview
-					</compilerArgs>
-				</configuration>
 			</plugin>
 
 			<!-- PMD : Busca erros e duplicacao de codigos -->
