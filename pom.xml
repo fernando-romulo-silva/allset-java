@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.allset.java</groupId>
 	<artifactId>allset-java</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -172,7 +172,7 @@
 
 		<!--|################# Extensions #################################| -->
 		<!-- allset.config.extensions.version - Arquivo de configuracoes de plugins maven -->
-		<allset.config.extensions.version>1.0.0</allset.config.extensions.version>
+		<default-extensions.version>0.0.1-SNAPSHOT</default-extensions.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### SOME LIBS ############################################################################| -->
@@ -185,14 +185,6 @@
 
 	<dependencies>
 		<!-- ######################## TESTS ##################################################################################### -->
-		<!-- Projeto com utils para tests em geral (cobertura e muito mais) -->
-		<dependency>
-			<groupId>org.allset.config</groupId>
-			<artifactId>allset-config-test</artifactId>
-			<version>${allset.config.test.version}</version>
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
@@ -214,9 +206,9 @@
 		<!-- Configuracoes universais (xmls) dos plugins -->
 		<extensions>
 			<extension>
-				<groupId>org.allset.config</groupId>
-				<artifactId>allset-config-extensions</artifactId>
-				<version>${allset.config.extensions.version}</version>
+				<groupId>org.default.extensions</groupId>
+				<artifactId>default-extensions</artifactId>
+				<version>${default-extensions.version}</version>
 			</extension>
 		</extensions>
 
