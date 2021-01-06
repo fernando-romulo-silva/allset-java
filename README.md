@@ -33,20 +33,32 @@ Configurations used on maven plugins for Java SE.
 
 Configurations used on maven plugins for Jakarta EE Web.
 
-# How to Execute
+# Install
 
-requirements: 
+requirements (environment variables configured): 
  - Java 11
  - Maven 3
+ - Git
  
  ```bash
 # clone it
 git clone https://github.com/fernando-romulo-silva/allset-java
 
-# for spring boot
+# access the project folder
 cd allset-java
 
 # execute
 mvn install
 ```
- 
+
+# How to Use
+
+In the pom.xml, add the following xml between `<project> ... </project>`
+
+```xml
+<parent>
+	<groupId>org.allset.java</groupId>
+	<artifactId>allset-java</artifactId>
+	<version>${allset-java-version}</version>
+</parent>
+```
