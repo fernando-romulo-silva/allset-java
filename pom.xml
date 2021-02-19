@@ -203,15 +203,6 @@
 	<!-- Plugins de Compilacao, Testes, etc -->
 	<build>
 
-		<!-- Configuracoes universais (xmls) dos plugins -->
-		<extensions>
-			<extension>
-				<groupId>org.default.extensions</groupId>
-				<artifactId>default-extensions</artifactId>
-				<version>${default-extensions.version}</version>
-			</extension>
-		</extensions>
-
 		<plugins>
 			<!-- Compiler : -->
 			<plugin>
