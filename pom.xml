@@ -52,17 +52,17 @@
 		<!--|#################################### PLUGINS VERSION ######################################################################| -->
 		<!--|###########################################################################################################################| -->
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-		<maven.pmd.plugin.version>3.13.0</maven.pmd.plugin.version>
-		<spotbugs.maven.plugin.version>4.0.0</spotbugs.maven.plugin.version>
-		<maven.checkstyle.plugin.version>3.1.1</maven.checkstyle.plugin.version>
-		<maven.javadoc.plugin.version>3.2.0</maven.javadoc.plugin.version>
+		<maven.pmd.plugin.version>3.14.0</maven.pmd.plugin.version>
+		<spotbugs.maven.plugin.version>4.3.0</spotbugs.maven.plugin.version>
+		<maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
+		<maven.javadoc.plugin.version>3.3.0</maven.javadoc.plugin.version>
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->
-		<maven.site.plugin.version> 3.9.0</maven.site.plugin.version>
+		<maven.site.plugin.version> 3.9.1</maven.site.plugin.version>
 		<maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-		<jacoco.maven.plugin.version>0.8.5</jacoco.maven.plugin.version> <!-- -->
+		<jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
-		<maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
+		<maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
 
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>
