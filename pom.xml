@@ -70,6 +70,7 @@
 		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>
 		<maven.jxr.plugin.site.version>3.1.1</maven.jxr.plugin.site.version>
 		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version>
+		<maven.dependency.plugin.version>3.2.0</maven.dependency.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -225,7 +226,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>${maven.dependency.plugin.version}</version>
 					<configuration>
 						<excludeReactor>false</excludeReactor>
 					</configuration>					
@@ -560,6 +561,19 @@
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${jdepend.maven.plugin.version}</version>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven.dependency.plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>analyze-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>			
 
 		</plugins>
 	</reporting>
