@@ -77,13 +77,17 @@
 		<!--|###########################################################################################################################| -->
 		<!--|####### OBS: Some properties plugin have the equal names, so you must be careful ##########################################| -->
 
-		<!--|################# Locales ###################################| -->
+		<!--|##############################################################| -->
+		<!--|################# Locales ####################################| -->
+		<!--|##############################################################| -->
 		<!-- Languages for site, reports, etc. Ex: en, pt_BR, fr -->
 		<locales>en</locales>
 
 		<!-- Properties' plugins that can rewrite on child POMs. -->
-		<!--|################# Compiler ##################################| -->
-		<!-- Versao da JVM -->
+		<!--|##############################################################| -->
+		<!--|################# Compiler ###################################| -->
+		<!--|##############################################################| -->
+		<!-- JVM Version -->
 		<maven.compiler.source>16</maven.compiler.source>
 		<maven.compiler.target>16</maven.compiler.target>
 
@@ -92,7 +96,9 @@
 		<!-- compile only changed classes, false; true compile all classes -->
 		<maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
 
-		<!--|################# Spotbugs ##################################| -->
+		<!--|##############################################################| -->
+		<!--|################# Spotbugs ###################################| -->
+		<!--|##############################################################| -->
 		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
 		<spotbugs.effort>Max</spotbugs.effort>
 		<!-- Reports all bugs (other values are medium and max) -->
@@ -101,67 +107,90 @@
 		<spotbugs.xmlOutput>true</spotbugs.xmlOutput>
 		<!-- Check tests classes -->
 		<spotbugs.includeTests>true</spotbugs.includeTests>
-		<!-- File with excluded rules : coloque apenas nos poms filhos -->
+		<!-- File with excluded rules : only on child pom -->
 		<!-- <spotbugs.excludeFilterFile>src/main/resources/spotbugs-exclude.xml</spotbugs.excludeFilterFile> -->
 
+		<!--|##############################################################| -->
 		<!--|################# CheckStyle #################################| -->
+		<!--|##############################################################| -->
 		<!-- Checkstyle config location -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
 		<!-- Checkstyle's version -->
 		<checkstyle.version>8.45</checkstyle.version>
 
+		<!--|##############################################################| -->
 		<!--|################# Jacoco #####################################| -->
-		<jacoco.haltOnFailure>false</jacoco.haltOnFailure>
+		<!--|##############################################################| -->
+		<!-- fail if not catch the minimum -->
+		<jacoco.haltOnFailure>true</jacoco.haltOnFailure>
 
+		<!-- Minimum class coverage -->
+		<jacoco.classLineRate>0.50</jacoco.classLineRate>
+		<jacoco.classBranchRate>0.50</jacoco.classBranchRate>
 
+		<!-- Minimum package coverage -->
+		<jacoco.packageLineRate>0.50</jacoco.packageLineRate>
+		<jacoco.packageBranchRate>0.50</jacoco.packageBranchRate>
+
+		<!-- Minimum total coverage -->
+		<jacoco.totalLineRate>0.50</jacoco.totalLineRate>
+		<jacoco.totalBranchRate>0.50</jacoco.totalBranchRate>
+
+		<!--|##############################################################| -->
 		<!--|################# Cobertura ##################################| -->
-		<!-- Porcentagem minima de cobertura das classes -->
-		<cobertura.lineRate>0</cobertura.lineRate>
-		<cobertura.branchRate>0</cobertura.branchRate>
+		<!--|##############################################################| -->
+		<!-- Minimum class coverage -->
+		<cobertura.classLineRate>50</cobertura.classLineRate>
+		<cobertura.classBranchRate>50</cobertura.classBranchRate>
 
-		<!-- Porcentagem minima de cobertura dos pacotes -->
-		<cobertura.packageLineRate>0</cobertura.packageLineRate>
-		<cobertura.packageBranchRate>0</cobertura.packageBranchRate>
+		<!-- Minimum package coverage -->
+		<cobertura.packageLineRate>50</cobertura.packageLineRate>
+		<cobertura.packageBranchRate>50</cobertura.packageBranchRate>
 
-		<!-- Porcentagem minima de cobertura do projeto inteiro -->
-		<cobertura.totalLineRate>0</cobertura.totalLineRate>
-		<cobertura.totalBranchRate>0</cobertura.totalBranchRate>
+		<!-- Minimum total coverage -->
+		<cobertura.totalLineRate>50</cobertura.totalLineRate>
+		<cobertura.totalBranchRate>50</cobertura.totalBranchRate>
 
-		<!-- Porcentagem minima de cobertura das classes de regras de negocio -->
-		<cobertura.lineRate>80</cobertura.lineRate>
-		<cobertura.branchRate>80</cobertura.branchRate>
-
-		<!-- Lugar onde estao as classes de regras de necocio (com subpacotes) -->
-		<cobertura.pattern>org.*</cobertura.pattern>
-
-		<!-- Falha a execucao qdo os testes nao cobre os valores minimos -->
+		<!-- fail if not catch the minimum -->
 		<cobertura.haltOnFailure>true</cobertura.haltOnFailure>
 
-		<!-- Ignora metodos com uma instrucao apenas -->
+		<!-- ignore methods with 1 line -->
 		<cobertura.ignoreTrivial>true</cobertura.ignoreTrivial>
 
-		<!--|################# Surefire ##################################| -->
-		<!-- Eu recomendo vc agrupar seus testes (unitario, integracao, funcional, etc) pelo framework de testes, que neste caso, o TestNG -->
-		<!-- Se vc nao espeficificar o grupo, o TestNG vai ignorar o testes -->
+		<!--|##############################################################| -->
+		<!--|################# Surefire ###################################| -->
+		<!--|##############################################################| -->
+		<!-- The groups are separated by level -->
 		<surefire.groups>unit, integration, functional, acceptance, perform, regression</surefire.groups>
+
 		<!-- Os testes vao ser paralelos (rodar em thread) em relacao a metodos (methods), classes, (class) ou suite de testes (tests) -->
+		<!-- Tests run in parallel (run in thread) by methods, classes or test suite -->
 		<surefire.parallel>methods</surefire.parallel>
-		<!-- Em quantas testes (threads) serao executadas sincronizadamente em um processo JVM -->
+
+		<!-- How many tests (threads) will be run synchronously in a JVM process ? -->
 		<surefire.threadCount>8</surefire.threadCount>
-		<!-- O maximo de thread por core da CPU -->
+
+		<!-- Maximum threads per CPU core -->
 		<surefire.perCoreThreadCount>true</surefire.perCoreThreadCount>
-		<!-- Define o maximo de processos JVM (se vc colocar a letra 'C' sera o maximo de processos por CORE) sincronizadamente -->
+
+		<!-- Sets the maximum JVM processes (if you put the letter 'C' it will be the maximum number of process per CORE) synchronously -->
 		<surefire.forkCount>1C</surefire.forkCount>
-		<!-- Reutilizando processos da JVM -->
+
+		<!-- reuse process JVM -->
 		<surefire.reuseForks>true</surefire.reuseForks>
+
 		<!-- args for surefire -->
 		<surefire.args> --illegal-access=permit </surefire.args>
 
-		<!--|################# Java Doc ##################################| -->
-		<!-- valida erros no javadoc, o checkstyle ja faz isso -->
+		<!--|##############################################################| -->
+		<!--|################# Java Doc ###################################| -->
+		<!--|##############################################################| -->
+		<!-- check javadoc errors. The Checkstyle already do it -->
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 
-		<!--|################# PMD & CPD #################################| -->
+		<!--|##############################################################| -->
+		<!--|################# PMD & CPD ##################################| -->
+		<!--|##############################################################| -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
 		<minimumTokens>100</minimumTokens>
 		<!-- The rule priority threshold; rules with lower priority than this will not be evaluated. -->
@@ -170,36 +199,46 @@
 		<pmd.includeTests>true</pmd.includeTests>
 		<!-- pmd version -->
 		<pmd.version>6.37.0</pmd.version>
+		<!-- failOnViolation is actually true by default, but can be disabled -->
+		<pmd.failOnViolation>true</pmd.failOnViolation>
 
+		<!--|##############################################################| -->
 		<!--|################# Info Reports ###############################| -->
+		<!--|##############################################################| -->
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
+		<!--|##############################################################| -->
 		<!--|################# Tag List ###################################| -->
+		<!--|##############################################################| -->
 		<taglist.skip>false</taglist.skip>
 
-		<!-- Observacao importante -->
-		<!-- Por alguma razao o maven tava pulando alguns plugins na criacao do site, entao devemos forcar a barra! -->
-		<!-- Caso algum pom descentende queira omitir a execucao do plugin -->
+		<!--|###########################################################################################################################| -->
+		<!--|#################################### TIPS #################################################################################| -->
+		<!--|###########################################################################################################################| -->
+		<!-- If you want skip some plugin, just put it on configuration's plugin -->
 		<!-- <skip>false</skip> -->
-		<!-- Caso vc quer q poms descendentes sejam obrigados a executar um plugin -->
-		<!-- <forceMojoExecution>true</forceMojoExecution> -->
-		<!-- Erros de dependencia de de projetos herdado podem ser resolvido com: 'mvn dependency:list' e depois 'mvn dependency:list -X' -->
 
-		<!--|################# Extensions #################################| -->
-		<!-- allset.config.extensions.version - Arquivo de configuracoes de plugins maven -->
+		<!-- If you force to child execute some plugin, just put it on configuration's plugin -->
+		<!-- <forceMojoExecution>true</forceMojoExecution> -->
+
+		<!-- Depedency erros can fixed with: 'mvn dependency:list' and 'mvn dependency:list -X' -->
+
+		<!--|###########################################################################################################################| -->
+		<!--|#################################### Extensions ###########################################################################| -->
+		<!--|###########################################################################################################################| -->
+
+		<!-- allset.config.extensions.version - configs for plugins like pmd, spotbugs and checkstyle -->
 		<default-extensions.version>0.0.1-SNAPSHOT</default-extensions.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### SOME LIBS ############################################################################| -->
 		<!--|###########################################################################################################################| -->
-		<allset.config.test.version>1.0.1-SNAPSHOT</allset.config.test.version>
-
 		<slf4j.version>1.7.32</slf4j.version>
 		<assertj.version>3.17.2</assertj.version>
 	</properties>
 
 	<dependencies>
-		<!-- ######################## TESTS ##################################################################################### -->
+		<!-- |######################## TESTS ###########################################################################################| -->
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
@@ -215,13 +254,12 @@
 
 	</dependencies>
 
-
-	<!-- Plugins de Compilacao, Testes, etc -->
+	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
 		<pluginManagement>
 
 			<plugins>
-			
+
 				<!-- Dependencies : download the dependencies -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -229,9 +267,9 @@
 					<version>${maven.dependency.plugin.version}</version>
 					<configuration>
 						<excludeReactor>false</excludeReactor>
-					</configuration>					
+					</configuration>
 				</plugin>
-			
+
 				<!-- Compiler : compile the files -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -239,16 +277,14 @@
 					<version>${maven.compiler.plugin.version}</version>
 				</plugin>
 
-				<!-- PMD : Busca erros e duplicacao de codigos -->
+				<!-- PMD : Reports on issues found within application code -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
 					<version>${maven.pmd.plugin.version}</version>
 					<configuration>
-						<!-- include tests? -->
 						<includeTests>${pmd.includeTests}</includeTests>
-						<!-- failOnViolation is actually true by default, but can be disabled -->
-						<failOnViolation>true</failOnViolation>
+						<failOnViolation>${pmd.failOnViolation}</failOnViolation>
 						<!-- printFailingErrors is pretty useful -->
 						<printFailingErrors>true</printFailingErrors>
 						<targetJdk>${maven.compiler.target}</targetJdk>
@@ -267,14 +303,14 @@
 					</dependencies>
 				</plugin>
 
-				<!-- Spotbugs : busca bugs em codigos java -->
+				<!-- Spotbugs : detects possible bugs in Java programs -->
 				<plugin>
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
 					<version>${spotbugs.maven.plugin.version}</version>
 				</plugin>
 
-				<!-- resources : -->
+				<!-- Resources : handles the copying of project resources to the output directory -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -287,21 +323,21 @@
 					</configuration>
 				</plugin>
 
-				<!-- Release : Gerar versoes do projeto -->
+				<!-- Release : release a project with Maven, saving a lot of repetitive, manual work -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>${maven.release.plugin.version}</version>
 				</plugin>
 
-				<!-- Site : Para gerar um site com todas as informacoes do projeto -->
+				<!-- Site : generate a site for the project. The generated site also includes the project's reports that were configured in the POM -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven.site.plugin.version}</version>
 				</plugin>
 
-				<!-- Chekstyle : Verifica a formatacao de codigos -->
+				<!-- Checkstyle : development tool to help programmers write Java code that adheres to a coding standard -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
@@ -315,7 +351,7 @@
 					</dependencies>
 				</plugin>
 
-				<!-- Configuração de testes automatizados -->
+				<!-- Surefire : The Surefire Plugin is used during the test phase of the build lifecycle to execute the tests of an application. -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -333,7 +369,7 @@
 					</configuration>
 				</plugin>
 
-				<!-- Cobertura : Verifica cobertura de testes automatizados -->
+				<!-- Cobertura : A tool that calculates the percentage of code accessed by tests -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>cobertura-maven-plugin</artifactId>
@@ -348,45 +384,36 @@
 							<excludes>
 								<exclude>**/*Exception.*</exclude>
 								<exclude>**/*Messages.*</exclude>
+								<exclude>**/*Const.*</exclude>
 							</excludes>
 						</instrumentation>
 						<check>
 							<haltOnFailure>${cobertura.haltOnFailure}</haltOnFailure>
-							<branchRate>${cobertura.branchRate}</branchRate>
-							<lineRate>${cobertura.lineRate}</lineRate>
+
+							<branchRate>${cobertura.classBranchRate}</branchRate>
+							<lineRate>${cobertura.classLineRate}</lineRate>
+
 							<packageLineRate>${cobertura.packageLineRate}</packageLineRate>
 							<packageBranchRate>${cobertura.packageBranchRate}</packageBranchRate>
+
 							<totalLineRate>${cobertura.totalLineRate}</totalLineRate>
 							<totalBranchRate>${cobertura.totalBranchRate}</totalBranchRate>
-							<regexes>
-								<regex>
-									<pattern>${cobertura.pattern}</pattern>
-									<branchRate>${cobertura.branchRate}</branchRate>
-									<lineRate>${cobertura.lineRate}</lineRate>
-								</regex>
-							</regexes>
+
 						</check>
 					</configuration>
 				</plugin>
 
-				<!-- Jacoco : Verifica cobertura de testes automatizados -->
+				<!-- Jacoco : JaCoCo is a free code coverage library for Java -->
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
 					<version>${jacoco.maven.plugin.version}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>prepare-agent</goal>
-								<goal>report</goal>
-							</goals>
-						</execution>
-					</executions>
+					<!-- <executions> <execution> <goals> <goal>prepare-agent</goal> <goal>report</goal> </goals> </execution> </executions> -->
 					<configuration>
 						<excludes>
 							<exclude>**/*Exception.*</exclude>
 							<exclude>**/*Messages.*</exclude>
-							<exclude>*Test</exclude>
+							<exclude>**/*Const.*</exclude>
 						</excludes>
 						<rules>
 							<rule>
@@ -395,20 +422,58 @@
 									<limit>
 										<counter>LINE</counter>
 										<value>COVEREDRATIO</value>
-										<minimum>0.80</minimum>
+										<minimum>${jacoco.classLineRate}</minimum>
 									</limit>
 									<limit>
 										<counter>BRANCH</counter>
 										<value>COVEREDRATIO</value>
-										<minimum>0.80</minimum>
+										<minimum>${jacoco.classBranchRate}</minimum>
 									</limit>
 								</limits>
 							</rule>
+
+							<rule>
+								<element>PACKAGE</element>
+								<limits>
+									<limit>
+										<counter>LINE</counter>
+										<value>COVEREDRATIO</value>
+										<minimum>${jacoco.packageLineRate}</minimum>
+									</limit>
+									<limit>
+										<counter>BRANCH</counter>
+										<value>COVEREDRATIO</value>
+										<minimum>${jacoco.packageBranchRate}</minimum>
+									</limit>
+								</limits>
+							</rule>
+
+							<rule>
+								<element>BUNDLE</element>
+								<limits>
+									<limit>
+										<counter>COMPLEXITY</counter>
+										<value>COVEREDRATIO</value>
+										<minimum>0.40</minimum>
+									</limit>
+									<limit>
+										<counter>LINE</counter>
+										<value>COVEREDRATIO</value>
+										<minimum>${jacoco.totalLineRate}</minimum>
+									</limit>
+									<limit>
+										<counter>BRANCH</counter>
+										<value>COVEREDRATIO</value>
+										<minimum>${jacoco.totalBranchRate}</minimum>
+									</limit>									
+								</limits>
+							</rule>
+
 						</rules>
 					</configuration>
 				</plugin>
 
-				<!-- Geracao de Pacotes Jar, test-jar -->
+				<!-- Jar : provides the capability to build jars -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -422,7 +487,7 @@
 					</executions>
 				</plugin>
 
-				<!-- Adiciona os codigos fontes na geracao dos pacotes -->
+				<!-- Source : creates a jar archive of the source files of the current project -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
@@ -437,7 +502,7 @@
 					</executions>
 				</plugin>
 
-				<!-- JavaDoc : Geracao de documentacao do codigo fonte -->
+				<!-- JavaDoc : uses the Javadoc tool to generate javadocs for the project -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
@@ -461,11 +526,11 @@
 
 	</build>
 
-	<!-- Plugins de Relatorios -->
+	<!-- |######################## REPORTING ###########################################################################################| -->
 	<reporting>
 		<plugins>
 
-			<!-- Surifire : Gera relatorios de testes automatizados -->
+			<!-- Surefire : generates the test results report -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
@@ -483,7 +548,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- PMD : Busca erros e duplicacao de codigos -->
+			<!-- PMD : generates the pmd results report -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -493,24 +558,42 @@
 				</configuration>
 			</plugin>
 
-			<!-- Spotbugs : busca bugs em codigos java -->
+			<!-- Spotbugs : generates the spotbugs results report -->
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
 				<version>${spotbugs.maven.plugin.version}</version>
 			</plugin>
 
-			<!-- Chekstyle : Verifica a formatacao de codigos -->
+			<!-- Chekstyle : generates the checkstyle results report -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${maven.checkstyle.plugin.version}</version>
 			</plugin>
 
-			<!-- Cobertura : Verifica cobertura de testes automatizados -->
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>cobertura-maven-plugin</artifactId> <version>${cobertura.maven.plugin.version}</version> <configuration> <formats> <format>html</format> <format>xml</format> </formats> <instrumentation> <ignoreTrivial>${cobertura.ignoreTrivial}</ignoreTrivial> <excludes> <exclude>**/*Exception.*</exclude> <exclude>**/*Messages.*</exclude> </excludes> </instrumentation> </configuration> </plugin> -->
+			<!-- Cobertura : generates the cobertura results report -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${cobertura.maven.plugin.version}</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+					<instrumentation>
+						<ignoreTrivial>${cobertura.ignoreTrivial}</ignoreTrivial>
+						<excludes>
+							<exclude>**/*Exception.*</exclude>
+							<exclude>**/*Messages.*</exclude>
+							<exclude>**/*Const.*</exclude>
+						</excludes>
+					</instrumentation>
+				</configuration>
+			</plugin>
 
-			<!-- Jacoco : Verifica cobertura de testes automatizados -->
+			<!-- Jacoco : generates the jacoco results report -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -519,17 +602,18 @@
 					<excludes>
 						<exclude>**/*Exception.*</exclude>
 						<exclude>**/*Messages.*</exclude>
+						<exclude>**/*Const.*</exclude>
 					</excludes>
 				</configuration>			</plugin>
 
-			<!-- Jxr : gerar relatorios/paginas com codigos fontes java -->
+			<!-- Jxr : generated reports make it easier for the user to reference or find specific lines of code -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
 				<version>${maven.jxr.plugin.site.version}</version>
 			</plugin>
 
-			<!-- JavaDoc : Geracao de documentacao do codigo fonte -->
+			<!-- JavaDoc : generates the javadoc results report -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -540,7 +624,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- Taglist : Gera relatorio de tags encontradas informativas em codigos java (Ex: TODO) -->
+			<!-- Taglist : generates a report on various tags found in the code (Ex: TODO) -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
@@ -555,13 +639,14 @@
 				</configuration>
 			</plugin>
 
-			<!-- JDepend : Metricas de depencias dos projetos -->
+			<!-- JDepend : produces a nicely formatted metrics report based on your project -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${jdepend.maven.plugin.version}</version>
 			</plugin>
-			
+
+			<!-- Dependency : show the dependencies' projects (libs and plugins)  -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -573,7 +658,7 @@
 						</reports>
 					</reportSet>
 				</reportSets>
-			</plugin>			
+			</plugin>
 
 		</plugins>
 	</reporting>
