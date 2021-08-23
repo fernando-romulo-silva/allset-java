@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.allset.java</groupId>
 	<artifactId>allset-java</artifactId>
-	<version>1.0.0</version> <!-- <version>0.0.1-SNAPSHOT</version> -->
+	<version>0.0.1-SNAPSHOT</version> <!-- <version>1.0.0</version> -->
 	<packaging>pom</packaging>
 
 	<modules>
@@ -30,8 +30,8 @@
 
 	<scm>
 		<url>https://github.com/fernando-romulo-silva/allset-java</url>
-		<connection>scm:git:https://github.com/fernando-romulo-silva/allset-java.git</connection>
-		<developerConnection>scm:git:https://github.com/fernando-romulo-silva/allset-java.git</developerConnection>
+		<connection>scm:git:ssh://git@github.com:fernando-romulo-silva/allset-java.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:fernando-romulo-silva/allset-java.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -222,6 +222,8 @@
 		<!-- <forceMojoExecution>true</forceMojoExecution> -->
 
 		<!-- Depedency erros can fixed with: 'mvn dependency:list' and 'mvn dependency:list -X' -->
+		
+		<!-- mvn dependency:tree  | grep -B 10  -A 1 tools.jar -->
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### Extensions ###########################################################################| -->
@@ -251,7 +253,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-
+		
 	</dependencies>
 
 	<!-- |######################## BUILD ###############################################################################################| -->
@@ -268,6 +270,16 @@
 					<configuration>
 						<excludeReactor>false</excludeReactor>
 					</configuration>
+					<dependencies>
+		                <dependency>
+		                    <groupId>com.sun</groupId>
+		                    <artifactId>tools</artifactId>
+		                    <version>1.6</version>
+		                    <scope>system</scope>
+		                    <!--  <systemPath>${java.home}/lib/tools.jar</systemPath>  -->
+		                    <systemPath>/home/fernando/Development/languages/java/jdk8-zulu/lib/tools.jar</systemPath>
+		                </dependency>
+					</dependencies>
 				</plugin>
 
 				<!-- Compiler : compile the files -->
@@ -465,7 +477,7 @@
 										<counter>BRANCH</counter>
 										<value>COVEREDRATIO</value>
 										<minimum>${jacoco.totalBranchRate}</minimum>
-									</limit>									
+									</limit>
 								</limits>
 							</rule>
 
@@ -646,7 +658,7 @@
 				<version>${jdepend.maven.plugin.version}</version>
 			</plugin>
 
-			<!-- Dependency : show the dependencies' projects (libs and plugins)  -->
+			<!-- Dependency : show the dependencies' projects (libs and plugins) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
