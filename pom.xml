@@ -381,7 +381,8 @@
 					</configuration>
 				</plugin>
 
-				<!-- Cobertura : A tool that calculates the percentage of code accessed by tests -->
+				<!-- Cobertura : A tool that calculates the percentage of code accessed by tests  -->
+				<!-- DEPRECATED
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>cobertura-maven-plugin</artifactId>
@@ -414,6 +415,7 @@
 						</check>
 					</configuration>
 				</plugin>
+				 -->
 
 				<!-- Jacoco : JaCoCo is a free code coverage library for Java -->
 				<plugin>
@@ -585,6 +587,7 @@
 			</plugin>
 
 			<!-- Cobertura : generates the cobertura results report -->
+			<!-- DEPRECATED
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
@@ -604,7 +607,8 @@
 					</instrumentation>
 				</configuration>
 			</plugin>
-
+			-->
+			
 			<!-- Jacoco : generates the jacoco results report -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
