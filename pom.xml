@@ -46,7 +46,22 @@
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 
 		<!-- JVM Arguments -->
-		<argLine></argLine>
+		
+		<!-- Enable preview features for jdk: -->
+		<!-- -\-enable-preview -->
+		
+		<!-- Explicit heap memory: -->
+		<!-- Xmx : Specifies the maximum memory allocation pool for a JVM -->
+		<!-- Xms : Specifies the initial memory allocation pool for a JVM -->
+		<!-- Example: -Xms2G -Xmx5G -->
+		
+		<!-- GC implementations:    -->
+		<!-- Serial Garbage Collector: -XX:+UseSerialGC --> 
+		<!-- Parallel Garbage Collector: -XX:+UseParallelGC -->
+		<!-- CMS Garbage Collector: -XX:+USeParNewGC -->
+		<!-- G1 Garbage Collector: -XX:+UseG1GC -->
+		
+		<project.argLine> -Xms2G -Xmx5G	</project.argLine>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### PLUGINS VERSION ######################################################################| -->
@@ -93,6 +108,7 @@
 
 		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
+
 		<!-- compile only changed classes, false; true compile all classes -->
 		<maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
 
@@ -101,12 +117,16 @@
 		<!--|##############################################################| -->
 		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
 		<spotbugs.effort>Max</spotbugs.effort>
+
 		<!-- Reports all bugs (other values are medium and max) -->
 		<spotbugs.threshold>Low</spotbugs.threshold>
+
 		<!-- Produces XML report -->
 		<spotbugs.xmlOutput>true</spotbugs.xmlOutput>
+
 		<!-- Check tests classes -->
 		<spotbugs.includeTests>true</spotbugs.includeTests>
+
 		<!-- File with excluded rules : only on child pom -->
 		<!-- <spotbugs.excludeFilterFile>src/main/resources/spotbugs-exclude.xml</spotbugs.excludeFilterFile> -->
 
@@ -221,17 +241,11 @@
 		<!-- If you force to child execute some plugin, just put it on configuration's plugin -->
 		<!-- <forceMojoExecution>true</forceMojoExecution> -->
 
-		<!-- Depedency erros can fixed with: 'mvn dependency:list' and 'mvn dependency:list -X' -->
-		
-		<!-- mvn dependency:tree  | grep -B 10  -A 1 tools.jar -->
+		<!-- Depedency erros can fixed with: -->
+		<!-- mvn dependency:list -X -->
+		<!-- mvn dependency:tree | grep -B 10 -A 1 tools.jar -->
 		<!-- mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar" -->
-		
-		
-		<!-- 
-		                    <scope>system</scope>
-		                    <systemPath>${java.home}/lib/tools.jar</systemPath>
-		                    <systemPath>/home/fernando/Development/languages/java/jdk8-zulu/lib/tools.jar</systemPath>		
-		 -->
+
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### Extensions ###########################################################################| -->
@@ -261,7 +275,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		
+
 	</dependencies>
 
 	<!-- |######################## BUILD ###############################################################################################| -->
@@ -279,11 +293,11 @@
 						<excludeReactor>false</excludeReactor>
 					</configuration>
 					<dependencies>
-		                <dependency>
-		                    <groupId>com.sun</groupId>
-		                    <artifactId>tools</artifactId>
-		                    <version>1.8</version>
-		                </dependency>
+						<dependency>
+							<groupId>com.sun</groupId>
+							<artifactId>tools</artifactId>
+							<version>1.8</version>
+						</dependency>
 					</dependencies>
 				</plugin>
 
@@ -292,6 +306,11 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<compilerArgs>
+							${project.argLine}
+						</compilerArgs>
+					</configuration>
 				</plugin>
 
 				<!-- PMD : Reports on issues found within application code -->
@@ -375,7 +394,7 @@
 					<version>${maven.surefire.plugin.version}</version>
 					<configuration>
 						<argLine>
-							@{argLine} ${surefire.args}
+							${project.argLine} ${surefire.args}
 						</argLine>
 						<groups>${surefire.groups}</groups>
 						<parallel>${surefire.parallel}</parallel>
@@ -520,7 +539,7 @@
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
 					<argLine>
-						@{argLine} ${surefire.args}
+						${project.argLine} ${surefire.args}
 					</argLine>
 					<parallel>${surefire.parallel}</parallel>
 					<threadCount>${surefire.threadCount}</threadCount>
