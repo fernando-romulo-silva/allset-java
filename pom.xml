@@ -46,21 +46,21 @@
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 
 		<!-- JVM Arguments -->
-		
+
 		<!-- Enable preview features for jdk: -->
 		<!-- -\-enable-preview -->
-		
+
 		<!-- Explicit heap memory: -->
 		<!-- Xmx : Specifies the maximum memory allocation pool for a JVM -->
 		<!-- Xms : Specifies the initial memory allocation pool for a JVM -->
 		<!-- Example: -Xms2G -Xmx5G -->
-		
-		<!-- GC implementations:    -->
-		<!-- Serial Garbage Collector: -XX:+UseSerialGC --> 
+
+		<!-- GC implementations: -->
+		<!-- Serial Garbage Collector: -XX:+UseSerialGC -->
 		<!-- Parallel Garbage Collector: -XX:+UseParallelGC -->
 		<!-- CMS Garbage Collector: -XX:+USeParNewGC -->
 		<!-- G1 Garbage Collector: -XX:+UseG1GC -->
-		
+
 		<project.argLine> -Xms2G -Xmx5G	</project.argLine>
 
 		<!--|###########################################################################################################################| -->
@@ -261,8 +261,8 @@
 		<assertj.version>3.17.2</assertj.version>
 	</properties>
 
+	<!-- |######################## LIBS ################################################################################################| -->
 	<dependencies>
-		<!-- |######################## TESTS ###########################################################################################| -->
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
