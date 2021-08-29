@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="allset-java">
 	<import>
-		<javaresource classpath="ant-common-tasks.jar" name="targets/maven/maven-build.xml" />
+		<javaresource classpath="ant-common-tasks.jar" name="macrodefs/maven/maven-build-macrodef.xml" />
+		<javaresource classpath="ant-common-tasks.jar" name="targets/maven/maven-scm.xml" />
 	</import>
+
+	<target name="install">
+		<description>
+install - Create a jar and isntall it on your local repository, usually in ~/.m2 folder.			
+		</description>
+
+		<build-clean />
+
+		<build-install-simple />
+
+		<echo message="The jar file was created and installed." />
+	</target>
 </project>

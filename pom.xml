@@ -181,7 +181,7 @@
 		<!--|################# Surefire ###################################| -->
 		<!--|##############################################################| -->
 		<!-- The groups are separated by level -->
-		<surefire.groups>unit, integration, functional, acceptance, perform, regression</surefire.groups>
+		<surefire.groups>unit,integration,functional,acceptance,perform,regression</surefire.groups>
 
 		<!-- Os testes vao ser paralelos (rodar em thread) em relacao a metodos (methods), classes, (class) ou suite de testes (tests) -->
 		<!-- Tests run in parallel (run in thread) by methods, classes or test suite -->
