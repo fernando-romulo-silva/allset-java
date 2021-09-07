@@ -62,3 +62,6 @@ In the pom.xml, add the following xml between `<project> ... </project>`
 	<version>${allset-java-version}</version>
 </parent>
 ```
+
+
+mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar"
