@@ -115,7 +115,8 @@
 		<!--|##############################################################| -->
 		<!--|################# Spotbugs ###################################| -->
 		<!--|##############################################################| -->
-		<!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'low'. -->
+		<!-- Enables analysis which takes more memory but finds more bugs. -->
+		<!-- If you run out of memory, changes the value of the effort element to 'low'. -->
 		<spotbugs.effort>Max</spotbugs.effort>
 
 		<!-- Reports all bugs (other values are medium and max) -->
@@ -136,7 +137,7 @@
 		<!-- Checkstyle config location -->
 		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
 		<!-- Checkstyle's version -->
-		<checkstyle.version>8.45</checkstyle.version>
+		<checkstyle.version>9.0</checkstyle.version>
 
 		<!--|##############################################################| -->
 		<!--|################# Jacoco #####################################| -->
@@ -280,6 +281,16 @@
 
 	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
+
+		<extensions>
+			<!-- Plugin configs -->
+			<extension>
+				<groupId>org.default.extensions</groupId>
+				<artifactId>default-extensions</artifactId>
+				<version>${default-extensions.version}</version>
+			</extension>
+		</extensions>
+
 		<pluginManagement>
 
 			<plugins>
@@ -409,7 +420,21 @@
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
 					<version>${jacoco.maven.plugin.version}</version>
-					<!-- <executions> <execution> <goals> <goal>prepare-agent</goal> <goal>report</goal> </goals> </execution> </executions> -->
+					<executions>
+						<execution>
+							<id>pre-unit-test</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>post-unit-test</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
 					<configuration>
 						<excludes>
 							<exclude>**/*Exception.*</exclude>
@@ -578,6 +603,14 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.maven.plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<!-- select non-aggregate reports -->
+							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 				<configuration>
 					<excludes>
 						<exclude>**/*Exception.*</exclude>
