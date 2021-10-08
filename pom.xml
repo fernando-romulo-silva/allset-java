@@ -102,9 +102,9 @@
 		<!--|##############################################################| -->
 		<!--|################# Compiler ###################################| -->
 		<!--|##############################################################| -->
-		<!-- JVM Version -->
-		<maven.compiler.source>16</maven.compiler.source>
-		<maven.compiler.target>16</maven.compiler.target>
+		<!-- JVM Version, usually LTS -->
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target> 
 
 		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
@@ -135,7 +135,7 @@
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
 		<!-- Checkstyle config location -->
-		<checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+		<!-- <checkstyle.config.location>checkstyle.xml</checkstyle.config.location> -->
 		<!-- Checkstyle's version -->
 		<checkstyle.version>9.0</checkstyle.version>
 
@@ -201,7 +201,7 @@
 		<surefire.reuseForks>true</surefire.reuseForks>
 
 		<!-- args for surefire -->
-		<surefire.args> --illegal-access=permit </surefire.args>
+		<surefire.args> </surefire.args>
 
 		<!--|##############################################################| -->
 		<!--|################# Java Doc ###################################| -->
@@ -246,55 +246,15 @@
 		<!-- mvn dependency:list -X -->
 		<!-- mvn dependency:tree | grep -B 10 -A 1 tools.jar -->
 		<!-- mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar" -->
-
-
-		<!--|###########################################################################################################################| -->
-		<!--|#################################### Extensions ###########################################################################| -->
-		<!--|###########################################################################################################################| -->
-
-		<!-- allset.config.extensions.version - configs for plugins like pmd, spotbugs and checkstyle -->
-		<default-extensions.version>0.0.1-SNAPSHOT</default-extensions.version>
-
-		<!--|###########################################################################################################################| -->
-		<!--|#################################### SOME LIBS ############################################################################| -->
-		<!--|###########################################################################################################################| -->
-		<slf4j.version>1.7.32</slf4j.version>
-		<assertj.version>3.17.2</assertj.version>
+	
 	</properties>
-
-	<!-- |######################## LIBS ################################################################################################| -->
-	<dependencies>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>${assertj.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-
-	</dependencies>
 
 	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
 
-		<extensions>
-			<!-- Plugin configs -->
-			<extension>
-				<groupId>org.default.extensions</groupId>
-				<artifactId>default-extensions</artifactId>
-				<version>${default-extensions.version}</version>
-			</extension>
-		</extensions>
-
 		<pluginManagement>
-
+		
 			<plugins>
-
 				<!-- Dependencies : download the dependencies -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
