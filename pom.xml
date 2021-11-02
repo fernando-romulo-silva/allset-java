@@ -135,7 +135,7 @@
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
 		<!-- Checkstyle config location -->
-		<!-- <checkstyle.config.location>checkstyle.xml</checkstyle.config.location> -->
+		<!-- <checkstyle.config.location>default-extensions-checkstyle.xml</checkstyle.config.location> -->
 		<!-- Checkstyle's version -->
 		<checkstyle.version>9.0</checkstyle.version>
 
@@ -292,7 +292,6 @@
 					<configuration>
 						<includeTests>${pmd.includeTests}</includeTests>
 						<failOnViolation>${pmd.failOnViolation}</failOnViolation>
-						<!-- printFailingErrors is pretty useful -->
 						<printFailingErrors>true</printFailingErrors>
 						<targetJdk>${maven.compiler.target}</targetJdk>
 					</configuration>
