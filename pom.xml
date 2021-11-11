@@ -218,7 +218,7 @@
 		<!-- include test class -->
 		<pmd.includeTests>true</pmd.includeTests>
 		<!-- pmd version -->
-		<pmd.version>6.37.0</pmd.version>
+		<pmd.version>6.40.0</pmd.version>
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
 
