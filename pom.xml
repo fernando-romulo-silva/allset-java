@@ -40,6 +40,8 @@
 		<!--|#################################### PROJECT CONFIGURATION ################################################################| -->
 		<!--|###########################################################################################################################| -->
 
+		<!-- https://github.com/basepom/duplicate-finder-maven-plugin/wiki -->
+
 		<!-- Project Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -473,6 +475,15 @@
 				</plugin>
 
 				<!-- Jar : provides the capability to build jars -->
+				<!-- 
+					mvn install:install-file 
+					    -DgroupId=com.example 
+					    -DartifactId=example 
+					    -Dversion=1.2.3 
+					    -Dclassifier=tests 
+					    -Dpackaging=test-jar 
+					    -Dfile=example-1.2.3-tests.jar				
+				 -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -486,7 +497,7 @@
 					</executions>
 				</plugin>
 
-				<!-- Source : creates a jar archive of the source files of the current project -->
+				<!-- Source : creates a jar archive of the source files of the current project mvn source:jar -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
@@ -501,7 +512,7 @@
 					</executions>
 				</plugin>
 
-				<!-- JavaDoc : uses the Javadoc tool to generate javadocs for the project -->
+				<!-- JavaDoc : uses the Javadoc tool to generate javadocs for the project mvn javadoc:jar -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
@@ -519,6 +530,19 @@
 						</execution>
 					</executions>
 				</plugin>
+
+				<plugin>
+					<groupId>com.ning.maven.plugins</groupId>
+					<artifactId>maven-duplicate-finder-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>verify</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>				
 
 			</plugins>
 		</pluginManagement>
