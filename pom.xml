@@ -6,8 +6,10 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>allset-java-ee-full</module>
-		<module>allset-java-ee-webprofile</module>
+		<module>allset-java-jee-full</module>
+		<module>allset-java-jee-webprofile</module>
+		<module>allset-java-jee-microprofile</module>
+		<module>allset-java-jee-coreprofile</module>
 		<module>allset-java-se</module>
 		<module>allset-java-web</module>
 		<!-- <module>allset-java-android</module> Problems with android's plugin -->
@@ -72,7 +74,7 @@
 		<!--|###########################################################################################################################| -->
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<maven.pmd.plugin.version>3.14.0</maven.pmd.plugin.version> <!-- 3.15.0-SNAPSHOT -->
-		<spotbugs.maven.plugin.version>4.4.2.2</spotbugs.maven.plugin.version>
+		<spotbugs.maven.plugin.version>4.5.3.0</spotbugs.maven.plugin.version> <!-- 4.4.2.2 -->
 		<maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
 
 		<maven.javadoc.plugin.version>3.3.0</maven.javadoc.plugin.version>
@@ -132,23 +134,28 @@
 		<!-- Check tests classes -->
 		<spotbugs.includeTests>true</spotbugs.includeTests>
 		
-		<!-- Spot Bugs  -->
-		<spotbugs.version>4.5.0</spotbugs.version>
+		<!-- Version -->
+		<spotbugs.version>4.5.3</spotbugs.version>
 		
-		<!-- File with excluded rules : only on child pom -->
-		<!-- <spotbugs.excludeFilterFile>src/main/resources/spotbugs-exclude.xml</spotbugs.excludeFilterFile> -->		
-		<!-- <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>  -->
-        <!-- <excludeFilterFile>spotbugs-security-exclude.xml</excludeFilterFile> -->
+		<!-- Suggest exclude Bugs File (only on child pom) -->
+		<!-- <excludeBugsFile>default-extensions/spotbugs/spotbugs-excludes.xml</excludeBugsFile>  -->
 		
+		<!-- Suggest exclude Bugs File Filter (only on child pom) -->
+		<!-- <spotbugs.excludeFilterFile>default-extensions/spotbugs-exclude-filter.xml</spotbugs.excludeFilterFile> -->		
+
 		<!-- Plugins https://spotbugs.readthedocs.io/en/stable/links.html#spotbugs-plugins -->
 
 		<!--|##############################################################| -->
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
-		<!-- Checkstyle config location -->
-		<!-- <checkstyle.config.location>default-extensions-checkstyle.xml</checkstyle.config.location> -->
 		<!-- Checkstyle's version -->
-		<checkstyle.version>9.0</checkstyle.version>
+		<checkstyle.version>9.2.1</checkstyle.version>
+		
+		<!-- Suggest checkstyle checks file (only on child pom) -->
+		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
+		
+		<!-- Suggest checkstyle suppressions file (only on child pom) -->
+		<!-- <checkstyle.suppressions.location>default-extensions/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.location> -->
 
 		<!--|##############################################################| -->
 		<!--|################# Jacoco #####################################| -->
@@ -222,14 +229,24 @@
 		<!--|##############################################################| -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
 		<minimumTokens>100</minimumTokens>
+		
 		<!-- The rule priority threshold; rules with lower priority than this will not be evaluated. -->
 		<minimumPriority>5</minimumPriority>
+		
 		<!-- include test class -->
 		<pmd.includeTests>true</pmd.includeTests>
+		
 		<!-- pmd version -->
 		<pmd.version>6.41.0</pmd.version>
+		
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
+
+		<!-- Suggest ruleset checks file (only on child pom) -->
+		<!-- configuration.rulesets -->
+		<!-- <ruleset>default-extensions/pmd/java/pmd-ruleset.xml</ruleset> -->
+		<!-- or -->
+		<!-- <ruleset>rulesets/java/quickstart.xml</ruleset> from pmd.jar -->
 
 		<!--|##############################################################| -->
 		<!--|################# Info Reports ###############################| -->
