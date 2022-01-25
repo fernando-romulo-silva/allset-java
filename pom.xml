@@ -409,6 +409,7 @@
 				</plugin>
 
 				<!-- Jacoco : JaCoCo is a free code coverage library for Java -->
+				<!-- https://stackoverflow.com/questions/3166538/how-to-execute-maven-plugin-execution-directly-from-command-line -->
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
