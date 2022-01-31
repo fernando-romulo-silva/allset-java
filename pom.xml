@@ -150,7 +150,7 @@
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
 		<!-- Checkstyle's version -->
-		<checkstyle.version>9.2.1</checkstyle.version>
+		<checkstyle.version>9.3</checkstyle.version>
 		
 		<!-- Suggest checkstyle checks file (only on child pom) -->
 		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
@@ -238,7 +238,7 @@
 		<pmd.includeTests>true</pmd.includeTests>
 		
 		<!-- pmd version -->
-		<pmd.version>6.41.0</pmd.version>
+		<pmd.version>6.42.0</pmd.version>
 		
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
