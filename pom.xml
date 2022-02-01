@@ -281,6 +281,7 @@
 		<pluginManagement>
 
 			<plugins>
+				<!-- mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar" -->
 				<!-- Dependencies : download the dependencies 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -290,7 +291,6 @@
 						<excludeReactor>false</excludeReactor>
 					</configuration>
 					<dependencies>
-						mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar"
 						<dependency>
 							<groupId>com.sun</groupId>
 							<artifactId>tools</artifactId>
@@ -417,21 +417,12 @@
 					<executions>
 						<execution>
 							<id>jacoco-initialize</id>
-							<phase>initialize</phase>
 							<goals>
 								<goal>prepare-agent</goal>
 							</goals>
 						</execution>
 						<execution>
 							<id>report</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>report-aggregate</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>test</id>
-							<phase>test</phase>
 							<goals>
 								<goal>report-aggregate</goal>
 							</goals>
@@ -515,15 +506,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${maven.jar.plugin.version}</version>
-					<!--
-					<executions>
-						<execution>
-							<goals>
-								<goal>test-jar</goal>
-							</goals>
-						</execution>
-					</executions>
-					-->
 				</plugin>
 
 				<!-- Source : creates a jar archive of the source files of the current project. mvn source:jar -->
@@ -531,16 +513,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${maven.source.plugin.version}</version>
-					<!--
-					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-					-->
 				</plugin>
 
 				<!-- JavaDoc : uses the Javadoc tool to generate javadocs for the project. mvn javadoc:jar -->
@@ -552,32 +524,12 @@
 						<detectJavaApiLink>false</detectJavaApiLink>
 						<detectLinks>false</detectLinks>
 					</configuration>
-					<!--
-					<executions>
-						<execution>
-							<id>attach-javadocs</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-					-->
 				</plugin>
 
 				<!-- duplicate finder: find and flag duplicate classes and resources on the java classpath. mvn duplicate-finder:check -->
 				<plugin>
 					<groupId>com.ning.maven.plugins</groupId>
 					<artifactId>maven-duplicate-finder-plugin</artifactId>
-					<!--
-					<executions>
-						<execution>
-							<phase>verify</phase>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
-					</executions>
-					-->
 				</plugin>				
 
 			</plugins>
