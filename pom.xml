@@ -72,26 +72,13 @@
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### PLUGINS VERSION ######################################################################| -->
 		<!--|###########################################################################################################################| -->
-		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-		<maven.pmd.plugin.version>3.15.0</maven.pmd.plugin.version> <!-- 3.15.0-SNAPSHOT -->
-		<spotbugs.maven.plugin.version>4.5.3.0</spotbugs.maven.plugin.version> <!-- 4.4.2.2 -->
-		<maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
-
 		<maven.javadoc.plugin.version>3.3.0</maven.javadoc.plugin.version>
-		<maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->
 		<maven.site.plugin.version>3.10.0</maven.site.plugin.version> <!-- 3.9.1 -->
 		<maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-
-		<jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version> <!-- -->
 		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
-		<maven.project.info.reports.plugin.version>3.1.2</maven.project.info.reports.plugin.version>
-
-		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
-		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>
 		<maven.jxr.plugin.site.version>3.1.1</maven.jxr.plugin.site.version>
-		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version>
 		<maven.dependency.plugin.version>3.2.0</maven.dependency.plugin.version>
 
 		<!--|###########################################################################################################################| -->
@@ -109,6 +96,7 @@
 		<!--|##############################################################| -->
 		<!--|################# Compiler ###################################| -->
 		<!--|##############################################################| -->
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<!-- JVM Version, usually LTS -->
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
@@ -122,6 +110,11 @@
 		<!--|##############################################################| -->
 		<!--|################# Spotbugs ###################################| -->
 		<!--|##############################################################| -->
+		<spotbugs.maven.plugin.version>4.5.3.0</spotbugs.maven.plugin.version> <!-- 4.4.2.2 -->		
+		
+		<!-- Version -->
+		<spotbugs.version>4.5.3</spotbugs.version>
+		
 		<!-- Enables analysis which takes more memory but finds more bugs. -->
 		<!-- If you run out of memory, changes the value of the effort element to 'low'. -->
 		<spotbugs.effort>Max</spotbugs.effort>
@@ -135,9 +128,6 @@
 		<!-- Check tests classes -->
 		<spotbugs.includeTests>true</spotbugs.includeTests>
 		
-		<!-- Version -->
-		<spotbugs.version>4.5.3</spotbugs.version>
-		
 		<!-- Suggest exclude Bugs File (only on child pom) -->
 		<!-- <excludeBugsFile>default-extensions/spotbugs/spotbugs-excludes.xml</excludeBugsFile>  -->
 		
@@ -149,6 +139,8 @@
 		<!--|##############################################################| -->
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
+		<maven.checkstyle.plugin.version>3.1.2</maven.checkstyle.plugin.version>
+				
 		<!-- Checkstyle's version -->
 		<checkstyle.version>9.3</checkstyle.version>
 		
@@ -161,6 +153,7 @@
 		<!--|##############################################################| -->
 		<!--|################# Jacoco #####################################| -->
 		<!--|##############################################################| -->
+		<jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version> <!-- -->		
 		<!-- fail if not catch the minimum -->
 		<jacoco.haltOnFailure>true</jacoco.haltOnFailure>
 
@@ -179,6 +172,8 @@
 		<!--|##############################################################| -->
 		<!--|################# Cobertura ##################################| -->
 		<!--|##############################################################| -->
+		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version>
+		
 		<!-- Minimum class coverage -->
 		<cobertura.classLineRate>50</cobertura.classLineRate>
 		<cobertura.classBranchRate>50</cobertura.classBranchRate>
@@ -200,6 +195,7 @@
 		<!--|##############################################################| -->
 		<!--|################# Surefire ###################################| -->
 		<!--|##############################################################| -->
+		<maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->		
 		<!-- The groups are separated by level -->
 		<surefire.groups>unit, integration, functional, acceptance, perform, regression</surefire.groups>
 
@@ -228,6 +224,7 @@
 		<!--|##############################################################| -->
 		<!--|################# PMD & CPD ##################################| -->
 		<!--|##############################################################| -->
+		<maven.pmd.plugin.version>3.15.0</maven.pmd.plugin.version> <!-- 3.15.0-SNAPSHOT -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
 		<minimumTokens>100</minimumTokens>
 		
@@ -252,13 +249,22 @@
 		<!--|##############################################################| -->
 		<!--|################# Info Reports ###############################| -->
 		<!--|##############################################################| -->
+		<maven.project.info.reports.plugin.version>3.1.2</maven.project.info.reports.plugin.version>
+				
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
 		<!--|##############################################################| -->
 		<!--|################# Tag List ###################################| -->
 		<!--|##############################################################| -->
+		<taglist.maven.plugin.version>2.4</taglist.maven.plugin.version>		
 		<taglist.skip>false</taglist.skip>
 
+
+		<!--|##############################################################| -->
+		<!--|################# JDepend ####################################| -->
+		<!--|##############################################################| -->
+		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
+		
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### TIPS #################################################################################| -->
 		<!--|###########################################################################################################################| -->
