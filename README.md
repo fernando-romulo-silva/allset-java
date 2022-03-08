@@ -12,43 +12,29 @@ On the main pom.xml, there are a lot of plugin configurations used on my project
 I use this project to learn new technologies maven.
 
 # Technologies
-- Java
-- Maven
+- Git
+- Java >= 7 
+- Maven >= 3
 
-# Modules
-
-## allset-java-ee-full
-
-Configurations used on maven plugins for Jakarta EE full profile.
-
-## allset-java-ee-webprofile
-
-Configurations used on maven plugins for Jakarta EE web profile.
-
-## allset-java-ee-se
-
-Configurations used on maven plugins for Java SE.
-
-## allset-java-ee-web
-
-Configurations used on maven plugins for Jakarta EE Web.
 
 # Install
 
-requirements (environment variables configured): 
- - Java 11
- - Maven 3
- - Git
+To install just execute on terminal:
  
- ```bash
-# clone it
-git clone https://github.com/fernando-romulo-silva/allset-java
+```bash
+$ git clone https://github.com/fernando-romulo-silva/allset-java
+```
 
-# access the project folder
-cd allset-java
+Access the project folder
 
-# execute
-mvn install
+```bash
+$ cd allset-java
+```
+
+Then execute execute:
+
+```bash
+$ mvn install
 ```
 
 # How to Use
@@ -63,5 +49,25 @@ In the pom.xml, add the following xml between `<project> ... </project>`
 </parent>
 ```
 
+# Modules
 
-mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar"
+## allset-java-ee-coreprofile
+
+Configurations used on maven plugins for Jakarta EE core profile.
+
+## allset-java-ee-microprofile
+
+Configurations used on maven plugins for Jakarta EE micro profile.
+
+## allset-java-ee-webprofile
+
+Configurations used on maven plugins for Jakarta EE web profile.
+
+## allset-java-ee-full
+
+Configurations used on maven plugins for Jakarta EE full profile.
+
+## allset-java-se
+
+Configurations used on maven plugins for Java SE.
+
