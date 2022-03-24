@@ -96,7 +96,7 @@
 		<!--|##############################################################| -->
 		<!--|################# Compiler ###################################| -->
 		<!--|##############################################################| -->
-		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
 		<!-- JVM Version, usually LTS -->
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
