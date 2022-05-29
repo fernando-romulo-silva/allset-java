@@ -195,7 +195,7 @@
 		<!--|##############################################################| -->
 		<!--|################# Surefire ###################################| -->
 		<!--|##############################################################| -->
-		<maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->		
+		<maven.surefire.plugin.version>3.0.0-M6</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->		
 		<!-- The groups are separated by level -->
 		<surefire.groups>unit, integration, functional, acceptance, perform, regression</surefire.groups>
 
