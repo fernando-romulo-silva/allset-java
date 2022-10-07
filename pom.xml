@@ -142,7 +142,7 @@
 		<maven.checkstyle.plugin.version>3.2.0</maven.checkstyle.plugin.version>
 				
 		<!-- Checkstyle's version -->
-		<checkstyle.version>10.3.3</checkstyle.version>
+		<checkstyle.version>10.3.4</checkstyle.version>
 		
 		<!-- Suggest checkstyle checks file (only on child pom) -->
 		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
@@ -235,7 +235,7 @@
 		<pmd.includeTests>true</pmd.includeTests>
 		
 		<!-- pmd version -->
-		<pmd.version>6.49.0</pmd.version>
+		<pmd.version>6.50.0</pmd.version>
 		
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
