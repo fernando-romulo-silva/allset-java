@@ -79,7 +79,7 @@
 		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.3.0</maven.resources.plugin.version>
 		<maven.jxr.plugin.site.version>3.3.0</maven.jxr.plugin.site.version>
-		<maven.dependency.plugin.version>3.3.0</maven.dependency.plugin.version>
+		<maven.dependency.plugin.version>3.4.0</maven.dependency.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -110,10 +110,10 @@
 		<!--|##############################################################| -->
 		<!--|################# Spotbugs ###################################| -->
 		<!--|##############################################################| -->
-		<spotbugs.maven.plugin.version>4.7.2.0</spotbugs.maven.plugin.version> <!-- 4.4.2.2 -->		
+		<spotbugs.maven.plugin.version>4.7.2.1</spotbugs.maven.plugin.version>		
 		
 		<!-- Version -->
-		<spotbugs.version>4.7.2</spotbugs.version>
+		<spotbugs.version>4.7.3</spotbugs.version>
 		
 		<!-- Enables analysis which takes more memory but finds more bugs. -->
 		<!-- If you run out of memory, changes the value of the effort element to 'low'. -->
@@ -235,7 +235,7 @@
 		<pmd.includeTests>true</pmd.includeTests>
 		
 		<!-- pmd version -->
-		<pmd.version>6.50.0</pmd.version>
+		<pmd.version>6.52.0</pmd.version>
 		
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
@@ -288,7 +288,7 @@
 
 			<plugins>
 				<!-- mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar" -->
-				<!-- Dependencies : download the dependencies 
+				<!-- Dependencies : download the dependencies --> 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -296,16 +296,17 @@
 					<configuration>
 						<excludeReactor>false</excludeReactor>
 					</configuration>
+					<!--
 					<dependencies>
 						<dependency>
 							<groupId>com.sun</groupId>
 							<artifactId>tools</artifactId>
 							<version>1.8</version>
 						</dependency>
-											
 					</dependencies>
+					-->
 				</plugin>
-				-->
+				
 
 				<!-- Compiler : compile the files -->
 				<plugin>
@@ -677,7 +678,7 @@
 				<version>${jdepend.maven.plugin.version}</version>
 			</plugin>
 
-			<!-- Dependency : show the dependencies
+			<!-- Dependency : show the dependencies -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -690,7 +691,7 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			 -->
+			
 
 		</plugins>
 	</reporting>
