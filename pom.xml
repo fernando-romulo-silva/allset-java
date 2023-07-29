@@ -74,6 +74,7 @@
 		<!--|###########################################################################################################################| -->
 		<maven.javadoc.plugin.version>3.4.1</maven.javadoc.plugin.version>
 		<maven.site.plugin.version>3.12.1</maven.site.plugin.version> <!-- 3.9.1 -->
+		<maven.scm.plugin.version>3.2.1</maven.scm.plugin.version>
 		<maven.jar.plugin.version>3.2.2</maven.jar.plugin.version>
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
@@ -386,6 +387,13 @@
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven.site.plugin.version}</version>
 				</plugin>
+				
+			    <!--scm : publishing Maven website to any supported SCM -->
+				<plugin>
+  			        <groupId>org.apache.maven.plugins</groupId>
+				    <artifactId>maven-scm-publish-plugin</artifactId>
+				    <version>${maven.scm.plugin.version}</version>
+			    </plugin>				
 
 				<!-- Checkstyle : development tool to help programmers write Java code that adheres to a coding standard -->
 				<plugin>
@@ -406,13 +414,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven.surefire.plugin.version}</version>
-					<configuration>
-						<parallel>${surefire.parallel}</parallel>
-						<threadCount>${surefire.threadCount}</threadCount>
-						<forkCount>${surefire.forkCount}</forkCount>
-						<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
-						<reuseForks>${surefire.reuseForks}</reuseForks>
-					</configuration>
 				</plugin>
 
 				<!-- Jacoco : JaCoCo is a free code coverage library for Java -->
@@ -554,14 +555,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
-				<configuration>
-					<parallel>${surefire.parallel}</parallel>
-					<threadCount>${surefire.threadCount}</threadCount>
-					<forkCount>${surefire.forkCount}</forkCount>
-					<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
-					<reuseForks>${surefire.reuseForks}</reuseForks>
-					<groups>${surefire.groups}</groups>
-				</configuration>
 			</plugin>
 
 			<!-- PMD : generates the pmd results report -->
