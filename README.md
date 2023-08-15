@@ -37,7 +37,7 @@ Then execute execute:
 mvn install
 ```
 
-# How to Use
+# How to Use (Maven)
 
 In the pom.xml, add the following xml between `<project> ... </project>`
 
