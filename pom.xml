@@ -15,12 +15,6 @@
 		<!-- <module>allset-java-android</module> Problems with android's plugin -->
 	</modules>
 
-	<description>
-	     Set of build tools (Maven) configurations for different types of projects that I already worked on.
-	     The idea is to reuse build tools and their plugin (pmd, spotbugs, compiler, etc.) configurations to speed up the development.
-	     This project prevents the developer from reconfiguring the same basic features that most projects have.
-	</description>
-
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
