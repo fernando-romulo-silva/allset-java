@@ -3,9 +3,9 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Project status](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)
 
-Set of [maven](https://github.com/apache/maven) configurations for different types of projects that I already worked on.
-On the main pom.xml, there are a lot of plugin configurations used on my projects.
-The idea is to reuse Maven and some plugin (pmd, spotbugs, compiler, etc) configurations to speed up the development.
+Set of build tools ([maven](https://github.com/apache/maven)) configurations for different types of projects that I already worked on.
+The idea is to reuse build tools and their plugin (pmd, spotbugs, compiler, etc.) configurations to speed up the development.
+This project prevents the developer from reconfiguring the same basic features that most projects have.
 
 ## Project status
 

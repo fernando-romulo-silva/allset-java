@@ -16,9 +16,9 @@
 	</modules>
 
 	<description>
-	     Set of maven configurations for different types of projects that I already worked on. 
-	     On the main pom.xml, there are a lot of plugin configurations used on my projects.
-	     The idea is to reuse Maven and some plugin (pmd, spotbugs, compiler, etc) configurations to speed up the development.
+	     Set of build tools (Maven) configurations for different types of projects that I already worked on.
+	     The idea is to reuse build tools and their plugin (pmd, spotbugs, compiler, etc.) configurations to speed up the development.
+	     This project prevents the developer from reconfiguring the same basic features that most projects have.
 	</description>
 
 	<licenses>
