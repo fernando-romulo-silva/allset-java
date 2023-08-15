@@ -22,19 +22,19 @@ I use this project to learn new technologies maven.
 To install just execute on terminal:
  
 ```bash
-$ git clone https://github.com/fernando-romulo-silva/allset-java
+git clone https://github.com/fernando-romulo-silva/allset-java
 ```
 
 Access the project folder:
 
 ```bash
-$ cd allset-java
+cd allset-java
 ```
 
 Then execute execute:
 
 ```bash
-$ mvn install
+mvn install
 ```
 
 # How to Use
