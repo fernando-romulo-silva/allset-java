@@ -65,16 +65,33 @@
 		 -->
 
 		<!--|###########################################################################################################################| -->
-		<!--|#################################### OTHERS PLUGINS #######################################################################| -->
+		<!--|#################################### PLUGINS VERSIONS #####################################################################| -->
 		<!--|###########################################################################################################################| -->
-		<maven.javadoc.plugin.version>3.4.1</maven.javadoc.plugin.version>
-		<maven.site.plugin.version>3.12.1</maven.site.plugin.version> <!-- 3.9.1 -->
-		<maven.jar.plugin.version>3.2.2</maven.jar.plugin.version>
-		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
-		<maven.source.plugin.version>3.2.1</maven.source.plugin.version>
-		<maven.resources.plugin.version>3.3.0</maven.resources.plugin.version>
+		<!-- basic -->
+		<maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+		<maven.javadoc.plugin.version>3.6.0</maven.javadoc.plugin.version>
+		<maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+		<maven.release.plugin.version>3.0.1</maven.release.plugin.version>
+		<maven.source.plugin.version>3.3.0</maven.source.plugin.version>
+		<maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
+		<maven.dependency.plugin.version>3.6.0</maven.dependency.plugin.version>
+		
+		<!-- scm -->
+		<maven.scm.plugin.version>2.0.1</maven.scm.plugin.version>
+		<maven.scm.publish.plugin.version>3.2.1</maven.scm.publish.plugin.version>		 
+		
+		<!-- reports -->
+		<maven.site.plugin.version>3.12.1</maven.site.plugin.version>
+		<maven.project.info.reports.plugin.version>3.4.5</maven.project.info.reports.plugin.version>
 		<maven.jxr.plugin.site.version>3.3.0</maven.jxr.plugin.site.version>
-		<maven.dependency.plugin.version>3.4.0</maven.dependency.plugin.version>
+		<taglist.maven.plugin.version>3.0.0</taglist.maven.plugin.version>
+		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
+		
+		<!-- tools -->
+		<jacoco.maven.plugin.version>0.8.10</jacoco.maven.plugin.version>		
+		<maven.pmd.plugin.version>3.21.0</maven.pmd.plugin.version>
+		<spotbugs.maven.plugin.version>4.7.3.6</spotbugs.maven.plugin.version>		
+		<maven.checkstyle.plugin.version>3.3.0</maven.checkstyle.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -91,7 +108,6 @@
 		<!--|##############################################################| -->
 		<!--|################# Compiler ###################################| -->
 		<!--|##############################################################| -->
-		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
 		<!-- JVM Version, usually LTS -->
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
@@ -105,8 +121,6 @@
 		<!--|##############################################################| -->
 		<!--|################# Spotbugs ###################################| -->
 		<!--|##############################################################| -->
-		<spotbugs.maven.plugin.version>4.7.2.1</spotbugs.maven.plugin.version>		
-		
 		<!-- Version -->
 		<spotbugs.version>4.7.3</spotbugs.version>
 		
@@ -134,10 +148,8 @@
 		<!--|##############################################################| -->
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
-		<maven.checkstyle.plugin.version>3.2.0</maven.checkstyle.plugin.version>
-				
 		<!-- Checkstyle's version -->
-		<checkstyle.version>10.3.4</checkstyle.version>
+		<checkstyle.version>10.12.1</checkstyle.version>
 		
 		<!-- Suggest checkstyle checks file (only on child pom) -->
 		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
@@ -148,7 +160,6 @@
 		<!--|##############################################################| -->
 		<!--|################# Jacoco #####################################| -->
 		<!--|##############################################################| -->
-		<jacoco.maven.plugin.version>0.8.8</jacoco.maven.plugin.version> <!-- -->		
 		<!-- fail if not catch the minimum -->
 		<jacoco.haltOnFailure>true</jacoco.haltOnFailure>
 
@@ -165,32 +176,9 @@
 		<jacoco.totalBranchRate>0.50</jacoco.totalBranchRate>
 
 		<!--|##############################################################| -->
-		<!--|################# Cobertura ##################################| -->
-		<!--|##############################################################| -->
-		<cobertura.maven.plugin.version>2.7</cobertura.maven.plugin.version>
-		
-		<!-- Minimum class coverage -->
-		<cobertura.classLineRate>50</cobertura.classLineRate>
-		<cobertura.classBranchRate>50</cobertura.classBranchRate>
-
-		<!-- Minimum package coverage -->
-		<cobertura.packageLineRate>50</cobertura.packageLineRate>
-		<cobertura.packageBranchRate>50</cobertura.packageBranchRate>
-
-		<!-- Minimum total coverage -->
-		<cobertura.totalLineRate>50</cobertura.totalLineRate>
-		<cobertura.totalBranchRate>50</cobertura.totalBranchRate>
-
-		<!-- fail if not catch the minimum -->
-		<cobertura.haltOnFailure>true</cobertura.haltOnFailure>
-
-		<!-- ignore methods with 1 line -->
-		<cobertura.ignoreTrivial>true</cobertura.ignoreTrivial>
-
-		<!--|##############################################################| -->
 		<!--|################# Surefire ###################################| -->
 		<!--|##############################################################| -->
-		<maven.surefire.plugin.version>3.0.0-M6</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->		
+		<maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version> <!-- 3.0.0-M5 -->		
 		<!-- The groups are separated by level -->
 		<surefire.groups>unit, integration, functional, acceptance, perform, regression</surefire.groups>
 
@@ -219,7 +207,6 @@
 		<!--|##############################################################| -->
 		<!--|################# PMD & CPD ##################################| -->
 		<!--|##############################################################| -->
-		<maven.pmd.plugin.version>3.19.0</maven.pmd.plugin.version> <!-- 3.15.0-SNAPSHOT -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
 		<minimumTokens>100</minimumTokens>
 		
@@ -230,7 +217,7 @@
 		<pmd.includeTests>true</pmd.includeTests>
 		
 		<!-- pmd version -->
-		<pmd.version>6.52.0</pmd.version>
+		<pmd.version>6.55.0</pmd.version>
 		
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
@@ -244,28 +231,22 @@
 		<!--|##############################################################| -->
 		<!--|################# SCM ########################################| -->
 		<!--|##############################################################| -->
-		<maven.scm.plugin.version>3.2.1</maven.scm.plugin.version>
 		<scmpublish.scm.branch>gh-pages</scmpublish.scm.branch>
 		
-
 		<!--|##############################################################| -->
 		<!--|################# Info Reports ###############################| -->
 		<!--|##############################################################| -->
-		<maven.project.info.reports.plugin.version>3.4.1</maven.project.info.reports.plugin.version>
-				
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 
 		<!--|##############################################################| -->
 		<!--|################# Tag List ###################################| -->
 		<!--|##############################################################| -->
-		<taglist.maven.plugin.version>3.0.0</taglist.maven.plugin.version>		
 		<taglist.skip>false</taglist.skip>
-
 
 		<!--|##############################################################| -->
 		<!--|################# JDepend ####################################| -->
 		<!--|##############################################################| -->
-		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
+
 		
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### TIPS #################################################################################| -->
@@ -382,22 +363,30 @@
 					<version>${maven.release.plugin.version}</version>
 				</plugin>
 
-				<!-- Site : generate a site for the project. The generated site also includes the project's reports that were configured in the POM -->
+				<!-- Site : generate a site for the project. -->
+				<!-- The generated site also includes the project's reports that were configured in the POM -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>${maven.site.plugin.version}</version>
 				</plugin>
-				
-			    <!--scm : publishing Maven website to any supported SCM -->
+
+				<!--scm : SCM for code -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${maven.scm.plugin.version}</version>
+				</plugin>
+
+				<!--scm publish : publishing Maven website to any supported SCM -->
 				<plugin>
   			        <groupId>org.apache.maven.plugins</groupId>
 				    <artifactId>maven-scm-publish-plugin</artifactId>
-				    <version>${maven.scm.plugin.version}</version>
+				    <version>${maven.scm.publish.plugin.version}</version>
 			        <configuration>
 			          <scmBranch>${scmpublish.scm.branch}</scmBranch>
 			        </configuration>				    
-			    </plugin>				
+			    </plugin>
 
 				<!-- Checkstyle : development tool to help programmers write Java code that adheres to a coding standard -->
 				<plugin>
@@ -673,6 +662,29 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${jdepend.maven.plugin.version}</version>
+				<configuration>
+					<tagListOptions>
+						<tagClasses>
+							<tagClass>
+								<displayName>Todo Work</displayName>
+								<tags>
+									<tag>
+										<matchString>TODO</matchString>
+										<matchType>ignoreCase</matchType>
+									</tag>
+									<tag>
+										<matchString>FIXME</matchString>
+										<matchType>exact</matchType>
+									</tag>
+									<tag>
+										<matchString>DEPRECATED</matchString>
+										<matchType>exact</matchType>
+									</tag>									
+								</tags>
+							</tagClass>
+						</tagClasses>
+					</tagListOptions>
+				</configuration>				
 			</plugin>
 
 			<!-- Dependency : show the dependencies -->

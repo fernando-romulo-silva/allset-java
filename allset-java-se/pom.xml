@@ -10,14 +10,12 @@
 	</parent>
 
 	<properties>
-		<maven.jar.plugin.version>2.5</maven.jar.plugin.version>
-		<maven.dependency.plugin.version>2.5.1</maven.dependency.plugin.version>
+		<maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+		<maven.dependency.plugin.version>3.6.0</maven.dependency.plugin.version>
 		<maven.jar.plugin.main.class>org.yourProject.MainClass</maven.jar.plugin.main.class>
 	</properties>
 
 	<description>
-	     Projeto com configuracoes padroes para desenvolver com Java 7.
-	     Este projeto serve para que outros projeto herde o pom e suas configuracoes padraoes de java e plugins maven.
 	</description>
 
 	<build>
