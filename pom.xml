@@ -184,6 +184,7 @@
 		<!--|##############################################################| -->
 		<!-- The groups are separated by level -->
 		<surefire.groups>unit,integration,functional,acceptance,perform</surefire.groups>
+		<surefire.excludedGroups></surefire.excludedGroups>
 
 		<!-- Tests run in parallel (run in thread) by methods, classes or test suite -->
 		<surefire.parallel>methods</surefire.parallel>
@@ -424,7 +425,9 @@
 						<forkCount>${surefire.forkCount}</forkCount>
 						<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
 						<reuseForks>${surefire.reuseForks}</reuseForks>
+						<!-- don't put this conf, because -Dgroups=someGroup stop to work!
 						<groups>${surefire.groups}</groups>
+						-->
 					</configuration>
 				</plugin>
 
