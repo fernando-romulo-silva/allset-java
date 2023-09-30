@@ -429,13 +429,11 @@
 				</plugin>
 
 				<!-- Failsafe : The Failsafe Plugin is used during the test phase of the build lifecycle to execute the tests of an application. -->
-				<!-- 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${maven.failsafe.plugin.version}</version>
 					<configuration>
-						<skipITs>true</skipITs>
 						<includes>
 							<include>**/*.java</include>
 						</includes>						
@@ -450,7 +448,6 @@
 						</execution>
 					</executions>
 				</plugin>
-				-->
 
 				<!-- Jacoco : JaCoCo is a free code coverage library for Java -->
 				<!-- https://stackoverflow.com/questions/3166538/how-to-execute-maven-plugin-execution-directly-from-command-line -->
