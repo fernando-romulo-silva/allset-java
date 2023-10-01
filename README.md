@@ -15,6 +15,8 @@ This project prevents the developer from reconfiguring the same basic features t
 
 # Technologies
 
+Technologies used on this project:
+
 - Java
 - Ant (optional)
 - Maven
