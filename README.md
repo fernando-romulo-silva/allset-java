@@ -22,10 +22,34 @@ This project prevents the developer from reconfiguring the same basic features t
 
 # Requirements
 
+These are the requirements:
+
 - Git
+
+```bash
+# check the git version
+git --version
+```
+
 - Java version >= 17 
+
+```bash
+# check the Java version
+java --version
+```
+
 - Ant version >= 1.10
+
+```bash
+# check the Ant version
+ant -version
+```
 - Maven version >= 3.9
+
+```bash
+# check the Maven version
+mvn --version
+```
 
 # Install
 
