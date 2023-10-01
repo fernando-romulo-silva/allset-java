@@ -27,7 +27,6 @@ This project prevents the developer from reconfiguring the same basic features t
 - Ant version >= 1.10
 - Maven version >= 3.9
 
-
 # Install
 
 To install just execute on terminal:
@@ -50,54 +49,11 @@ mvn install
 
 # How to Use
 
-To use follow the instructions.
-
-## Maven
-
-In the pom.xml, add the following xml between `<project> ... </project>`
-
-```xml
-<parent>
-	<groupId>org.allset.java</groupId>
-	<artifactId>allset-java</artifactId>
-	<version>${allset-java-version}</version>
-</parent>
-```
-
-This is the list of plugins configured:
-
-Basic plugins:
-
-- maven compiler
-- maven javadoc
-- maven jar
-- maven release
-- maven source
-- maven resources
-- maven dependency
-
-Plugins for tests:
-- maven failsake
-- maven surefire
-- jacoco maven
-
-Plugins for SCM:
-- maven scm
-- maven scm publish
-
-Plugins for project reports:
-- maven site
-- maven project info report
-- maven jxr
-- taglist maven
-- jdepend maven
-
-Plugins for tools:
-- pmd maven
-- spotbugs maven
-- checkstyle maven
+To use it with [maven](docs/INSTALL-MAVEN.md) or [gradle](docs/INSTALL-GRADLE.md).
 
 # Modules
+
+The main pom deals with all Java application types, but for specific application types, this pom was created:
 
 ## allset-java-ee-coreprofile
 
