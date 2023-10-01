@@ -182,7 +182,7 @@
 		<!--|##############################################################| -->
 		<!--|################# Surefire ###################################| -->
 		<!--|##############################################################| -->
-		<!-- The groups are separated by level -->
+		<!-- The surefire groups -->
 		<surefire.groups>unit,integration,functional,acceptance,perform</surefire.groups>
 		<surefire.excludedGroups></surefire.excludedGroups>
 
@@ -204,9 +204,9 @@
 		<!--|##############################################################| -->
 		<!--|################# Failsafe ###################################| -->
 		<!--|##############################################################| -->		
-		<!-- The groups are separated by level -->
+		<!-- The failsafe groups -->
 		<failsafe.groups>integration,functional,system</failsafe.groups>
-		
+		<failsafe.excludedGroups>unit</failsafe.excludedGroups>
 		<!-- Tests run in parallel (run in thread) by methods, classes or test suite -->
 		<failsafe.parallel>methods</failsafe.parallel>
 
@@ -428,6 +428,7 @@
 						<!-- don't put this conf, because -Dgroups=someGroup stop to work!
 						<groups>${surefire.groups}</groups>
 						-->
+						
 					</configuration>
 				</plugin>
 
@@ -437,10 +438,17 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${maven.failsafe.plugin.version}</version>
 					<configuration>
+						<useModulePath>false</useModulePath>
+						<useSystemClassLoader>false</useSystemClassLoader>
+						<skipTests>false</skipTests>						
 						<includes>
 							<include>**/*.java</include>
-						</includes>						
+						</includes>
+
+						<!-- don't put this conf, because -Dgroups=someGroup stop to work!						
 						<groups>${failsafe.groups}</groups>
+						<excludedGroups>${failsafe.excludedGroups}</excludedGroups>
+						-->
 					</configuration>
 					<executions>
 						<execution>

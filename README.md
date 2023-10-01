@@ -3,18 +3,29 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Project status](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)
 
+# Project status
+
+I change this project constantly improving and adding new plugins, click [here](docs/STATUS.md) to follow up.
+
+# About
+
 Set of build tools ([maven](https://github.com/apache/maven)) configurations for different types of projects that I already worked on.
-The idea is to reuse build tools and their plugin (pmd, spotbugs, compiler, etc.) configurations to speed up the development.
+The idea is to reuse build tools and their plugins (pmd, spotbugs, compiler, etc.) configurations to speed up the development.
 This project prevents the developer from reconfiguring the same basic features that most projects have.
 
-## Project status
-
-I use this project to learn new technologies maven.
-
 # Technologies
+
+- Java
+- Ant (optional)
+- Maven
+- Gradle
+
+# Requirements
+
 - Git
-- Java >= 7 
-- Maven >= 3
+- Java version >= 17 
+- Ant version >= 1.10
+- Maven version >= 3.9
 
 
 # Install
@@ -37,7 +48,11 @@ Then execute execute:
 mvn install
 ```
 
-# How to Use (Maven)
+# How to Use
+
+To use follow the instructions.
+
+## Maven
 
 In the pom.xml, add the following xml between `<project> ... </project>`
 
@@ -48,6 +63,39 @@ In the pom.xml, add the following xml between `<project> ... </project>`
 	<version>${allset-java-version}</version>
 </parent>
 ```
+
+This is the list of plugins configured:
+
+Basic plugins:
+
+- maven compiler
+- maven javadoc
+- maven jar
+- maven release
+- maven source
+- maven resources
+- maven dependency
+
+Plugins for tests:
+- maven failsake
+- maven surefire
+- jacoco maven
+
+Plugins for SCM:
+- maven scm
+- maven scm publish
+
+Plugins for project reports:
+- maven site
+- maven project info report
+- maven jxr
+- taglist maven
+- jdepend maven
+
+Plugins for tools:
+- pmd maven
+- spotbugs maven
+- checkstyle maven
 
 # Modules
 
