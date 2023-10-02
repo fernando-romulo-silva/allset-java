@@ -79,7 +79,7 @@ To use it with [maven](docs/INSTALL-MAVEN.md) or [gradle](docs/INSTALL-GRADLE.md
 
 # Modules
 
-The main pom deals with all Java application types, but for specific application types, this pom was created:
+The main pom deals with all Java application types, but for specific application types, these POMs was created:
 
 ## allset-java-ee-coreprofile
 
@@ -99,5 +99,5 @@ Configurations used on maven plugins for Jakarta EE full profile.
 
 ## allset-java-se
 
-Configurations used on maven plugins for Java SE.
+Configurations used on maven plugins for executable Java SE.
 
