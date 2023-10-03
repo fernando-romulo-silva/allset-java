@@ -4,7 +4,37 @@
 	<artifactId>allset-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version> <!-- <version>1.0.0</version> -->
 	<packaging>pom</packaging>
+	
+	<name>Allset Java</name>
+  	
+  	<description>
+		A Maven pom with commons configurations to be used on projects.
+    </description>
+    
+    <inceptionYear>2015</inceptionYear>
 
+	<contributors>
+		<contributor>
+			<name>Fernando Romulo da Silva</name>
+		</contributor>
+	</contributors>
+
+	<prerequisites>
+		<maven>3.8.8</maven>
+	</prerequisites>
+
+	<issueManagement>
+		<system>GITHUB</system>
+		<url>https://github.com/fernando-romulo-silva/allset-java/blob/master/docs/STATUS.md</url>
+	</issueManagement>
+
+	<!--
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://ci-maven.apache.org/job/Maven/job/maven-box/job/maven-pmd-plugin/</url>
+	</ciManagement>	
+    --> 
+     
 	<modules>
 		<module>allset-java-jee-full</module>
 		<module>allset-java-jee-webprofile</module>
@@ -79,19 +109,19 @@
 		<!-- tests -->		
 		<maven.failsafe.plugin.version>3.1.2</maven.failsafe.plugin.version>
 		<maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version>
-		<jacoco.maven.plugin.version>0.8.10</jacoco.maven.plugin.version>		
-		
+		<jacoco.maven.plugin.version>0.8.10</jacoco.maven.plugin.version>
+
 		<!-- scm -->
 		<maven.scm.plugin.version>2.0.1</maven.scm.plugin.version>
-		<maven.scm.publish.plugin.version>3.2.1</maven.scm.publish.plugin.version>		 
-		
+		<maven.scm.publish.plugin.version>3.2.1</maven.scm.publish.plugin.version>
+
 		<!-- reports -->
 		<maven.site.plugin.version>3.12.1</maven.site.plugin.version>
 		<maven.project.info.reports.plugin.version>3.4.5</maven.project.info.reports.plugin.version>
 		<maven.jxr.plugin.site.version>3.3.0</maven.jxr.plugin.site.version>
 		<taglist.maven.plugin.version>3.0.0</taglist.maven.plugin.version>
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
-		
+
 		<!-- tools -->
 		<pmd.maven.plugin.version>3.21.0</pmd.maven.plugin.version>
 		<spotbugs.maven.plugin.version>4.7.3.6</spotbugs.maven.plugin.version>		
@@ -127,7 +157,7 @@
 		<!--|##############################################################| -->
 		<!-- Version -->
 		<spotbugs.version>4.7.3</spotbugs.version>
-		
+
 		<!-- Enables analysis which takes more memory but finds more bugs. -->
 		<!-- If you run out of memory, changes the value of the effort element to 'low'. -->
 		<spotbugs.effort>Max</spotbugs.effort>
@@ -140,12 +170,12 @@
 
 		<!-- Check tests classes -->
 		<spotbugs.includeTests>true</spotbugs.includeTests>
-		
+
 		<!-- Suggest exclude Bugs File (only on child pom) -->
 		<!-- <excludeBugsFile>default-extensions/spotbugs/spotbugs-excludes.xml</excludeBugsFile>  -->
-		
+
 		<!-- Suggest exclude Bugs File Filter (only on child pom) -->
-		<!-- <spotbugs.excludeFilterFile>default-extensions/spotbugs-exclude-filter.xml</spotbugs.excludeFilterFile> -->		
+		<!-- <spotbugs.excludeFilterFile>default-extensions/spotbugs-exclude-filter.xml</spotbugs.excludeFilterFile> -->
 
 		<!-- Plugins https://spotbugs.readthedocs.io/en/stable/links.html#spotbugs-plugins -->
 
@@ -154,10 +184,10 @@
 		<!--|##############################################################| -->
 		<!-- Checkstyle's version -->
 		<checkstyle.version>10.12.1</checkstyle.version>
-		
+
 		<!-- Suggest checkstyle checks file (only on child pom) -->
 		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
-		
+
 		<!-- Suggest checkstyle suppressions file (only on child pom) -->
 		<!-- <checkstyle.suppressions.location>default-extensions/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.location> -->
 
@@ -200,10 +230,10 @@
 
 		<!-- reuse process JVM -->
 		<surefire.reuseForks>true</surefire.reuseForks>
-		
+
 		<!--|##############################################################| -->
 		<!--|################# Failsafe ###################################| -->
-		<!--|##############################################################| -->		
+		<!--|##############################################################| -->
 		<!-- The failsafe groups -->
 		<failsafe.groups>integration,functional,system</failsafe.groups>
 		<failsafe.excludedGroups>unit</failsafe.excludedGroups>
@@ -221,16 +251,16 @@
 		<!--|##############################################################| -->
 		<!-- CPD minimum tokens to report on (5 to 10 duplicate lines) -->
 		<minimumTokens>100</minimumTokens>
-		
+
 		<!-- The rule priority threshold; rules with lower priority than this will not be evaluated. -->
 		<minimumPriority>5</minimumPriority>
-		
+
 		<!-- include test class -->
 		<pmd.includeTests>true</pmd.includeTests>
-		
+
 		<!-- pmd version -->
 		<pmd.version>6.55.0</pmd.version>
-		
+
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
 
@@ -239,12 +269,12 @@
 		<!-- <ruleset>default-extensions/pmd/java/pmd-ruleset.xml</ruleset> -->
 		<!-- or -->
 		<!-- <ruleset>rulesets/java/quickstart.xml</ruleset> from pmd.jar -->
-		
+
 		<!--|##############################################################| -->
 		<!--|################# SCM ########################################| -->
 		<!--|##############################################################| -->
 		<scmpublish.scm.branch>gh-pages</scmpublish.scm.branch>
-		
+
 		<!--|##############################################################| -->
 		<!--|################# Info Reports ###############################| -->
 		<!--|##############################################################| -->
@@ -259,7 +289,7 @@
 		<!--|################# JDepend ####################################| -->
 		<!--|##############################################################| -->
 
-		
+
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### TIPS #################################################################################| -->
 		<!--|###########################################################################################################################| -->
@@ -301,7 +331,7 @@
 					</dependencies>
 					-->
 				</plugin>
-				
+
 
 				<!-- Compiler : compile the files -->
 				<plugin>
@@ -348,7 +378,7 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-				
+
 				<!-- Resources : handles the copying of project resources to the output directory -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
