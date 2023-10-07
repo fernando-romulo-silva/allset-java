@@ -16,6 +16,7 @@
 	</properties>
 
 	<description>
+		Specific module to executable Java SE jars 
 	</description>
 
 	<build>

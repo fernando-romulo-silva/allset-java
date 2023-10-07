@@ -18,6 +18,32 @@
 			<name>Fernando Romulo da Silva</name>
 		</contributor>
 	</contributors>
+	
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>	
+
+	<developers>
+		<developer>
+			<id>fernando-silva</id>
+			<name>Fernando Romulo da Silva</name>
+			<email>fernando.romulo.silva@gmail.com</email>
+			<url>https://fernando-romulo-silva.github.io/personal-page/</url>
+			<organization>Nandao Software</organization>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>Portugal/Lisbon</timezone>
+			<properties>
+				<picUrl>https://avatars.githubusercontent.com/u/6677305?v=4</picUrl>
+			</properties>
+		</developer>
+	</developers>	
 
 	<prerequisites>
 		<maven>3.8.8</maven>
@@ -25,16 +51,39 @@
 
 	<issueManagement>
 		<system>GITHUB</system>
-		<url>https://github.com/fernando-romulo-silva/allset-java/blob/master/docs/STATUS.md</url>
+		<url>https://${scm.platform}/${scm.account}/${project.artifactId}/blob/master/docs/STATUS.md</url>
 	</issueManagement>
 
-	<!--
+	<url>https://${scm.platform}/${scm.account}/${project.artifactId}</url>
+
+	<distributionManagement>
+		<!--
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/${scm.account}/${project.artifactId}</url>
+		</repository>
+		-->
+		<repository>
+			<id>dev.release</id>
+			<url>file:${project.build.directory}/release/</url>
+		</repository>		
+	</distributionManagement>
+
+	<!-- 
 	<ciManagement>
 		<system>Jenkins</system>
 		<url>https://ci-maven.apache.org/job/Maven/job/maven-box/job/maven-pmd-plugin/</url>
 	</ciManagement>	
     --> 
-     
+    
+	<scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
+		<url>${scm.url}</url>
+		<connection>${scm.conn}</connection>
+		<developerConnection>${scm.devConn}</developerConnection>
+		<tag>${scm.tag}</tag>
+	</scm>
+
 	<modules>
 		<module>allset-java-jee-full</module>
 		<module>allset-java-jee-webprofile</module>
@@ -45,23 +94,6 @@
 		<!-- <module>allset-java-android</module> Problems with android's plugin -->
 	</modules>
 
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<url>https://github.com/fernando-romulo-silva/allset-java</url>
-
-	<scm>
-		<url>https://github.com/fernando-romulo-silva/allset-java</url>
-		<connection>scm:git:ssh://git@github.com:fernando-romulo-silva/allset-java.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:fernando-romulo-silva/allset-java.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
 	<properties>
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### PROJECT CONFIGURATION ################################################################| -->
@@ -71,8 +103,8 @@
 
 		<!-- Project Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- JVM Arguments -->
 
@@ -273,6 +305,14 @@
 		<!--|##############################################################| -->
 		<!--|################# SCM ########################################| -->
 		<!--|##############################################################| -->
+		<scm.platform>github.com</scm.platform>
+		<scm.account>fernando-romulo-silva</scm.account>
+		<scm.base>github.com/${scm.account}/${project.artifactId}</scm.base>
+		<scm.conn>scm:git:ssh://git@${scm.base}.git</scm.conn>
+		<scm.devConn>scm:git:ssh://git@${scm.base}.git</scm.devConn>
+		<scm.url>https://${scm.base}</scm.url>
+		<scm.tag>HEAD</scm.tag>		
+
 		<scmpublish.scm.branch>gh-pages</scmpublish.scm.branch>
 
 		<!--|##############################################################| -->

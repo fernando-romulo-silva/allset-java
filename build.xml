@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="allset-java">
 	<import>
-		<javaresource classpath="ant-common-tasks.jar" name="macrodefs/maven/maven-art-macrodef.xml" />
 		<javaresource classpath="ant-common-tasks.jar" name="macrodefs/maven/maven-build-macrodef.xml" />
 		<javaresource classpath="ant-common-tasks.jar" name="targets/maven/maven-scm.xml" />
 	</import>
@@ -11,7 +10,7 @@
 install - Create a jar and isntall it on your local repository, usually in ~/.m2 folder.			
 		</description>
 
-		<art-clean />
+		<build-clean />
 
 		<build-install-simple />
 

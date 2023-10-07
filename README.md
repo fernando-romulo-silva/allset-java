@@ -46,7 +46,7 @@ java --version
 # check the Ant version
 ant -version
 ```
-- Maven version >= 3.9
+- Maven version >= 3.8.8
 
 ```bash
 # check the Maven version
