@@ -7,7 +7,10 @@ This is the project status controller
 - [ ] Create Gradle configurations
   - [ ] Study Gradle deeply
 
-- [ ] Add new documentation
+- [ ] Add documentation about modules
+- [ ] Create Jakarta module and put jee (jakarta ee) modules inside it
+- [ ] Create Spring module
+- [ ] Create Quarkus module
 
 
 ### In Progress

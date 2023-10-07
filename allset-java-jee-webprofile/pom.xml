@@ -8,24 +8,28 @@
 		<artifactId>allset-java</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-
+	
+	<description>
+		Specific module to Jakarta Web projects
+	</description>	
+ 
 	<properties>
-		<jee.version>7</jee.version>
 
 		<!-- Maven Plugins -->
-		<maven.war.plugin.version>2.1.1</maven.war.plugin.version>
+		<maven.war.plugin.version>3.4.0</maven.war.plugin.version>
 		<maven.war.fail.Missing.webXml>false</maven.war.fail.Missing.webXml>
 
 	</properties>
 
 	<dependencies>
+		
 		<dependency>
-			<!-- Java EE Web Profile -->
-			<groupId>javax</groupId>
-			<artifactId>javaee-web-api</artifactId>
-			<version>${jee.version}.0</version>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-web-api</artifactId>
+			<version>10.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -42,13 +46,6 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-			</plugin>
-		</plugins>
 	</build>
 
 </project>

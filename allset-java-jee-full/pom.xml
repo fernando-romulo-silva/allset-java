@@ -8,29 +8,36 @@
 		<artifactId>allset-java</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
+	<description>
+		Specific module to Jakarta Full projects
+	</description>	
 
 	<properties>
-		<jee.version>7</jee.version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
 		<!-- Plugins Maven -->
-		<maven.ear.plugin.version>2.9</maven.ear.plugin.version>
-		<maven.war.plugin.version>2.1.1</maven.war.plugin.version>
-		<maven.jar.plugin.version>2.4</maven.jar.plugin.version>
-
-		<maven.ejb.plugin.version>2.3</maven.ejb.plugin.version>
+		<maven.ear.plugin.version>3.3.0</maven.ear.plugin.version>
+		
+		<maven.war.plugin.version>3.4.0</maven.war.plugin.version>
+		
+		<maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+		
+		<maven.ejb.plugin.version>3.2.1</maven.ejb.plugin.version>
 		<maven.ejb.plugin.generate.client>false</maven.ejb.plugin.generate.client>
-		<ejb.version>3.2</ejb.version>
+		
+		<ejb.version>4.0</ejb.version>
 	</properties>
 
 	<dependencies>
 		<!-- JEE API -->
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${jee.version}.0</version>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -53,7 +60,7 @@
 					</configuration>
 				</plugin>
 
-				<!-- Montar um pacote EJB -->
+				<!-- EJB -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-ejb-plugin</artifactId>
@@ -71,7 +78,7 @@
 					</configuration>
 				</plugin>
 
-				<!-- Montar um pacote WAR -->
+				<!-- WAR -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
@@ -81,7 +88,7 @@
 					</configuration>
 				</plugin>
 
-				<!-- Adicionar JAR no lib do EAR -->
+				<!-- EAR -->
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${maven.jar.plugin.version}</version>

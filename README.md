@@ -9,7 +9,7 @@ I change this project constantly improving and adding new plugins, click [here](
 
 # About
 
-Set of build tools ([maven](https://github.com/apache/maven)) configurations for different types of projects that I already worked on.
+This is a build tools ([maven](https://github.com/apache/maven)) configurations for different types of projects that I already worked on.
 The idea is to reuse build tools and their plugins (pmd, spotbugs, compiler, etc.) configurations to speed up the development.
 This project prevents the developer from reconfiguring the same basic features that most projects have.
 
@@ -67,7 +67,7 @@ Access the project folder:
 cd allset-java
 ```
 
-Then execute execute:
+To install maven version:
 
 ```bash
 mvn install
@@ -75,29 +75,17 @@ mvn install
 
 # How to Use
 
-To use it with [maven](docs/INSTALL-MAVEN.md) or [gradle](docs/INSTALL-GRADLE.md).
+You can use it with [maven](docs/INSTALL-MAVEN.md) or [gradle](docs/INSTALL-GRADLE.md).
 
 # Modules
 
 The main pom deals with all Java application types, but for specific application types, these POMs was created:
 
-## allset-java-ee-coreprofile
-
-Configurations used on maven plugins for Jakarta EE core profile.
-
-## allset-java-ee-microprofile
-
-Configurations used on maven plugins for Jakarta EE micro profile.
-
-## allset-java-ee-webprofile
-
-Configurations used on maven plugins for Jakarta EE web profile.
-
-## allset-java-ee-full
-
-Configurations used on maven plugins for Jakarta EE full profile.
-
 ## allset-java-se
 
 Configurations used on maven plugins for executable Java SE.
+
+## allset-jakarta-ee
+
+Configurations used on maven plugins for Jakarta EE profiles:
 
