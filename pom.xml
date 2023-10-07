@@ -749,7 +749,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
-				<version>${taglist.plugin.version}</version>
+				<version>${taglist.maven.plugin.version}</version>
 				<configuration>
 					<skipTestSources>${taglist.skip}</skipTestSources>
 				    <tagListOptions>
@@ -790,29 +790,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${jdepend.maven.plugin.version}</version>
-				<configuration>
-					<tagListOptions>
-						<tagClasses>
-							<tagClass>
-								<displayName>Todo Work</displayName>
-								<tags>
-									<tag>
-										<matchString>TODO</matchString>
-										<matchType>ignoreCase</matchType>
-									</tag>
-									<tag>
-										<matchString>FIXME</matchString>
-										<matchType>exact</matchType>
-									</tag>
-									<tag>
-										<matchString>DEPRECATED</matchString>
-										<matchType>exact</matchType>
-									</tag>									
-								</tags>
-							</tagClass>
-						</tagClasses>
-					</tagListOptions>
-				</configuration>				
 			</plugin>
 
 			<!-- Dependency : show the dependencies -->
