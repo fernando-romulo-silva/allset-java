@@ -17,6 +17,7 @@ This project prevents the developer from reconfiguring the same basic features t
 
 Technologies used on this project:
 
+- Git
 - Java
 - Ant (optional)
 - Maven
@@ -40,17 +41,18 @@ git --version
 java --version
 ```
 
-- Ant version >= 1.10
-
-```bash
-# check the Ant version
-ant -version
-```
 - Maven version >= 3.8.8
 
 ```bash
 # check the Maven version
 mvn --version
+```
+
+- Ant version >= 1.10 (Optional)
+
+```bash
+# check the Ant version
+ant -version
 ```
 
 # Install
