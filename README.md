@@ -86,8 +86,3 @@ The main pom deals with all Java application types, but for specific application
 ## allset-java-se
 
 Configurations used on maven plugins for executable Java SE.
-
-## allset-jakarta-ee
-
-Configurations used on maven plugins for Jakarta EE profiles:
-
