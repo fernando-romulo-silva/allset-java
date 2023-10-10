@@ -77,7 +77,7 @@ mvn install
 
 # How to Use
 
-You can use it with [maven](docs/INSTALL-MAVEN.md) or [gradle](docs/INSTALL-GRADLE.md).
+You can use it with [Maven](docs/INSTALL-MAVEN.md) or [Gradle](docs/INSTALL-GRADLE.md).
 
 # Modules
 
@@ -85,4 +85,4 @@ The main pom deals with all Java application types, but for specific application
 
 ## allset-java-se
 
-Configurations used on maven plugins for executable Java SE.
+Configurations used on maven plugins for executable Java SE, please check here for [Maven](docs/ALL-SET-JAVA-SE-MAVEN.md) user or here for Gradle users.

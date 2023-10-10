@@ -12,7 +12,7 @@ In the pom.xml, add the following xml between `<project> ... </project>`
 
 This is the list of plugins configured:
 
-Basic plugins:
+### Basic plugins:
 
 - maven compiler
 - maven javadoc
@@ -22,23 +22,23 @@ Basic plugins:
 - maven resources
 - maven dependency
 
-Plugins for tests:
+### Plugins for tests:
 - maven failsake
 - maven surefire
 - jacoco maven
 
-Plugins for SCM:
+### Plugins for SCM:
 - maven scm
 - maven scm publish
 
-Plugins for project reports:
+### Plugins for project reports:
 - maven site
 - maven project info report
 - maven jxr
 - taglist maven
 - jdepend maven
 
-Plugins for tools:
+### Plugins for tools:
 - pmd maven
 - spotbugs maven
 - checkstyle maven
