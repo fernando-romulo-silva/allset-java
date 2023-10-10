@@ -85,4 +85,4 @@ The main pom deals with all Java application types, but for specific application
 
 ## allset-java-se
 
-Configurations used on maven plugins for executable Java SE, please check here for [Maven](docs/ALL-SET-JAVA-SE-MAVEN.md) user or here for Gradle users.
+Configurations used on maven plugins for executable Java SE, please check [here](docs/ALL-SET-JAVA-SE-MAVEN.md) for Maven user or here for Gradle users.

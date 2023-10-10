@@ -42,7 +42,7 @@ Replace the property 'maven.jar.plugin.main.class' to your application main clas
 </properties>
 ```
 
-This is the list of plugins configured:
+These are the plugins configured:
 
 - maven-jar-plugin (Generate a executable jar)
 - maven-dependency-plugin (Put the projects jars in 'libs' folder)
