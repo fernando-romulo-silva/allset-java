@@ -11,6 +11,7 @@ This is the project status controller
 - [ ] Create Jakarta module and put jee (jakarta ee) modules inside it
 - [ ] Create Spring module
 - [ ] Create Quarkus module
+- [ ] Find a way to download dependencies inside a maven plugin
 
 
 ### In Progress

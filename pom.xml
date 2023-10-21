@@ -188,7 +188,7 @@
 		<!--|################# Spotbugs ###################################| -->
 		<!--|##############################################################| -->
 		<!-- Version -->
-		<spotbugs.version>4.7.3</spotbugs.version>
+		<spotbugs.version>4.8.0</spotbugs.version>
 
 		<!-- Enables analysis which takes more memory but finds more bugs. -->
 		<!-- If you run out of memory, changes the value of the effort element to 'low'. -->
@@ -215,7 +215,7 @@
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
 		<!-- Checkstyle's version -->
-		<checkstyle.version>10.12.1</checkstyle.version>
+		<checkstyle.version>10.12.4</checkstyle.version>
 
 		<!-- Suggest checkstyle checks file (only on child pom) -->
 		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
@@ -345,6 +345,41 @@
 		<!-- mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar" -->
 
 	</properties>
+
+	<!-- Work around to download dependencies inside a maven plugin -->
+	<!--
+	<dependencies>
+		
+		<dependency>
+			<groupId>com.github.spotbugs</groupId>
+			<artifactId>spotbugs</artifactId>
+			<version>${spotbugs.version}</version>
+			<scope>test</scope>
+		</dependency>		
+		
+		<dependency>
+			<groupId>com.puppycrawl.tools</groupId>
+			<artifactId>checkstyle</artifactId>
+			<version>${checkstyle.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.pmd</groupId>
+			<artifactId>pmd-core</artifactId>
+			<version>${pmd.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sourceforge.pmd</groupId>
+			<artifactId>pmd-java</artifactId>
+			<version>${pmd.version}</version>
+			<scope>test</scope>
+		</dependency>
+				
+	</dependencies>
+	-->
 
 	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
