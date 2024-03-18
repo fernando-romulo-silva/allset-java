@@ -3,9 +3,13 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Project status](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)](https://img.shields.io/badge/Project%20status-Maintenance-orange.svg)
 
-# Project status
+# Project Status
 
 I change this project constantly improving and adding new plugins, click [here](docs/STATUS.md) to follow up.
+
+# The Problem
+
+Imagine you start a project and have to configure a ton of stuff like the Java version, project site, and tools (PMD, Checkstyle, etc), but you have already done it for other projects, so this tedious and necessary could be easier.
 
 # About
 
@@ -21,7 +25,7 @@ Technologies used on this project:
 - Java
 - Ant (optional)
 - Maven
-- Gradle
+- Gradle (future)
 
 # Requirements
 

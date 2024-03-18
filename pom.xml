@@ -346,7 +346,7 @@
 
 	</properties>
 
-	<!-- Work around to download dependencies inside a maven plugin -->
+	<!-- Work around to download dependencies inside maven plugins -->
 	<!--
 	<dependencies>
 		
