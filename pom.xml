@@ -130,34 +130,34 @@
 		<!--|#################################### PLUGINS VERSIONS #####################################################################| -->
 		<!--|###########################################################################################################################| -->
 		<!-- basic -->
-		<maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
-		<maven.javadoc.plugin.version>3.6.0</maven.javadoc.plugin.version>
-		<maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
+		<maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+		<maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
+		<maven.jar.plugin.version>3.4.0</maven.jar.plugin.version>
 		<maven.release.plugin.version>3.0.1</maven.release.plugin.version>
-		<maven.source.plugin.version>3.3.0</maven.source.plugin.version>
+		<maven.source.plugin.version>3.3.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
-		<maven.dependency.plugin.version>3.6.0</maven.dependency.plugin.version>
+		<maven.dependency.plugin.version>3.6.1</maven.dependency.plugin.version>
 
 		<!-- tests -->		
-		<maven.failsafe.plugin.version>3.1.2</maven.failsafe.plugin.version>
-		<maven.surefire.plugin.version>3.1.2</maven.surefire.plugin.version>
-		<jacoco.maven.plugin.version>0.8.10</jacoco.maven.plugin.version>
+		<maven.failsafe.plugin.version>3.2.5</maven.failsafe.plugin.version>
+		<maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
+		<jacoco.maven.plugin.version>0.8.12</jacoco.maven.plugin.version>
 
 		<!-- scm -->
-		<maven.scm.plugin.version>2.0.1</maven.scm.plugin.version>
+		<maven.scm.plugin.version>2.1.0</maven.scm.plugin.version>
 		<maven.scm.publish.plugin.version>3.2.1</maven.scm.publish.plugin.version>
 
 		<!-- reports -->
 		<maven.site.plugin.version>3.12.1</maven.site.plugin.version>
-		<maven.project.info.reports.plugin.version>3.4.5</maven.project.info.reports.plugin.version>
-		<maven.jxr.plugin.site.version>3.3.0</maven.jxr.plugin.site.version>
+		<maven.project.info.reports.plugin.version>3.5.0</maven.project.info.reports.plugin.version>
+		<maven.jxr.plugin.site.version>3.3.2</maven.jxr.plugin.site.version>
 		<taglist.maven.plugin.version>3.0.0</taglist.maven.plugin.version>
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 
 		<!-- tools -->
-		<pmd.maven.plugin.version>3.21.0</pmd.maven.plugin.version>
-		<spotbugs.maven.plugin.version>4.7.3.6</spotbugs.maven.plugin.version>		
-		<checkstyle.maven.plugin.version>3.3.0</checkstyle.maven.plugin.version>
+		<pmd.maven.plugin.version>3.21.2</pmd.maven.plugin.version>
+		<spotbugs.maven.plugin.version>4.8.4.0</spotbugs.maven.plugin.version>		
+		<checkstyle.maven.plugin.version>3.3.1</checkstyle.maven.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -383,6 +383,34 @@
 
 	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
+
+<!--
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.4.1</version>
+				<executions>
+					<execution>
+						<id>enforce-maven-version</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.9.6</version>
+								</requireMavenVersion>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>		
+
+-->
 
 		<pluginManagement>
 
@@ -843,5 +871,7 @@
 
 		</plugins>
 	</reporting>
+	
+	
 	
 </project>
