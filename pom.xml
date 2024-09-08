@@ -4,28 +4,28 @@
 	<artifactId>allset-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version> <!-- <version>1.0.0</version> -->
 	<packaging>pom</packaging>
-	
+
 	<name>Allset Java</name>
-  	
-  	<description>
+
+	<description>
 		A Maven pom with commons configurations to be used on projects.
     </description>
-    
-    <inceptionYear>2015</inceptionYear>
+
+	<inceptionYear>2015</inceptionYear>
 
 	<contributors>
 		<contributor>
 			<name>Fernando Romulo da Silva</name>
 		</contributor>
 	</contributors>
-	
+
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 			<distribution>repo</distribution>
 		</license>
-	</licenses>	
+	</licenses>
 
 	<developers>
 		<developer>
@@ -43,7 +43,7 @@
 				<picUrl>https://avatars.githubusercontent.com/u/6677305?v=4</picUrl>
 			</properties>
 		</developer>
-	</developers>	
+	</developers>
 
 	<prerequisites>
 		<maven>3.8.8</maven>
@@ -67,7 +67,7 @@
 		<repository>
 			<id>dev.release</id>
 			<url>file:${project.build.directory}/release/</url>
-		</repository>		
+		</repository>
 	</distributionManagement>
 
 	<!-- 
@@ -75,8 +75,8 @@
 		<system>Jenkins</system>
 		<url>https://ci-maven.apache.org/job/Maven/job/maven-box/job/maven-pmd-plugin/</url>
 	</ciManagement>	
-    --> 
-    
+    -->
+
 	<scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
 		<url>${scm.url}</url>
 		<connection>${scm.conn}</connection>
@@ -131,33 +131,33 @@
 		<!--|###########################################################################################################################| -->
 		<!-- basic -->
 		<maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
-		<maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
-		<maven.jar.plugin.version>3.4.0</maven.jar.plugin.version>
-		<maven.release.plugin.version>3.0.1</maven.release.plugin.version>
+		<maven.javadoc.plugin.version>3.10.0</maven.javadoc.plugin.version>
+		<maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
+		<maven.release.plugin.version>3.1.1</maven.release.plugin.version>
 		<maven.source.plugin.version>3.3.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
-		<maven.dependency.plugin.version>3.6.1</maven.dependency.plugin.version>
+		<maven.dependency.plugin.version>3.8.0</maven.dependency.plugin.version>
 
-		<!-- tests -->		
-		<maven.failsafe.plugin.version>3.2.5</maven.failsafe.plugin.version>
-		<maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
+		<!-- tests -->
+		<maven.failsafe.plugin.version>3.5.0</maven.failsafe.plugin.version>
+		<maven.surefire.plugin.version>3.5.0</maven.surefire.plugin.version>
 		<jacoco.maven.plugin.version>0.8.12</jacoco.maven.plugin.version>
 
 		<!-- scm -->
 		<maven.scm.plugin.version>2.1.0</maven.scm.plugin.version>
-		<maven.scm.publish.plugin.version>3.2.1</maven.scm.publish.plugin.version>
+		<maven.scm.publish.plugin.version>3.3.0</maven.scm.publish.plugin.version>
 
 		<!-- reports -->
-		<maven.site.plugin.version>3.12.1</maven.site.plugin.version>
-		<maven.project.info.reports.plugin.version>3.5.0</maven.project.info.reports.plugin.version>
-		<maven.jxr.plugin.site.version>3.3.2</maven.jxr.plugin.site.version>
-		<taglist.maven.plugin.version>3.0.0</taglist.maven.plugin.version>
+		<maven.site.plugin.version>3.20.0</maven.site.plugin.version>
+		<maven.project.info.reports.plugin.version>3.7.0</maven.project.info.reports.plugin.version>
+		<maven.jxr.plugin.site.version>3.5.0</maven.jxr.plugin.site.version>
+		<taglist.maven.plugin.version>3.1.0</taglist.maven.plugin.version>
 		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
 
 		<!-- tools -->
-		<pmd.maven.plugin.version>3.21.2</pmd.maven.plugin.version>
-		<spotbugs.maven.plugin.version>4.8.4.0</spotbugs.maven.plugin.version>		
-		<checkstyle.maven.plugin.version>3.3.1</checkstyle.maven.plugin.version>
+		<pmd.maven.plugin.version>3.25.0</pmd.maven.plugin.version>
+		<spotbugs.maven.plugin.version>4.8.6.3</spotbugs.maven.plugin.version>
+		<checkstyle.maven.plugin.version>3.5.0</checkstyle.maven.plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -188,7 +188,7 @@
 		<!--|################# Spotbugs ###################################| -->
 		<!--|##############################################################| -->
 		<!-- Version -->
-		<spotbugs.version>4.8.0</spotbugs.version>
+		<spotbugs.version>4.8.6</spotbugs.version>
 
 		<!-- Enables analysis which takes more memory but finds more bugs. -->
 		<!-- If you run out of memory, changes the value of the effort element to 'low'. -->
@@ -215,7 +215,7 @@
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
 		<!-- Checkstyle's version -->
-		<checkstyle.version>10.12.4</checkstyle.version>
+		<checkstyle.version>10.18.1</checkstyle.version>
 
 		<!-- Suggest checkstyle checks file (only on child pom) -->
 		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
@@ -291,7 +291,7 @@
 		<pmd.includeTests>true</pmd.includeTests>
 
 		<!-- pmd version -->
-		<pmd.version>6.55.0</pmd.version>
+		<pmd.version>7.5.0</pmd.version>
 
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
@@ -311,7 +311,7 @@
 		<scm.conn>scm:git:ssh://git@${scm.base}.git</scm.conn>
 		<scm.devConn>scm:git:ssh://git@${scm.base}.git</scm.devConn>
 		<scm.url>https://${scm.base}</scm.url>
-		<scm.tag>HEAD</scm.tag>		
+		<scm.tag>HEAD</scm.tag>
 
 		<scmpublish.scm.branch>gh-pages</scmpublish.scm.branch>
 
@@ -347,16 +347,16 @@
 	</properties>
 
 	<!-- Work around to download dependencies inside maven plugins -->
-	<!--
+
 	<dependencies>
-		
+
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>
 			<artifactId>spotbugs</artifactId>
 			<version>${spotbugs.version}</version>
 			<scope>test</scope>
-		</dependency>		
-		
+		</dependency>
+
 		<dependency>
 			<groupId>com.puppycrawl.tools</groupId>
 			<artifactId>checkstyle</artifactId>
@@ -370,21 +370,21 @@
 			<version>${pmd.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>net.sourceforge.pmd</groupId>
 			<artifactId>pmd-java</artifactId>
 			<version>${pmd.version}</version>
 			<scope>test</scope>
 		</dependency>
-				
+
 	</dependencies>
-	-->
+
 
 	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
 
-<!--
+		<!--
 		<plugins>
 			<plugin>
 				<inherited>true</inherited>
@@ -416,7 +416,7 @@
 
 			<plugins>
 				<!-- mvn install:install-file -DgroupId=com.sun -DartifactId=tools -Dpackaging=jar -Dversion=1.8 -Dfile="$JAVA_HOME/lib/tools.jar" -->
-				<!-- Dependencies : download the dependencies --> 
+				<!-- Dependencies : download the dependencies -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -494,7 +494,7 @@
 						</nonFilteredFileExtensions>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -525,13 +525,13 @@
 
 				<!--scm publish : publishing Maven website to any supported SCM -->
 				<plugin>
-  			        <groupId>org.apache.maven.plugins</groupId>
-				    <artifactId>maven-scm-publish-plugin</artifactId>
-				    <version>${maven.scm.publish.plugin.version}</version>
-			        <configuration>
-			          <scmBranch>${scmpublish.scm.branch}</scmBranch>
-			        </configuration>				    
-			    </plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-publish-plugin</artifactId>
+					<version>${maven.scm.publish.plugin.version}</version>
+					<configuration>
+						<scmBranch>${scmpublish.scm.branch}</scmBranch>
+					</configuration>
+				</plugin>
 
 				<!-- Checkstyle : development tool to help programmers write Java code that adheres to a coding standard -->
 				<plugin>
@@ -545,6 +545,9 @@
 							<version>${checkstyle.version}</version>
 						</dependency>
 					</dependencies>
+					<configuration>
+						<excludes>**/module-info.java</excludes>
+					</configuration>
 				</plugin>
 
 				<!-- Surefire : The Surefire Plugin is used during the test phase of the build lifecycle to execute the tests of an application. -->
@@ -561,7 +564,7 @@
 						<!-- don't put this conf, because -Dgroups=someGroup stop to work!
 						<groups>${surefire.groups}</groups>
 						-->
-						
+						<argLine>-Dnet.bytebuddy.experimental=true</argLine>
 					</configuration>
 				</plugin>
 
@@ -573,7 +576,7 @@
 					<configuration>
 						<useModulePath>false</useModulePath>
 						<useSystemClassLoader>false</useSystemClassLoader>
-						<skipTests>false</skipTests>						
+						<skipTests>false</skipTests>
 						<includes>
 							<include>**/*.java</include>
 						</includes>
@@ -715,7 +718,7 @@
 				<plugin>
 					<groupId>com.ning.maven.plugins</groupId>
 					<artifactId>maven-duplicate-finder-plugin</artifactId>
-				</plugin>				
+				</plugin>
 
 			</plugins>
 		</pluginManagement>
@@ -738,7 +741,8 @@
 					<forkCount>${surefire.forkCount}</forkCount>
 					<perCoreThreadCount>${surefire.perCoreThreadCount}</perCoreThreadCount>
 					<reuseForks>${surefire.reuseForks}</reuseForks>
-				</configuration>				
+					<argLine>-Dnet.bytebuddy.experimental=true</argLine>
+				</configuration>
 			</plugin>
 
 			<!-- PMD : generates the pmd results report -->
@@ -766,6 +770,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${checkstyle.maven.plugin.version}</version>
+				<configuration>
+					<excludes>**/module-info.java</excludes>
+				</configuration>
 			</plugin>
 
 			<!-- Jacoco : generates the jacoco results report -->
@@ -808,43 +815,43 @@
 				</configuration>
 			</plugin>
 
-			<!-- Taglist : generates a report on various tags found in the code (Ex: TODO) -->
+			<!-- Taglist : generates a report on various tags found in the code (Ex: T0D0) -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>taglist-maven-plugin</artifactId>
 				<version>${taglist.maven.plugin.version}</version>
 				<configuration>
 					<skipTestSources>${taglist.skip}</skipTestSources>
-				    <tagListOptions>
-                        <tagClasses>
-                            <tagClass>
-                                <displayName>Todo Work Annotation</displayName>
-                                <tags>
-                                    <tag>
-                                        <matchString>TODO</matchString>
-                                        <matchType>ignoreCase</matchType>
-                                    </tag>
-                                    <tag>
-                                        <matchString>@todo</matchString>
-                                        <matchType>ignoreCase</matchType>
-                                    </tag>
-                                    <tag>
-                                        <matchString>FIXME</matchString>
-                                        <matchType>exact</matchType>
-                                    </tag>
-                                </tags>
-                            </tagClass>
-                            <tagClass>
-                                <displayName>Version Annotation</displayName>
-                                <tags>
-                                    <tag>
-                                        <matchString>@deprecated</matchString>
-                                        <matchType>ignoreCase</matchType>
-                                    </tag>
-                                </tags>
-                            </tagClass>
-                        </tagClasses>
-                    </tagListOptions>					
+					<tagListOptions>
+						<tagClasses>
+							<tagClass>
+								<displayName>Todo Work Annotation</displayName>
+								<tags>
+									<tag>
+										<matchString>TODO</matchString>
+										<matchType>ignoreCase</matchType>
+									</tag>
+									<tag>
+										<matchString>@todo</matchString>
+										<matchType>ignoreCase</matchType>
+									</tag>
+									<tag>
+										<matchString>FIXME</matchString>
+										<matchType>exact</matchType>
+									</tag>
+								</tags>
+							</tagClass>
+							<tagClass>
+								<displayName>Version Annotation</displayName>
+								<tags>
+									<tag>
+										<matchString>@deprecated</matchString>
+										<matchType>ignoreCase</matchType>
+									</tag>
+								</tags>
+							</tagClass>
+						</tagClasses>
+					</tagListOptions>
 				</configuration>
 			</plugin>
 
@@ -871,7 +878,6 @@
 
 		</plugins>
 	</reporting>
-	
-	
-	
+
+
 </project>
