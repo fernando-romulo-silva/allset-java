@@ -347,16 +347,16 @@
 	</properties>
 
 	<!-- Work around to download dependencies inside maven plugins -->
-
+	<!--
 	<dependencies>
-
+		
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>
 			<artifactId>spotbugs</artifactId>
 			<version>${spotbugs.version}</version>
 			<scope>test</scope>
-		</dependency>
-
+		</dependency>		
+		
 		<dependency>
 			<groupId>com.puppycrawl.tools</groupId>
 			<artifactId>checkstyle</artifactId>
@@ -370,16 +370,16 @@
 			<version>${pmd.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>net.sourceforge.pmd</groupId>
 			<artifactId>pmd-java</artifactId>
 			<version>${pmd.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+				
 	</dependencies>
-
+	-->
 
 	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
