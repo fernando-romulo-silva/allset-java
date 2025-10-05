@@ -38,7 +38,7 @@
 				<role>architect</role>
 				<role>developer</role>
 			</roles>
-			<timezone>Portugal/Lisbon</timezone>
+			<timezone>Brazil/SaoPaulo</timezone>
 			<properties>
 				<picUrl>https://avatars.githubusercontent.com/u/6677305?v=4</picUrl>
 			</properties>
@@ -130,34 +130,37 @@
 		<!--|#################################### PLUGINS VERSIONS #####################################################################| -->
 		<!--|###########################################################################################################################| -->
 		<!-- basic -->
-		<maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
-		<maven.javadoc.plugin.version>3.10.0</maven.javadoc.plugin.version>
+		<maven.compiler.plugin.version>3.14.1</maven.compiler.plugin.version>
+		<maven.javadoc.plugin.version>3.12.0</maven.javadoc.plugin.version>
 		<maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
 		<maven.release.plugin.version>3.1.1</maven.release.plugin.version>
 		<maven.source.plugin.version>3.3.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
-		<maven.dependency.plugin.version>3.8.0</maven.dependency.plugin.version>
+		<maven.dependency.plugin.version>3.9.0</maven.dependency.plugin.version>
+		<maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
 
 		<!-- tests -->
-		<maven.failsafe.plugin.version>3.5.0</maven.failsafe.plugin.version>
-		<maven.surefire.plugin.version>3.5.0</maven.surefire.plugin.version>
-		<jacoco.maven.plugin.version>0.8.12</jacoco.maven.plugin.version>
+		<maven.failsafe.plugin.version>3.5.4</maven.failsafe.plugin.version>
+		<maven.surefire.plugin.version>3.5.4</maven.surefire.plugin.version>
+		<jacoco.maven.plugin.version>0.8.13</jacoco.maven.plugin.version>
 
 		<!-- scm -->
-		<maven.scm.plugin.version>2.1.0</maven.scm.plugin.version>
+		<maven.scm.plugin.version>2.2.1</maven.scm.plugin.version>
 		<maven.scm.publish.plugin.version>3.3.0</maven.scm.publish.plugin.version>
+		<git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
 
 		<!-- reports -->
-		<maven.site.plugin.version>3.20.0</maven.site.plugin.version>
-		<maven.project.info.reports.plugin.version>3.7.0</maven.project.info.reports.plugin.version>
-		<maven.jxr.plugin.site.version>3.5.0</maven.jxr.plugin.site.version>
-		<taglist.maven.plugin.version>3.1.0</taglist.maven.plugin.version>
-		<jdepend.maven.plugin.version>2.0</jdepend.maven.plugin.version>
+		<maven.site.plugin.version>3.21.0</maven.site.plugin.version>
+		<maven.project.info.reports.plugin.version>3.9.0</maven.project.info.reports.plugin.version>
+		<maven.jxr.plugin.site.version>3.6.0</maven.jxr.plugin.site.version>
+		<taglist.maven.plugin.version>3.2.1</taglist.maven.plugin.version>
+		<jdepend.maven.plugin.version>2.1</jdepend.maven.plugin.version>
 
 		<!-- tools -->
-		<pmd.maven.plugin.version>3.25.0</pmd.maven.plugin.version>
-		<spotbugs.maven.plugin.version>4.8.6.3</spotbugs.maven.plugin.version>
-		<checkstyle.maven.plugin.version>3.5.0</checkstyle.maven.plugin.version>
+		<pmd.maven.plugin.version>3.27.0</pmd.maven.plugin.version>
+		<spotbugs.maven.plugin.version>4.9.6.0</spotbugs.maven.plugin.version>
+		<checkstyle.maven.plugin.version>3.6.0</checkstyle.maven.plugin.version>
+		<flatten-maven-plugin.version>1.7.3</flatten-maven-plugin.version>
 
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### CONF. PLUGINS ########################################################################| -->
@@ -175,8 +178,8 @@
 		<!--|################# Compiler ###################################| -->
 		<!--|##############################################################| -->
 		<!-- JVM Version, usually LTS -->
-		<maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>25</maven.compiler.source>
+		<maven.compiler.target>25</maven.compiler.target>
 
 		<!-- compile in the new java process -->
 		<maven.compiler.fork>true</maven.compiler.fork>
@@ -188,7 +191,7 @@
 		<!--|################# Spotbugs ###################################| -->
 		<!--|##############################################################| -->
 		<!-- Version -->
-		<spotbugs.version>4.8.6</spotbugs.version>
+		<spotbugs.version>4.9.6</spotbugs.version>
 
 		<!-- Enables analysis which takes more memory but finds more bugs. -->
 		<!-- If you run out of memory, changes the value of the effort element to 'low'. -->
@@ -215,7 +218,7 @@
 		<!--|################# CheckStyle #################################| -->
 		<!--|##############################################################| -->
 		<!-- Checkstyle's version -->
-		<checkstyle.version>10.18.1</checkstyle.version>
+		<checkstyle.version>11.1.0</checkstyle.version>
 
 		<!-- Suggest checkstyle checks file (only on child pom) -->
 		<!-- <checkstyle.config.location>default-extensions/checkstyle/checkstyle-checks.xml</checkstyle.config.location> -->
@@ -291,7 +294,7 @@
 		<pmd.includeTests>true</pmd.includeTests>
 
 		<!-- pmd version -->
-		<pmd.version>7.5.0</pmd.version>
+		<pmd.version>7.17.0</pmd.version>
 
 		<!-- failOnViolation is actually true by default, but can be disabled -->
 		<pmd.failOnViolation>true</pmd.failOnViolation>
@@ -330,6 +333,11 @@
 		<!--|##############################################################| -->
 
 
+		<!--|##############################################################| -->
+		<!--|################# Flatten ####################################| -->
+		<!--|##############################################################| -->
+
+
 		<!--|###########################################################################################################################| -->
 		<!--|#################################### TIPS #################################################################################| -->
 		<!--|###########################################################################################################################| -->
@@ -347,16 +355,15 @@
 	</properties>
 
 	<!-- Work around to download dependencies inside maven plugins -->
-	<!--
 	<dependencies>
-		
+
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>
 			<artifactId>spotbugs</artifactId>
 			<version>${spotbugs.version}</version>
 			<scope>test</scope>
-		</dependency>		
-		
+		</dependency>
+
 		<dependency>
 			<groupId>com.puppycrawl.tools</groupId>
 			<artifactId>checkstyle</artifactId>
@@ -370,47 +377,18 @@
 			<version>${pmd.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>net.sourceforge.pmd</groupId>
 			<artifactId>pmd-java</artifactId>
 			<version>${pmd.version}</version>
 			<scope>test</scope>
 		</dependency>
-				
+
 	</dependencies>
-	-->
 
 	<!-- |######################## BUILD ###############################################################################################| -->
 	<build>
-
-		<!--
-		<plugins>
-			<plugin>
-				<inherited>true</inherited>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>3.4.1</version>
-				<executions>
-					<execution>
-						<id>enforce-maven-version</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>3.9.6</version>
-								</requireMavenVersion>
-							</rules>
-							<fail>true</fail>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>		
-
--->
 
 		<pluginManagement>
 
@@ -434,7 +412,6 @@
 					</dependencies>
 					-->
 				</plugin>
-
 
 				<!-- Compiler : compile the files -->
 				<plugin>
@@ -720,6 +697,70 @@
 					<artifactId>maven-duplicate-finder-plugin</artifactId>
 				</plugin>
 
+				<!-- maven flatten: Set versions propertely -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>${flatten-maven-plugin.version}</version>
+					<configuration>
+						<flattenMode>bom</flattenMode>
+					</configuration>
+					<executions>
+						<!-- enable flattening -->
+						<execution>
+							<id>flatten</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+						</execution>
+						<!-- ensure proper cleanup -->
+						<execution>
+							<id>flatten.clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- maven enforcer: Check projects requirement -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>enforce-env-requirements</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<requireJavaVersion>
+										<version>[21,)</version>
+									</requireJavaVersion>
+									<requireMavenVersion>
+										<version>[3.9,)</version>
+									</requireMavenVersion>
+									<requireReleaseDeps>
+										<onlyWhenRelease>true</onlyWhenRelease>
+										<message>Release builds must not have on snapshot dependencies</message>
+									</requireReleaseDeps>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!--git-commit-id-plugin: git repository information into a Maven-built -->
+				<plugin>
+					<groupId>pl.project13.maven</groupId>
+					<artifactId>git-commit-id-plugin</artifactId>
+					<version>${git-commit-id-plugin.version}</version>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 
@@ -729,7 +770,6 @@
 	<reporting>
 
 		<plugins>
-
 			<!-- Surefire : generates the test results report -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
